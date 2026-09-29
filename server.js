@@ -1343,8 +1343,8 @@ async function route(req, res) {
         });
       }
 
-      const verificationRequired = isProduction || smtpReady();
-      if (isProduction && !smtpReady()) {
+      const verificationRequired = smtpReady() || (isProduction && process.env.ALLOW_UNVERIFIED_SIGNUP !== 'true');
+      if (isProduction && !smtpReady() && process.env.ALLOW_UNVERIFIED_SIGNUP !== 'true') {  
         return json(res, 503, {
           error: 'Account registration is temporarily unavailable because email confirmation is not configured on this server.'
         });

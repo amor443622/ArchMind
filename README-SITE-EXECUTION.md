@@ -17,6 +17,10 @@
 
 The Site Engineer uses the same server-side OpenAI, Claude, Gemini, or Ollama provider configuration as the rest of ARCHMIND. For a public deployment, configure a cloud provider and its key in the hosting environment; a visitor's own computer does not need to run Ollama.
 
+## Free Render preview
+
+The included `render.yaml` uses Render's Free web-service plan and does not request a paid persistent disk. This is suitable for a public preview without adding a payment method. Free instances can sleep while idle, and their local files are temporary: user accounts and project records stored by this app can be lost after a restart, spin-down, or redeploy. Production signup also requires email confirmation, so configure a supported email delivery service before expecting visitors to create accounts. AI tools require a provider API key in Render's environment variables.
+
 ## Important review boundary
 
 Activity guidance and AI output are drafts/general references. They do not replace approved project drawings, specifications, method statements, ITPs, permits, authority conditions, or the responsible engineer. The AI must not be treated as an inspection approval, code check, or site instruction.

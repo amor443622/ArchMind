@@ -2,6 +2,7 @@ services:
   - type: web
     name: archmind
     runtime: node
+    plan: free
     buildCommand: npm install
     startCommand: npm start
     envVars:
@@ -40,8 +41,4 @@ services:
       - key: GMAIL_FROM
         sync: false
       - key: DATA_DIR
-        value: /var/data
-    disk:
-      name: archmind-data
-      mountPath: /var/data
-      sizeGB: 1
+        value: /tmp/archmind-data

@@ -1,0 +1,398 @@
+[
+  {
+    "page": 1,
+    "title": "Nano Banana for Architects — cover",
+    "titleAr": "نانو بانانا للمعماريين — الغلاف",
+    "image": "/pdf-examples/page-01.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 2,
+    "title": "Dedication",
+    "titleAr": "إهداء",
+    "image": "/pdf-examples/page-02.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 3,
+    "title": "Sharing terms and license",
+    "titleAr": "شروط المشاركة والترخيص",
+    "image": "/pdf-examples/page-03.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 4,
+    "title": "Contents",
+    "titleAr": "المحتويات",
+    "image": "/pdf-examples/page-04.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 5,
+    "title": "Activate Nano Banana",
+    "titleAr": "تفعيل نانو بانانا",
+    "image": "/pdf-examples/page-05.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 6,
+    "title": "Prompt parameters for architects",
+    "titleAr": "معايير البرومبت المعماري",
+    "image": "/pdf-examples/page-06.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 7,
+    "title": "Prompt parameters: camera, composition and light",
+    "titleAr": "الكاميرا والتكوين والإضاءة",
+    "image": "/pdf-examples/page-07.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 8,
+    "title": "Structural systems example",
+    "titleAr": "مثال على الأنظمة الإنشائية",
+    "image": "/pdf-examples/page-08.jpg",
+    "before": "/pdf-examples/crops/p8-before.jpg",
+    "after": "/pdf-examples/crops/p8-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 9,
+    "title": "Architecture section",
+    "titleAr": "قسم العمارة",
+    "image": "/pdf-examples/page-09.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 10,
+    "title": "Under-construction villa rendering",
+    "titleAr": "تحويل فيلا تحت الإنشاء إلى رندر",
+    "image": "/pdf-examples/page-10.jpg",
+    "before": "/pdf-examples/crops/p10-before.jpg",
+    "after": "/pdf-examples/crops/p10-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 11,
+    "title": "Exterior photograph to CAD elevation",
+    "titleAr": "تحويل صورة واجهة إلى رسم CAD",
+    "image": "/pdf-examples/page-11.jpg",
+    "before": "/pdf-examples/crops/p11-before.jpg",
+    "after": "/pdf-examples/crops/p11-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 12,
+    "title": "Real building to 3D model",
+    "titleAr": "تحويل مبنى قائم إلى نموذج ثلاثي الأبعاد",
+    "image": "/pdf-examples/page-12.jpg",
+    "before": "/pdf-examples/crops/p12-before.jpg",
+    "after": "/pdf-examples/crops/p12-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 13,
+    "title": "Sketch to 3D model",
+    "titleAr": "تحويل اسكتش إلى نموذج ثلاثي الأبعاد",
+    "image": "/pdf-examples/page-13.jpg",
+    "before": "/pdf-examples/crops/p13-before.jpg",
+    "after": "/pdf-examples/crops/p13-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 14,
+    "title": "2D drawing to 3D section",
+    "titleAr": "تحويل رسم ثنائي الأبعاد إلى قطاع ثلاثي الأبعاد",
+    "image": "/pdf-examples/page-14.jpg",
+    "before": "/pdf-examples/crops/p14-before.jpg",
+    "after": "/pdf-examples/crops/p14-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 15,
+    "title": "2D architectural rendering",
+    "titleAr": "الرندر المعماري ثنائي الأبعاد",
+    "image": "/pdf-examples/page-15.jpg",
+    "before": "/pdf-examples/crops/p15-before.jpg",
+    "after": null,
+    "kind": "workflow"
+  },
+  {
+    "page": 16,
+    "title": "Fast rendering study",
+    "titleAr": "دراسة رندر سريعة",
+    "image": "/pdf-examples/page-16.jpg",
+    "before": "/pdf-examples/crops/p16-before.jpg",
+    "after": "/pdf-examples/crops/p16-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 17,
+    "title": "Mood and atmosphere variations",
+    "titleAr": "تنويعات المزاج والأجواء",
+    "image": "/pdf-examples/page-17.jpg",
+    "before": "/pdf-examples/crops/p17-before.jpg",
+    "after": "/pdf-examples/crops/p17-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 18,
+    "title": "Camera angle adjustment",
+    "titleAr": "تعديل زاوية الكاميرا",
+    "image": "/pdf-examples/page-18.jpg",
+    "before": "/pdf-examples/crops/p18-before.jpg",
+    "after": "/pdf-examples/crops/p18-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 19,
+    "title": "Context change and integration",
+    "titleAr": "تغيير السياق والدمج",
+    "image": "/pdf-examples/page-19.jpg",
+    "before": "/pdf-examples/crops/p19-before.jpg",
+    "after": "/pdf-examples/crops/p19-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 20,
+    "title": "Material change",
+    "titleAr": "تغيير المواد",
+    "image": "/pdf-examples/page-20.jpg",
+    "before": "/pdf-examples/crops/p20-before.jpg",
+    "after": "/pdf-examples/crops/p20-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 21,
+    "title": "Rendered floor plans",
+    "titleAr": "مخططات طوابق ملونة",
+    "image": "/pdf-examples/page-21.jpg",
+    "before": "/pdf-examples/crops/p21-before.jpg",
+    "after": "/pdf-examples/crops/p21-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 22,
+    "title": "2D plan to 3D",
+    "titleAr": "تحويل المسقط إلى ثلاثي الأبعاد",
+    "image": "/pdf-examples/page-22.jpg",
+    "before": "/pdf-examples/crops/p22-before.jpg",
+    "after": "/pdf-examples/crops/p22-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 23,
+    "title": "Generate 2D elevations",
+    "titleAr": "توليد واجهات ثنائية الأبعاد",
+    "image": "/pdf-examples/page-23.jpg",
+    "before": "/pdf-examples/crops/p23-before.jpg",
+    "after": "/pdf-examples/crops/p23-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 24,
+    "title": "Generate sections",
+    "titleAr": "توليد القطاعات",
+    "image": "/pdf-examples/page-24.jpg",
+    "before": "/pdf-examples/crops/p24-before.jpg",
+    "after": null,
+    "kind": "workflow"
+  },
+  {
+    "page": 25,
+    "title": "Architectural models",
+    "titleAr": "نماذج معمارية",
+    "image": "/pdf-examples/page-25.jpg",
+    "before": "/pdf-examples/crops/p25-before.jpg",
+    "after": "/pdf-examples/crops/p25-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 26,
+    "title": "Diagram and sketch generation",
+    "titleAr": "توليد المخططات والاسكتشات",
+    "image": "/pdf-examples/page-26.jpg",
+    "before": "/pdf-examples/crops/p26-before.jpg",
+    "after": "/pdf-examples/crops/p26-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 27,
+    "title": "Structural system generation",
+    "titleAr": "توليد الأنظمة الإنشائية",
+    "image": "/pdf-examples/page-27.jpg",
+    "before": "/pdf-examples/crops/p27-before.jpg",
+    "after": "/pdf-examples/crops/p27-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 28,
+    "title": "Interior design section",
+    "titleAr": "قسم التصميم الداخلي",
+    "image": "/pdf-examples/page-28.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 29,
+    "title": "Moodboard generation",
+    "titleAr": "توليد لوحة مزاجية",
+    "image": "/pdf-examples/page-29.jpg",
+    "before": "/pdf-examples/crops/p29-before.jpg",
+    "after": null,
+    "kind": "workflow"
+  },
+  {
+    "page": 30,
+    "title": "Living room transformation",
+    "titleAr": "تجديد غرفة المعيشة",
+    "image": "/pdf-examples/page-30.jpg",
+    "before": "/pdf-examples/crops/p30-before.jpg",
+    "after": "/pdf-examples/crops/p30-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 31,
+    "title": "Kitchen design",
+    "titleAr": "تصميم المطبخ",
+    "image": "/pdf-examples/page-31.jpg",
+    "before": "/pdf-examples/crops/p31-before.jpg",
+    "after": "/pdf-examples/crops/p31-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 32,
+    "title": "Home office optimization",
+    "titleAr": "تحسين المكتب المنزلي",
+    "image": "/pdf-examples/page-32.jpg",
+    "before": "/pdf-examples/crops/p32-before.jpg",
+    "after": "/pdf-examples/crops/p32-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 33,
+    "title": "Bedroom 3D design",
+    "titleAr": "تصميم غرفة النوم ثلاثي الأبعاد",
+    "image": "/pdf-examples/page-33.jpg",
+    "before": "/pdf-examples/crops/p33-before.jpg",
+    "after": "/pdf-examples/crops/p33-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 34,
+    "title": "Commercial interior concept",
+    "titleAr": "تصميم مساحة تجارية داخلية",
+    "image": "/pdf-examples/page-34.jpg",
+    "before": "/pdf-examples/crops/p34-before.jpg",
+    "after": "/pdf-examples/crops/p34-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 35,
+    "title": "Bathroom spa experience",
+    "titleAr": "تصميم حمام بطابع سبا",
+    "image": "/pdf-examples/page-35.jpg",
+    "before": "/pdf-examples/crops/p35-before.jpg",
+    "after": "/pdf-examples/crops/p35-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 36,
+    "title": "Urban design section",
+    "titleAr": "قسم التصميم العمراني",
+    "image": "/pdf-examples/page-36.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  },
+  {
+    "page": 37,
+    "title": "2D sketch revitalization and rendering",
+    "titleAr": "تطوير اسكتش عمراني ورندره",
+    "image": "/pdf-examples/page-37.jpg",
+    "before": "/pdf-examples/crops/p37-before.jpg",
+    "after": "/pdf-examples/crops/p37-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 38,
+    "title": "Mixed-use district rendering",
+    "titleAr": "رندر منطقة متعددة الاستخدامات",
+    "image": "/pdf-examples/page-38.jpg",
+    "before": "/pdf-examples/crops/p38-before.jpg",
+    "after": "/pdf-examples/crops/p38-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 39,
+    "title": "Conceptual 2D section to 3D",
+    "titleAr": "تحويل قطاع عمراني إلى تصور ثلاثي الأبعاد",
+    "image": "/pdf-examples/page-39.jpg",
+    "before": "/pdf-examples/crops/p39-before.jpg",
+    "after": "/pdf-examples/crops/p39-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 40,
+    "title": "Conceptual sketch to 3D",
+    "titleAr": "تحويل اسكتش عمراني إلى رندر",
+    "image": "/pdf-examples/page-40.jpg",
+    "before": "/pdf-examples/crops/p40-before.jpg",
+    "after": "/pdf-examples/crops/p40-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 41,
+    "title": "Landscape redesign",
+    "titleAr": "تجديد عناصر تنسيق الموقع",
+    "image": "/pdf-examples/page-41.jpg",
+    "before": "/pdf-examples/crops/p41-before.jpg",
+    "after": "/pdf-examples/crops/p41-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 42,
+    "title": "Historical elevation redesign",
+    "titleAr": "تطوير واجهة تاريخية",
+    "image": "/pdf-examples/page-42.jpg",
+    "before": "/pdf-examples/crops/p42-before.jpg",
+    "after": "/pdf-examples/crops/p42-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 43,
+    "title": "Building restoration",
+    "titleAr": "ترميم مبانٍ قائمة",
+    "image": "/pdf-examples/page-43.jpg",
+    "before": "/pdf-examples/crops/p43-before.jpg",
+    "after": "/pdf-examples/crops/p43-after.jpg",
+    "kind": "workflow"
+  },
+  {
+    "page": 44,
+    "title": "References and closing",
+    "titleAr": "المراجع والختام",
+    "image": "/pdf-examples/page-44.jpg",
+    "before": null,
+    "after": null,
+    "kind": "guide"
+  }
+]

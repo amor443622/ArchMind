@@ -1,0 +1,10 @@
+node_modules/
+.env
+.DS_Store
+*.log
+data/users.json
+data/projects.json
+data/sessions.json
+data/email-tokens.json
+data/prompt-images/
+data/password-reset-tokens.json

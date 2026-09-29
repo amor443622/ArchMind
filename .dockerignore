@@ -1,0 +1,7 @@
+node_modules
+.env
+data/users.json
+data/projects.json
+data/sessions.json
+data/email-tokens.json
+data/prompt-images

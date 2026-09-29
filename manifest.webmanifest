@@ -1,0 +1,10 @@
+{
+  "name": "ARCHMIND — Architectural AI Workspace",
+  "short_name": "ARCHMIND",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#100904",
+  "theme_color": "#100904",
+  "description": "AI-powered architectural project workspace from Brief to Presentation",
+  "icons": []
+}

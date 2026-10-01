@@ -1436,16 +1436,6 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 .world-stage:after{clip-path:inset(0 100% 0 0);opacity:0;animation:none;background:linear-gradient(90deg,rgba(14,27,28,.97),rgba(217,194,160,.88) 48%,rgba(14,27,28,.94));}
 .world-stage.is-transitioning:after{animation:architecturalStageWipe 1.05s cubic-bezier(.72,0,.22,1) both}
 @keyframes architecturalStageWipe{0%{clip-path:inset(0 100% 0 0);opacity:0}18%{opacity:1}52%{clip-path:inset(0 0 0 0);opacity:1}100%{clip-path:inset(0 0 0 100%);opacity:0}}
-.film-opening{position:relative;min-height:clamp(270px,42vw,590px);margin:0 0 36px;overflow:hidden;background:#102326;color:#fff}
-.film-opening video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.68) saturate(.82)}
-.film-opening video{animation:urbanFilmReveal 1.35s cubic-bezier(.2,.72,.2,1) both}
-@keyframes urbanFilmReveal{from{opacity:.15;transform:scale(1.045);filter:brightness(.38) saturate(.55)}to{opacity:1;transform:scale(1);filter:brightness(.68) saturate(.82)}}
-.film-opening:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,22,24,.78),rgba(8,22,24,.26) 72%),linear-gradient(0deg,rgba(8,22,24,.44),transparent 68%);pointer-events:none}
-.film-opening-copy{position:absolute;z-index:1;left:clamp(24px,6vw,82px);bottom:clamp(24px,5vw,66px);max-width:560px}
-.film-opening-copy span{font:9px 'DM Mono',monospace;letter-spacing:.16em;color:#e2bd94}
-.film-opening-copy h2{margin:10px 0;font:400 clamp(32px,5vw,64px)/.98 var(--arch-serif);color:#fff}
-.film-opening-copy p{max-width:480px;color:rgba(255,255,255,.83);line-height:1.6}
-[dir=rtl] .film-opening-copy{left:auto;right:clamp(24px,6vw,82px)}
 /* Slightly larger navigation and project controls, with room to scroll horizontally. */
 .app.landing-mode .side{gap:clamp(14px,2vw,28px);padding-inline:clamp(18px,3vw,48px)}
 .app.landing-mode .logo b{font-size:15px!important;letter-spacing:.11em}
@@ -1532,6 +1522,49 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 .app:not(.landing-mode):has(#loginOpenButton:not([hidden])) .top .actions .btn.primary{color:#fff!important;background:#41676a!important;border-color:#41676a!important}
 .app.landing-mode .top .actions .btn{color:#fff!important;background:rgba(21,32,32,.43)!important;border-color:rgba(255,255,255,.34)!important;backdrop-filter:blur(9px)}.app.landing-mode .top .actions .btn.primary{color:#fff!important;background:#41676a!important;border-color:#41676a!important}
 @media(max-width:1050px){.film-case-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.film-heading>div:first-child{flex-basis:100%}.film-project-label{flex-basis:100%}}
+.journey-overview{max-width:1320px;margin:34px auto 48px;padding:clamp(24px,4vw,54px);background:#102326;color:#f6f2e9;position:relative;overflow:hidden}
+.journey-overview:after{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,#d4b58d,rgba(212,181,141,0))}
+.journey-overview-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:28px}
+.journey-overview-head h1{max-width:760px;margin:8px 0 10px;font:400 clamp(36px,5.4vw,68px)/.98 var(--arch-serif);letter-spacing:-.04em;color:#fffaf0}
+.journey-overview-head p{max-width:560px;margin:0;color:rgba(246,242,233,.72);font-size:14px;line-height:1.7}
+.journey-overview-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.journey-overview-actions .btn{border-color:rgba(246,242,233,.34);color:#fff;background:transparent}
+.journey-overview-actions .btn.primary{background:#d4b58d;border-color:#d4b58d;color:#17282a}
+.journey-roadmap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.journey-step{position:relative;min-height:100px;padding:14px 14px 12px;text-align:start;border:1px solid rgba(246,242,233,.19);background:rgba(255,255,255,.035);color:#f6f2e9;cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
+.journey-step:hover{transform:translateY(-2px);border-color:#d4b58d;background:rgba(212,181,141,.1)}
+.journey-step[aria-current=step]{border-color:#d4b58d;background:rgba(212,181,141,.15);box-shadow:inset 0 2px #d4b58d}
+.journey-step span{display:block;margin-bottom:14px;color:#d4b58d;font:9px 'DM Mono',monospace;letter-spacing:.12em}
+.journey-step strong{display:block;font:400 19px var(--arch-serif);color:#fffaf0}
+.journey-step small{display:block;margin-top:5px;color:rgba(246,242,233,.56);font:9px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.journey-transition{display:flex;align-items:center;gap:14px;margin-top:20px;color:rgba(246,242,233,.68);font:9px 'DM Mono',monospace;letter-spacing:.11em;text-transform:uppercase}
+.journey-transition:before{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(212,181,141,.72),rgba(212,181,141,.08))}
+.film-case-hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.8fr);max-width:1320px;margin:0 auto 20px;background:#f3f0e9;border:1px solid var(--arch-hairline)}
+.film-case-visual{display:block;position:relative;min-height:330px;overflow:hidden;background:#d9d3c7}
+.film-case-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 54%;transition:transform .7s}
+.film-case-visual:hover img{transform:scale(1.025)}
+.film-case-visual:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(0deg,rgba(14,20,18,.64),transparent);pointer-events:none}
+.film-case-visual-caption{position:absolute;z-index:1;left:20px;bottom:16px;color:white;font:9px 'DM Mono',monospace;letter-spacing:.1em}
+.film-case-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,4vw,48px)}
+.film-case-copy>span{color:#90714e;font:9px 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase}
+.film-case-copy h2{margin:12px 0;font:400 clamp(28px,3.3vw,42px)/1.02 var(--arch-serif);color:#1c2929}
+.film-case-copy p{margin:0;color:#5d5b54;font-size:13px;line-height:1.7}
+.film-case-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;padding-top:16px;border-top:1px solid var(--arch-hairline)}
+.film-case-facts div{display:grid;gap:4px}.film-case-facts span{color:#777;font:8px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}.film-case-facts strong{color:#252724;font-size:11px;font-weight:500}
+.film-case-credit{margin-top:16px;color:#757168;font:8px 'DM Mono',monospace;letter-spacing:.04em}.film-case-credit a{color:#33585c;text-decoration:underline;text-underline-offset:3px}
+.film-source-drawings{max-width:1320px;margin:28px auto 38px;padding-top:22px;border-top:1px solid var(--arch-hairline)}
+.film-source-drawings-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:14px}
+.film-source-drawings-head h2{margin:7px 0 0;font:400 clamp(25px,3vw,36px)/1.05 var(--arch-serif);color:#1c2929}
+.film-source-drawings-head p{max-width:450px;margin:0;color:#65635e;font-size:12px;line-height:1.6}
+.film-source-drawings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.film-source-drawing{display:block;position:relative;min-height:250px;background:#eeece6;border:1px solid var(--arch-hairline);overflow:hidden}
+.film-source-drawing img{width:100%;height:100%;min-height:250px;max-height:480px;object-fit:contain;display:block;transition:transform .35s}
+.film-source-drawing:hover img{transform:scale(1.015)}
+.film-source-drawing span{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:linear-gradient(0deg,rgba(16,35,38,.92),rgba(16,35,38,.68));color:white;font:9px 'DM Mono',monospace;letter-spacing:.08em}
+@media(max-width:900px){.film-source-drawings-head{display:block}.film-source-drawings-head p{margin-top:8px}}
+@media(max-width:700px){.film-source-drawings-grid{grid-template-columns:1fr}.film-source-drawing,.film-source-drawing img{min-height:210px}}
+@media(max-width:900px){.journey-overview-head{display:block}.journey-roadmap{grid-template-columns:repeat(3,minmax(0,1fr))}.film-case-hero{grid-template-columns:1fr}.film-case-visual{min-height:clamp(250px,48vw,440px)}}
+@media(max-width:700px){.journey-overview{margin:20px auto 32px;padding:22px 16px}.journey-overview-head h1{font-size:42px}.journey-roadmap{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.journey-step{min-height:90px;padding:12px}.journey-step strong{font-size:17px}.journey-step span{margin-bottom:10px}.journey-transition{font-size:8px}}
 </style></head>
 
 <body>
@@ -1750,31 +1783,42 @@ Codes and technical outputs require verification.
 </section>
 
 <section id="workflowFilm" class="view">
-<section class="film-opening" aria-label="Urban masterplan film">
-  <video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./public/archmind-login-urban-masterplan.mp4" type="video/mp4"></video>
-  <div class="film-opening-copy"><span>ARCHMIND / FROM CONTEXT TO FORM</span><h2 id="filmOpeningTitle">Read the city. Shape the next move.</h2><p id="filmOpeningCopy">An urban study opens the film; the built villa then unfolds through a reconstructed, source-linked 15-stage design analysis.</p></div>
-</section>
+  <section class="journey-overview" aria-labelledby="journeyOverviewTitle">
+    <div class="journey-overview-head"><div><span class="studio-eyebrow" id="journeyOverviewKicker">YOUR PROJECT / A TO Z</span><h1 id="journeyOverviewTitle">From the first brief to the final presentation.</h1><p id="journeyOverviewCopy">This is the route your project follows inside ARCHMIND. Each step builds on the decisions made before it, so the same project moves forward from the site and brief to a coordinated presentation.</p><div class="journey-overview-actions"><button class="btn primary" type="button" onclick="document.getElementById('archdailyExample')?.scrollIntoView({behavior:'smooth'})" id="journeyExampleButton">See a real project example ↓</button></div></div></div>
+    <nav class="journey-roadmap" id="journeyRoadmap" aria-label="The 15 project stages"></nav>
+    <div class="journey-transition" id="journeyTransition">ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION</div>
+  </section>
   <header class="film-heading">
-    <div><span class="studio-eyebrow" id="filmKicker">ARCHMIND / PROJECT FILM</span><h1 id="filmHeadingTitle">Az-Boroun Villa · 15 connected stages</h1><p class="sub" id="filmHeadingIntro">Follow CROSSARCHITECTURE’s built weekend villa through ARCHMIND’s reconstructed, source-linked 15-stage analysis.</p></div>
+    <div><span class="studio-eyebrow" id="filmKicker">REAL PROJECT / ARCHDAILY</span><h1 id="filmHeadingTitle">See the 15 steps applied to a built villa.</h1><p class="sub" id="filmHeadingIntro">Az-Boroun Villa by CROSSARCHITECTURE is a built project documented on ArchDaily. Follow its published facts, then see how each one informs the design analysis below.</p></div>
     <div class="film-project-label"><span id="filmSampleLabel">BUILT PROJECT / SOURCE-LED ANALYSIS</span><strong id="filmProjectName">Az-Boroun Villa · Karaj, Iran</strong></div>
   </header>
-  <div class="film-case-strip" aria-label="Villa case study parameters">
-    <div><span>PROJECT TYPE</span><strong id="filmTypeValue">Weekend villa</strong></div>
-    <div><span>LOCATION</span><strong id="filmSiteValue">Zafaranieh · Karaj, Iran</strong></div>
-    <div><span>AREA LISTED</span><strong id="filmAreaValue">716 m² · ArchDaily</strong></div>
-    <div><span>PROJECT YEAR</span><strong id="filmYearValue">2024</strong></div>
-    <div><span>DESIGN THREAD</span><strong id="filmFormValue">Garden + two voids</strong></div>
-  </div>
+  <section class="film-case-hero" id="archdailyExample" aria-labelledby="filmCaseTitle">
+    <a class="film-case-visual" href="https://www.archdaily.com/1185815/az-boroun-villa-crossarchitecture" target="_blank" rel="noopener noreferrer" aria-label="Open Az-Boroun Villa project on ArchDaily">
+      <img src="https://images.adsttc.com/media/images/6ab6/78d5/e944/b300/0137/3d72/large_jpg/01.jpg?1790343450" alt="Az-Boroun Villa by CROSSARCHITECTURE, photographed by Neel Studio" loading="lazy">
+      <span class="film-case-visual-caption">AZ-BOROUN VILLA · KARJ, IRAN</span>
+    </a>
+    <div class="film-case-copy"><span id="filmCaseKicker">BUILT PROJECT · ARCHDAILY</span><h2 id="filmCaseTitle">Az-Boroun Villa</h2><p id="filmCaseDescription">A weekend house shaped around its garden. CROSSARCHITECTURE organizes three levels with two planted voids, framing light, air and movement between the house and landscape.</p>
+      <div class="film-case-facts"><div><span id="filmTypeLabel">TYPE</span><strong id="filmTypeValue">Built weekend villa</strong></div><div><span id="filmSiteLabel">LOCATION</span><strong id="filmSiteValue">Zafaranieh · Karaj, Iran</strong></div><div><span id="filmAreaLabel">AREA LISTED</span><strong id="filmAreaValue">716 m²</strong></div><div><span id="filmYearLabel">YEAR</span><strong id="filmYearValue">2024</strong></div></div>
+      <div class="film-case-credit"><span id="filmCreditLabel">ARCHITECTS</span> <strong>Mehrdad Makaremi · CROSSARCHITECTURE</strong><br><span>PHOTO · </span><strong>Neel Studio</strong> · <a href="https://www.archdaily.com/1185815/az-boroun-villa-crossarchitecture" target="_blank" rel="noopener noreferrer" id="filmArticleLink">View the full project on ArchDaily ↗</a></div>
+    </div>
+  </section>
+  <section class="film-source-drawings" aria-labelledby="filmSourceDrawingsTitle">
+    <div class="film-source-drawings-head"><div><span class="studio-eyebrow" id="filmSourceDrawingsKicker">ORIGINAL SOURCE MATERIAL</span><h2 id="filmSourceDrawingsTitle">The drawings published with the project.</h2></div><p id="filmSourceDrawingsIntro">These are the actual plan and section published by ArchDaily. Open either drawing for its full-size source image.</p></div>
+    <div class="film-source-drawings-grid">
+      <a href="https://www.archdaily.com/1185815/az-boroun-villa-crossarchitecture/6ab678d6e944b30001373d89-az-boroun-villa-crossarchitecture-first-floor-plan" target="_blank" rel="noopener noreferrer" class="film-source-drawing"><img src="https://images.adsttc.com/media/images/6ab6/78d6/e944/b300/0137/3d89/medium_jpg/First_Floor-01.jpg?1790343419" alt="Published first-floor plan of Az-Boroun Villa" loading="lazy"><span id="filmPlanCaption">01 · First-floor plan · ArchDaily ↗</span></a>
+      <a href="https://www.archdaily.com/1185815/az-boroun-villa-crossarchitecture/6ab678d6e944b30001373d8c-az-boroun-villa-crossarchitecture-section" target="_blank" rel="noopener noreferrer" class="film-source-drawing"><img src="https://images.adsttc.com/media/images/6ab6/78d6/e944/b300/0137/3d8c/medium_jpg/Section-A-A.jpg?1790343431" alt="Published section of Az-Boroun Villa" loading="lazy"><span id="filmSectionCaption">02 · Section A-A · ArchDaily ↗</span></a>
+    </div>
+  </section>
   <div class="film-player" id="filmPlayer" data-film-stage="0">
     <div class="film-screen">
       <div class="film-art" id="filmArt" aria-hidden="true"></div><div class="film-screen-wash"></div>
-      <div class="film-screen-top"><span>ARCHMIND · PROJECT FILM</span><span id="filmCounter">01 / 15</span></div>
+      <div class="film-screen-top"><span id="filmScreenLabel">ARCHMIND · 15-STAGE WALKTHROUGH</span><span id="filmCounter">01 / 15</span></div>
       <div class="film-screen-copy" aria-live="polite"><span id="filmStageLabel">01 — BRIEF</span><h2 id="filmStageTitle">A family brief becomes a design brief.</h2><p id="filmStageCaption">Six people. A shaded courtyard. Privacy, daylight and a clear budget.</p></div>
-      <button class="film-cover-play" id="filmCoverPlay" type="button" onclick="filmToggle()" aria-label="Play project film"><span>▶</span><b data-i18n="film.play">PLAY THE PROJECT FILM</b><small data-i18n="film.duration">ABOUT 80 SECONDS · 15 STAGES</small></button>
+      <button class="film-cover-play" id="filmCoverPlay" type="button" onclick="filmToggle()" aria-label="Play the 15-stage walkthrough"><span>▶</span><b data-i18n="film.play">PLAY THE STAGE WALKTHROUGH</b><small data-i18n="film.duration">ABOUT 80 SECONDS · 15 STAGES</small></button>
     </div>
     <div class="film-controls">
-      <div class="film-control-row"><button class="btn small" type="button" onclick="filmStep(-1)" aria-label="Previous scene">←</button><button class="btn primary" id="filmPlayButton" type="button" onclick="filmToggle()"><span id="filmPlayGlyph">▶</span> <span id="filmPlayText">Play film</span></button><button class="btn small" type="button" onclick="filmStep(1)" aria-label="Next scene">→</button><button class="btn small" type="button" onclick="filmFullscreen()" data-i18n="film.fullscreen">Full screen</button><span class="film-elapsed" id="filmElapsed">00:00 / 01:23</span></div>
-      <input id="filmSeek" class="film-seek" type="range" min="0" max="14" value="0" step="1" aria-label="Project film timeline" oninput="filmGoTo(Number(this.value))">
+      <div class="film-control-row"><button class="btn small" type="button" onclick="filmStep(-1)" aria-label="Previous stage">←</button><button class="btn primary" id="filmPlayButton" type="button" onclick="filmToggle()"><span id="filmPlayGlyph">▶</span> <span id="filmPlayText">Play walkthrough</span></button><button class="btn small" type="button" onclick="filmStep(1)" aria-label="Next stage">→</button><button class="btn small" type="button" onclick="filmFullscreen()" data-i18n="film.fullscreen">Full screen</button><span class="film-elapsed" id="filmElapsed">00:00 / 01:23</span></div>
+      <input id="filmSeek" class="film-seek" type="range" min="0" max="14" value="0" step="1" aria-label="15-stage project walkthrough" oninput="filmGoTo(Number(this.value))">
       <nav class="film-timeline" id="filmTimeline" aria-label="Fifteen project stages"></nav>
     </div>
     <div class="film-stage-record" aria-live="polite">
@@ -2216,6 +2260,7 @@ const stages={
 en:['Brief','Context','Site','Regulations','Program','Concept','Zoning','Massing','Plan','Section','Facade','Coordination','Documentation','Quantities','Presentation'],
 ar:['البرنامج التعريفي','السياق','الموقع','الأنظمة','البرنامج','المفهوم','التقسيم','الكتلة','المسقط','القطاع','الواجهة','التنسيق','التوثيق','الكميات','العرض التقديمي']
 };
+const JOURNEY_OUTCOMES={en:['Client goals','Place & climate','Survey & access','Buildable envelope','Room schedule','Design idea','Public to private','Volumes & voids','Floor layouts','Light & levels','Materials & shade','Engineering links','Drawing set','Cost scope','Final story'],ar:['أهداف العميل','المكان والمناخ','الرفع والمداخل','حدود البناء','جدول الفراغات','فكرة التصميم','عام إلى خاص','الكتل والفراغات','مساقط الطوابق','الضوء والمناسيب','الخامات والظل','تنسيق الهندسة','حزمة الرسومات','نطاق التكلفة','العرض النهائي']};
 
 
 /* =========================================================
@@ -2479,8 +2524,8 @@ function exportTechnicalRegister(){
 function askTechnicalAI(){const prompt=currentLang==='ar'?'راجع حالة المكتب الفني للمشروع اعتماداً على سجل التحقق والملاحظات والمرحلة الحالية. حدّد أهم النواقص والتعارضات، ثم اقترح إجراءات مرتبة حسب الأولوية والمالك المطلوب. لا تفترض أن البنود المعلمة مكتملة تعني اعتماداً نظامياً.':'Review this project’s technical-office register, notes and current stage. Identify the highest-priority gaps and coordination risks, then propose actions with suggested owners. A checked item is not proof of regulatory approval.';document.getElementById('aiMode').value='technical_coordinator';go('architect');document.getElementById('chat').value=prompt;document.getElementById('chat').focus();}
 
 const nav={
-en:[['dashboard','Overview'],['workflowFilm','Project Film'],['brief','Project Brief']],
-ar:[['dashboard','الرئيسية'],['workflowFilm','مثال الفيلا'],['brief','ملخص المشروع']]
+en:[['dashboard','Overview'],['workflowFilm','Project Journey'],['brief','Project Brief']],
+ar:[['dashboard','الرئيسية'],['workflowFilm','رحلة المشروع'],['brief','ملخص المشروع']]
 };
 const toolNav={
 en:[['architect','◈','AI Architect'],['prompts','⌘','Prompt Library · 200'],['creation','✦','AI Image Studio'],['technical','▤','Technical Office'],['construction','⌂','Construction'],['memory','◌','Project Memory'],['audit','✓','Project Audit']],
@@ -2840,8 +2885,7 @@ x.classList.toggle('active',x.dataset.view===v);
 window.scrollTo(0,0);
 requestAnimationFrame(updateHeroScene);
 if(v==='prompts')renderPrompts();
-if(v==='workflowFilm'){renderWorkflowFilm();const urbanVideo=document.querySelector('.film-opening video');if(urbanVideo){urbanVideo.currentTime=0;urbanVideo.play().catch(()=>{});}}
-else {const urbanVideo=document.querySelector('.film-opening video');if(urbanVideo)urbanVideo.pause();}
+if(v==='workflowFilm')renderWorkflowFilm();
 }
 
 function setGuestChrome(guest){
@@ -2933,23 +2977,38 @@ function filmDiagram(n){
  const ar=currentLang==='ar',copy=FILM_COPY[filmIndex],details=FILM_STAGE_DETAILS[filmIndex];
  const name=ar?'فيلا Az‑Boroun · كرج، إيران':'Az-Boroun Villa · Karaj, Iran';
  document.getElementById('filmProjectName').textContent=name;
- document.getElementById('filmOpeningTitle').textContent=ar?'اقرأ المدينة. ثم شكّل الخطوة التالية.':'Read the city. Shape the next move.';
- document.getElementById('filmOpeningCopy').textContent=ar?'يبدأ الفيلم الداخلي بفيديو المخطط العمراني، ثم يتابع فيلا Az‑Boroun المنفذة من موجزها المنشور إلى عرض تحليلي موثق بالمصادر.':'The Urban Masterplan film opens this interior sequence, followed by a source-linked reading of the built Az-Boroun Villa.';
- document.getElementById('filmKicker').textContent=ar?'آركمايند / فيلم المشروع':'ARCHMIND / PROJECT FILM';
- document.getElementById('filmHeadingTitle').textContent=ar?'فيلا Az‑Boroun · ١٥ مرحلة مترابطة':'Az-Boroun Villa · 15 connected stages';
- document.getElementById('filmHeadingIntro').textContent=ar?'تابع فيلا العطلات المنفذة من CROSSARCHITECTURE عبر تحليل ARCHMIND من تعريف المشروع إلى عرض موثق بالرسومات المنشورة.':'Follow CROSSARCHITECTURE’s built weekend villa through ARCHMIND’s reconstructed, source-linked 15-stage analysis.';
+ document.getElementById('journeyOverviewKicker').textContent=ar?'رحلة مشروعك / من الألف إلى الياء':'YOUR PROJECT / A TO Z';
+ document.getElementById('journeyOverviewTitle').textContent=ar?'من أول بريف لحد العرض النهائي.':'From the first brief to the final presentation.';
+ document.getElementById('journeyOverviewCopy').textContent=ar?'دي خريطة الطريق اللي مشروعك هيمشي عليها داخل ARCHMIND. كل خطوة بتبني على قرارات اللي قبلها، لحد ما نفس المشروع يتحول من فهم الموقع والاحتياجات إلى رسومات وعرض متكامل.':'This is the route your project follows inside ARCHMIND. Each step builds on earlier decisions, moving the same project from the brief and site through drawings and a complete presentation.';
+ document.getElementById('journeyExampleButton').textContent=ar?'بعد المراحل: شوف مثالًا حقيقيًا ↓':'AFTER THE STAGES: SEE A REAL PROJECT ↓';
+ document.getElementById('journeyTransition').textContent=ar?'مشروع واحد · ١٥ خطوة مترابطة · عرض نهائي واحد':'ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION';
+ const roadmap=document.getElementById('journeyRoadmap');if(roadmap){roadmap.setAttribute('aria-label',ar?'مراحل المشروع الخمس عشرة':'The 15 project stages');roadmap.innerHTML=stages[currentLang].map((label,i)=>`<button type="button" class="journey-step" aria-current="${i===filmIndex?'step':'false'}" aria-label="${String(i+1).padStart(2,'0')} / 15 · ${esc(label)} · ${esc(JOURNEY_OUTCOMES[currentLang][i])}" onclick="filmRoadmapGoTo(${i})"><span>${String(i+1).padStart(2,'0')} / 15</span><strong>${esc(label)}</strong><small>${esc(JOURNEY_OUTCOMES[currentLang][i])}</small></button>`).join('');}
+ document.getElementById('filmKicker').textContent=ar?'مثال مشروع منفذ / ArchDaily':'BUILT PROJECT / ARCHDAILY';
+ document.getElementById('filmHeadingTitle').textContent=ar?'وده شكل المراحل على مشروع فيلا منفذ.':'See the stages applied to a built villa.';
+ document.getElementById('filmHeadingIntro').textContent=ar?'فيلا Az-Boroun لـ CROSSARCHITECTURE منشورة على ArchDaily. تابع حقائق المشروع المنشورة، ثم شوف إزاي كل معلومة بتوجّه التحليل التصميمي.':'Az-Boroun Villa by CROSSARCHITECTURE is documented on ArchDaily. Follow its published facts, then see how each one informs the design analysis.';
  document.getElementById('filmSampleLabel').textContent=ar?'مشروع منفذ / تحليل مرتبط بالمصدر':'BUILT PROJECT / SOURCE-LED ANALYSIS';
- document.getElementById('filmTypeValue').textContent=ar?'فيلا عطلات':'Weekend villa';
+ document.getElementById('filmCaseKicker').textContent=ar?'مشروع منفذ · ArchDaily':'BUILT PROJECT · ARCHDAILY';
+ document.getElementById('filmCaseTitle').textContent='Az-Boroun Villa';
+ document.getElementById('filmCaseDescription').textContent=ar?'فيلا عطلات تحوّل الحديقة إلى جزء من تنظيم البيت. نظمت CROSSARCHITECTURE ثلاثة مستويات حول فراغين مزروعين يوجهان الضوء والهواء والحركة بين الداخل والطبيعة.':'A weekend villa that makes the garden part of the home’s organization. CROSSARCHITECTURE arranges three levels around two planted voids that bring light, air and movement through the house.';
+ document.getElementById('filmTypeLabel').textContent=ar?'النوع':'TYPE';document.getElementById('filmSiteLabel').textContent=ar?'الموقع':'LOCATION';document.getElementById('filmAreaLabel').textContent=ar?'المساحة المنشورة':'AREA LISTED';document.getElementById('filmYearLabel').textContent=ar?'السنة':'YEAR';document.getElementById('filmCreditLabel').textContent=ar?'المعماريون':'ARCHITECTS';
+ document.getElementById('filmArticleLink').textContent=ar?'شاهد المشروع كاملًا على ArchDaily ↗':'View the full project on ArchDaily ↗';
+ document.getElementById('filmSourceDrawingsKicker').textContent=ar?'رسومات المصدر الأصلي':'ORIGINAL SOURCE MATERIAL';
+ document.getElementById('filmSourceDrawingsTitle').textContent=ar?'الرسومات المنشورة مع المشروع.':'The drawings published with the project.';
+ document.getElementById('filmSourceDrawingsIntro').textContent=ar?'دي الرسومات الأصلية للمسقط والقطاع المنشورة على ArchDaily. افتح أي لوحة لمشاهدتها كاملة على المصدر.':'These are the actual plan and section published by ArchDaily. Open either drawing for its full-size source image.';
+ document.getElementById('filmPlanCaption').textContent=ar?'٠١ · مسقط الطابق الأول · ArchDaily ↗':'01 · First-floor plan · ArchDaily ↗';
+ document.getElementById('filmSectionCaption').textContent=ar?'٠٢ · القطاع A-A · ArchDaily ↗':'02 · Section A-A · ArchDaily ↗';
+ document.getElementById('filmTypeValue').textContent=ar?'فيلا عطلات منفذة':'Built weekend villa';
  document.getElementById('filmSiteValue').textContent=ar?'زعفرانية · كرج، إيران':'Zafaranieh · Karaj, Iran';
- document.getElementById('filmAreaValue').textContent=ar?'٧١٦ م² · وفق ArchDaily':'716 m² · ArchDaily listing';
+ document.getElementById('filmAreaValue').textContent=ar?'٧١٦ م²':'716 m²';
  document.getElementById('filmYearValue').textContent=ar?'٢٠٢٤':'2024';
- document.getElementById('filmFormValue').textContent=ar?'حديقة + فراغان':'Garden + two voids';
  document.getElementById('villaSetKicker').textContent=ar?'تحليل المشروع / ١٥ لوحة':'PROJECT ANALYSIS / 15 BOARDS';
  document.getElementById('villaSetTitle').textContent=ar?'فيلا منفذة، نقرأها مرحلة بمرحلة':'A built villa, read stage by stage';
  document.getElementById('villaSetIntro').textContent=ar?'اختر لوحة لتتبع الحقائق المنشورة وقراءة ARCHMIND التخطيطية. الرسوم التحليلية ليست الرسومات الأصلية أو التنفيذية.':'Select a board to follow published facts and ARCHMIND’s schematic reading. Analytical diagrams are not the original or construction drawings.';
  document.getElementById('villaSetCaveat').textContent=ar?'تنشر ArchDaily مسقط الطابق الأول وقطاعًا. باقي اللوحات رسوم تحليلية أصلية من ARCHMIND مستندة إلى وصف المقال، وموسومة بأنها تخطيطية وغير مقيّسة.':'ArchDaily publishes the first-floor plan and a section. Other boards are original ARCHMIND diagrams based on the article narrative, labeled schematic and not to scale.';
  document.getElementById('filmNote').textContent=ar?'نفصل حقائق المصدر عن تحليل ARCHMIND. المساحة المدرجة ٧١٦ م² ليست مساحة الأرض؛ لا نخترع أبعادًا أو جدول غرف أو كميات غير منشورة.':'Source facts and ARCHMIND analysis are separated. The listed 716 m² is not a plot area; no unpublished dimensions, room schedule or quantities are invented.';
  document.getElementById('filmCounter').textContent=`${String(filmIndex+1).padStart(2,'0')} / 15`;
+ document.getElementById('filmScreenLabel').textContent=ar?'آركمايند · جولة عبر ١٥ مرحلة':'ARCHMIND · 15-STAGE WALKTHROUGH';
+ document.getElementById('filmCoverPlay').setAttribute('aria-label',ar?'تشغيل جولة المراحل الخمس عشرة':'Play the 15-stage walkthrough');
  document.getElementById('filmStageLabel').textContent=`${String(filmIndex+1).padStart(2,'0')} — ${stages[currentLang][filmIndex].toUpperCase()}`;
  document.getElementById('filmStageTitle').textContent=ar?copy[2]:copy[0];
  document.getElementById('filmStageCaption').textContent=ar?copy[3]:copy[1];
@@ -2963,7 +3022,7 @@ function filmDiagram(n){
  const elapsedSeconds=Math.round(filmIndex*FILM_DURATION/1000),elapsedMinutes=String(Math.floor(elapsedSeconds/60)).padStart(2,'0'),elapsedRemainder=String(elapsedSeconds%60).padStart(2,'0');
  document.getElementById('filmElapsed').textContent=`${elapsedMinutes}:${elapsedRemainder} / 01:23`;
  document.getElementById('filmPlayGlyph').textContent=filmPlaying?'Ⅱ':'▶';
- document.getElementById('filmPlayText').textContent=ar?(filmPlaying?'إيقاف مؤقت':'تشغيل الفيلم'):(filmPlaying?'Pause film':'Play film');
+ document.getElementById('filmPlayText').textContent=ar?(filmPlaying?'إيقاف مؤقت':'تشغيل جولة المراحل'):(filmPlaying?'Pause walkthrough':'Play walkthrough');
  player.classList.toggle('is-playing',filmPlaying);
 }
 function filmStop(){if(filmTimer){clearInterval(filmTimer);filmTimer=null;}filmPlaying=false;const player=document.getElementById('filmPlayer');if(player)player.classList.remove('is-playing');}
@@ -2974,6 +3033,7 @@ function filmToggle(){
 }
 function filmGoTo(index){filmIndex=Math.max(0,Math.min(14,Number(index)||0));renderWorkflowFilm();if(filmPlaying){clearInterval(filmTimer);filmTimer=setInterval(()=>{if(filmIndex>=14){filmStop();renderWorkflowFilm();return;}filmIndex++;renderWorkflowFilm();},FILM_DURATION);}}
 function filmStep(delta){filmGoTo(filmIndex+delta);}
+function filmRoadmapGoTo(index){filmGoTo(index);document.getElementById('filmPlayer')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});}
 function filmFullscreen(){const player=document.getElementById('filmPlayer');if(!player)return;const action=player.requestFullscreen||player.webkitRequestFullscreen;if(action){const result=action.call(player);result?.catch?.(()=>{});}}
 
 function startStudioPrompt(){
@@ -3865,14 +3925,14 @@ ar:{
 
 Object.assign(I18N.en,{
  'nav.creation':'AI Image Studio','nav.technical':'Technical Office','btn.openStudio':'Open the integrated image studio',
- 'villaSet.kicker':'VILLA DESIGN / 15 STAGE OUTPUTS','villaSet.title':'The villa, developed step by step','villaSet.intro':'Select a stage to see its design output. The same villa carries through from brief to presentation.','villaSet.caveat':'This is ARCHMIND’s schematic proposal inspired by the public project journey. Room sizes and layouts are study assumptions; confirm survey, rules and engineering before use.','film.kicker':'ARCHMIND / PROJECT FILM','film.title':'Az-Boroun Villa. Fifteen connected stages.','film.intro':'Follow CROSSARCHITECTURE’s built weekend villa from published facts through ARCHMIND’s source-linked analysis.','film.sample':'GUIDED VILLA CASE STUDY','film.play':'PLAY THE VILLA PROJECT','film.duration':'ABOUT 80 SECONDS · 15 STAGES','film.fullscreen':'Full screen','film.note':'A reconstructed 15-stage analysis of a built Iranian villa. Published facts are separated from ARCHMIND diagrams; this is not a permit or construction set.','film.caseTypeLabel':'PROJECT TYPE','film.caseType':'Built weekend villa','film.caseSiteLabel':'SITE','film.caseSite':'Zafaranieh · Karaj, Iran','film.caseAreaLabel':'STUDY GFA*','film.caseArea':'≈ 360–420 m²*','film.caseUsersLabel':'HOUSEHOLD*','film.caseUsers':'Family + guests','film.caseFormLabel':'DESIGN THREAD','film.caseForm':'Shaded inner courtyard','film.outputLabel':'STAGE OUTPUT','film.threadLabel':'DECISION CARRIED FORWARD','film.assumption':'The listed 716 m² is the published project area, not a plot area. Room schedule, plot dimensions and quantities are not published; analytical drawings are schematic. Verify all details before real use.',
+ 'villaSet.kicker':'VILLA DESIGN / 15 STAGE OUTPUTS','villaSet.title':'The villa, developed step by step','villaSet.intro':'Select a stage to see its design output. The same villa carries through from brief to presentation.','villaSet.caveat':'This is ARCHMIND’s schematic proposal inspired by the public project journey. Room sizes and layouts are study assumptions; confirm survey, rules and engineering before use.','film.kicker':'ARCHMIND / 15-STAGE WALKTHROUGH','film.title':'Your project, from brief to presentation.','film.intro':'See all 15 stages first, then follow a built villa case study with original ArchDaily drawings.','film.sample':'GUIDED VILLA CASE STUDY','film.play':'PLAY THE STAGE WALKTHROUGH','film.duration':'ABOUT 80 SECONDS · 15 STAGES','film.fullscreen':'Full screen','film.note':'A reconstructed 15-stage analysis of a built Iranian villa. Published facts are separated from ARCHMIND diagrams; this is not a permit or construction set.','film.caseTypeLabel':'PROJECT TYPE','film.caseType':'Built weekend villa','film.caseSiteLabel':'SITE','film.caseSite':'Zafaranieh · Karaj, Iran','film.caseAreaLabel':'AREA LISTED','film.caseArea':'716 m²','film.caseUsersLabel':'HOUSEHOLD*','film.caseUsers':'Family + guests','film.caseFormLabel':'DESIGN THREAD','film.caseForm':'Shaded inner courtyard','film.outputLabel':'STAGE OUTPUT','film.threadLabel':'DECISION CARRIED FORWARD','film.assumption':'The listed 716 m² is the published project area, not a plot area. Room schedule, plot dimensions and quantities are not published; analytical drawings are schematic. Verify all details before real use.',
  'creation.kicker':'ARCHMIND / IMAGE LAB','creation.title':'Turn a design direction into an image.','creation.sub':'Generate architectural concepts with configured Gemini or Krea models; prepare project-aware prompts for video and 3D tools.','creation.promptLabel':'DESIGN DIRECTION','creation.model':'MODEL','creation.ratio':'ASPECT RATIO','creation.creativity':'CREATIVITY','creation.literal':'Low · follow the brief','creation.balanced':'Medium · balanced','creation.expressive':'High · explore','creation.raw':'Raw · minimal interpretation','creation.reference':'STYLE REFERENCE (OPTIONAL)','creation.modeImage':'Image','creation.modeVideo':'Video','creation.mode3d':'3D','creation.modeHint':'Choose a mode. Image generation uses configured AI providers.','creation.openLovart':'Open Lovart with project prompt','creation.openKrea':'Open Krea with project prompt','creation.videoExample':'Watch Luma AI architectural video example ↗','creation.externalNote':'External tools open only when you choose; ARCHMIND copies the stage-aware prompt and does not upload your files.','creation.costNote':'Only models configured on the server are selectable. Daily ARCHMIND credits apply; failed jobs return the credits.','creation.generate':'Generate architectural image','creation.result':'RESULT / 01','creation.empty':'Your generated image will appear here.','creation.download':'Open / download image','creation.working':'Creating your architectural image…','creation.ready':'Image created.','creation.missingKey':'Image generation is unavailable until GEMINI_API_KEY or KREA_API_KEY is configured on the server.','creation.uploadHint':'Reference image loaded. It is sent only to the model you choose when you generate.','creation.badFile':'Choose a PNG, JPEG or WebP image under 6 MB.','creation.askPrompt':'Describe the architecture, material palette, light and camera view first.','creation.failed':'Image generation failed. Any ARCHMIND credits used were returned.',
  'technical.kicker':'ARCHMIND / TECHNICAL OFFICE','technical.title':'From design intent to a coordinated package.','technical.sub':'Track drawing production, consultant coordination, quantities and issue readiness in one project register.','technical.progress':'Technical package progress','technical.export':'Export register','technical.askAI':'Review with AI coordinator','technical.notes':'OFFICE NOTES / OPEN ITEMS','technical.save':'Save office notes','technical.disclaimer':'Use as a coordination aid. A qualified team must verify codes, calculations, quantities and construction documents before issue.','technical.notesPlaceholder':'Record consultant responses, drawing references, assumptions and actions…',
  'card.multilingual':'AI CHAT: MULTILINGUAL · UI: AR / EN'
 });
 Object.assign(I18N.ar,{
  'nav.creation':'استوديو الصور بالذكاء الاصطناعي','nav.technical':'المكتب الفني','btn.openStudio':'افتح استوديو الصور المدمج',
- 'villaSet.kicker':'تطوير الفيلا / مخرجات ١٥ مرحلة','villaSet.title':'الفيلا تتطور مرحلةً بعد مرحلة','villaSet.intro':'اختر مرحلة لمشاهدة مخرجها التصميمي. نفس الفيلا تستمر من الموجز حتى العرض النهائي.','villaSet.caveat':'هذا مقترح تخطيطي من ARCHMIND مستلهم من رحلة المشروع المنشورة. المقاسات والتوزيعات افتراضات دراسية؛ راجع الرفع والاشتراطات والهندسة قبل الاستخدام.','film.kicker':'آركمايند / فيلم المشروع','film.title':'فيلا Az-Boroun. خمس عشرة مرحلة مترابطة.','film.intro':'تابع فيلا العطلات المنفذة من CROSSARCHITECTURE من الحقائق المنشورة إلى تحليل ARCHMIND المرتبط بالمصادر.','film.sample':'دراسة حالة إرشادية لفيلا','film.play':'شغّل مشروع الفيلا','film.duration':'نحو ٨٠ ثانية · ١٥ مرحلة','film.fullscreen':'ملء الشاشة','film.note':'تحليل معاد البناء من ١٥ مرحلة لفيلا منفذة في إيران. نفصل الحقائق المنشورة عن رسوم ARCHMIND؛ هذه ليست رسومات ترخيص أو تنفيذ.','film.caseTypeLabel':'نوع المشروع','film.caseType':'فيلا عطلات منفذة','film.caseSiteLabel':'الموقع','film.caseSite':'زعفرانية · كرج، إيران','film.caseAreaLabel':'مسطح دراسي تقريبي*','film.caseArea':'≈ ٣٦٠–٤٢٠ م²*','film.caseUsersLabel':'البرنامج الافتراضي*','film.caseUsers':'أسرة وضيوف','film.caseFormLabel':'الفكرة المستمرة','film.caseForm':'فناء داخلي مظلل','film.outputLabel':'مخرج المرحلة','film.threadLabel':'قرار ينتقل للمرحلة التالية','film.assumption':'المساحة المدرجة ٧١٦ م² هي مساحة المشروع المنشورة وليست مساحة الأرض. أبعاد الأرض وجدول الغرف والكميات غير منشورة؛ والرسوم التحليلية تخطيطية. يجب التحقق من كل التفاصيل قبل الاستخدام.',
+ 'villaSet.kicker':'تطوير الفيلا / مخرجات ١٥ مرحلة','villaSet.title':'الفيلا تتطور مرحلةً بعد مرحلة','villaSet.intro':'اختر مرحلة لمشاهدة مخرجها التصميمي. نفس الفيلا تستمر من الموجز حتى العرض النهائي.','villaSet.caveat':'هذا مقترح تخطيطي من ARCHMIND مستلهم من رحلة المشروع المنشورة. المقاسات والتوزيعات افتراضات دراسية؛ راجع الرفع والاشتراطات والهندسة قبل الاستخدام.','film.kicker':'آركمايند / جولة عبر ١٥ مرحلة','film.title':'مشروعك من البريف إلى العرض النهائي.','film.intro':'شاهد المراحل الخمس عشرة أولًا، ثم تابع مثال فيلا منفذة برسوماتها الأصلية المنشورة على ArchDaily.','film.sample':'دراسة حالة إرشادية لفيلا','film.play':'شغّل جولة المراحل','film.duration':'نحو ٨٠ ثانية · ١٥ مرحلة','film.fullscreen':'ملء الشاشة','film.note':'تحليل معاد البناء من ١٥ مرحلة لفيلا منفذة في إيران. نفصل الحقائق المنشورة عن رسوم ARCHMIND؛ هذه ليست رسومات ترخيص أو تنفيذ.','film.caseTypeLabel':'نوع المشروع','film.caseType':'فيلا عطلات منفذة','film.caseSiteLabel':'الموقع','film.caseSite':'زعفرانية · كرج، إيران','film.caseAreaLabel':'المساحة المنشورة','film.caseArea':'٧١٦ م²','film.caseUsersLabel':'البرنامج الافتراضي*','film.caseUsers':'أسرة وضيوف','film.caseFormLabel':'الفكرة المستمرة','film.caseForm':'فناء داخلي مظلل','film.outputLabel':'مخرج المرحلة','film.threadLabel':'قرار ينتقل للمرحلة التالية','film.assumption':'المساحة المدرجة ٧١٦ م² هي مساحة المشروع المنشورة وليست مساحة الأرض. أبعاد الأرض وجدول الغرف والكميات غير منشورة؛ والرسوم التحليلية تخطيطية. يجب التحقق من كل التفاصيل قبل الاستخدام.',
  'creation.kicker':'آركمايند / معمل الصور','creation.title':'حوّل الفكرة التصميمية إلى صورة.','creation.sub':'أنشئ تصورات معمارية بنماذج Gemini أو Krea المهيأة، وجهّز برومبتات مرتبطة بالمشروع لأدوات الفيديو و3D.','creation.promptLabel':'اتجاه التصميم','creation.model':'النموذج','creation.ratio':'نسبة الأبعاد','creation.creativity':'مستوى الإبداع','creation.literal':'منخفض · التزم بالموجز','creation.balanced':'متوسط · متوازن','creation.expressive':'مرتفع · استكشف','creation.raw':'مباشر · أقل تفسير','creation.reference':'صورة مرجعية للأسلوب (اختياري)','creation.modeImage':'صورة','creation.modeVideo':'فيديو','creation.mode3d':'ثلاثي الأبعاد','creation.modeHint':'اختر الوضع. توليد الصور يستخدم مزودًا مهيأ على الخادم.','creation.openLovart':'افتح Lovart مع برومبت المشروع','creation.openKrea':'افتح Krea مع برومبت المشروع','creation.videoExample':'شاهد مثال Luma AI للفيديو المعماري ↗','creation.externalNote':'تُفتح الأدوات الخارجية باختيارك فقط؛ ينسخ ARCHMIND برومبت المرحلة ولا يرفع ملفاتك.','creation.costNote':'تظهر فقط النماذج المهيأة على الخادم. تُستخدم أرصدة ARCHMIND اليومية وتُعاد عند الفشل.','creation.generate':'أنشئ صورة معمارية','creation.result':'النتيجة / ٠١','creation.empty':'ستظهر الصورة المُنشأة هنا.','creation.download':'افتح / نزّل الصورة','creation.working':'جارٍ إنشاء الصورة المعمارية…','creation.ready':'تم إنشاء الصورة.','creation.missingKey':'توليد الصور غير متاح حتى تهيئة GEMINI_API_KEY أو KREA_API_KEY على الخادم.','creation.uploadHint':'تم تحميل الصورة المرجعية. لن تُرسل إلا إلى النموذج الذي تختاره عند التوليد.','creation.badFile':'اختر صورة PNG أو JPEG أو WebP بحجم أقل من ٦ ميجابايت.','creation.askPrompt':'صف العمارة والخامات والإضاءة وزاوية الكاميرا أولاً.','creation.failed':'تعذر إنشاء الصورة. أُعيد أي رصيد من آركمايند استُخدم.',
  'technical.kicker':'آركمايند / المكتب الفني','technical.title':'من الفكرة التصميمية إلى حزمة منسقة.','technical.sub':'تابع إنتاج الرسومات وتنسيق الاستشاريين والكميات وجاهزية الإصدار في سجل واحد للمشروع.','technical.progress':'تقدم الحزمة الفنية','technical.export':'تصدير السجل','technical.askAI':'مراجعة مع منسق الذكاء الاصطناعي','technical.notes':'ملاحظات المكتب / البنود المفتوحة','technical.save':'حفظ ملاحظات المكتب','technical.disclaimer':'هذه أداة مساعدة للتنسيق. يجب على فريق مختص التحقق من الأكواد والحسابات والكميات ومستندات التنفيذ قبل الإصدار.','technical.notesPlaceholder':'سجل ردود الاستشاريين ومراجع الرسومات والافتراضات والإجراءات…',
  'card.multilingual':'محادثة الذكاء: لغات متعددة · الواجهة: عربي / إنجليزي'

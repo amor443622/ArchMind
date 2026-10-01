@@ -1480,7 +1480,7 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 .loginbox .form .btn:nth-of-type(3){justify-self:start!important;width:auto!important;min-height:22px!important;padding:2px 4px!important;border:0!important;background:transparent!important;font-size:10px!important;color:#656860!important}
 .loginbox .login-close{z-index:4!important}
 /* Custom ARCHMIND cursor enabled on desktop */
-.app.landing-mode .side{box-sizing:border-box!important;gap:clamp(12px,1.8vw,28px)!important;overflow:hidden!important}
+.app.landing-mode .side{box-sizing:border-box!important;gap:clamp(12px,1.8vw,28px)!important;overflow:visible!important}
 .app.landing-mode .side .logo{flex:0 0 auto!important;min-width:154px!important}
 .app.landing-mode .logo .brand-mark{width:28px!important;height:28px!important;max-width:28px!important;flex:0 0 28px!important}
 .app.landing-mode .logo b.brand-lockup{font-size:15px!important;letter-spacing:.12em!important}
@@ -1498,6 +1498,7 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
  .world-copy{left:24px!important;right:24px!important;width:auto!important;max-width:560px!important}
  [dir=rtl] .world-copy{left:24px!important;right:24px!important}
 }
+@media(max-width:700px){.app.landing-mode .side:has(#toolsMenu.is-open){overflow:visible!important}}
 </style>
 <style id="archmind-project-menu-fix">
 /* The empty project picker has no useful action on the public landing film. */

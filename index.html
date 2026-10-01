@@ -1785,7 +1785,7 @@ Codes and technical outputs require verification.
 
 <section id="workflowFilm" class="view">
   <section class="journey-overview" aria-labelledby="journeyOverviewTitle">
-    <div class="journey-overview-head"><div><span class="studio-eyebrow" id="journeyOverviewKicker">YOUR PROJECT / A TO Z</span><h1 id="journeyOverviewTitle">From the first brief to the final presentation.</h1><p id="journeyOverviewCopy">This is the route your project follows inside ARCHMIND. Each step builds on the decisions made before it, so the same project moves forward from the site and brief to a coordinated presentation.</p><div class="journey-overview-actions"><button class="btn primary" type="button" data-journey-action="example" id="journeyExampleButton">See a real project example ↓</button></div></div></div>
+    <div class="journey-overview-head"><div><span class="studio-eyebrow" id="journeyOverviewKicker">YOUR PROJECT / A TO Z</span><h1 id="journeyOverviewTitle">From the first brief to the final presentation.</h1><p id="journeyOverviewCopy">This is the route your project follows inside ARCHMIND. Each step builds on the decisions made before it, so the same project moves forward from the site and brief to a coordinated presentation.</p><div class="journey-overview-actions"><a class="btn primary" href="#archdailyExample" id="journeyExampleButton">See a real project example ↓</a></div></div></div>
     <nav class="journey-roadmap" id="journeyRoadmap" aria-label="The 15 project stages"></nav>
     <div class="journey-transition" id="journeyTransition">ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION</div>
   </section>
@@ -3054,7 +3054,6 @@ document.addEventListener('click',e=>{
 let b=e.target.closest('[data-view]');
 if(b)go(b.dataset.view);
 const action=e.target.closest('[data-journey-action]');if(!action)return;
-if(action.dataset.journeyAction==='example'){document.getElementById('archdailyExample')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}
 if(action.dataset.journeyAction==='stage'){filmGoTo(Number(action.dataset.journeyStage));document.getElementById('filmPlayer')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});return;}
 if(action.dataset.journeyAction==='play'){filmToggle();return;}
 if(action.dataset.journeyAction==='previous'){filmStep(-1);return;}

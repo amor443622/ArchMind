@@ -714,6 +714,7 @@ html{scroll-behavior:smooth}
 .app.landing-mode{display:block;overflow:visible;min-height:100vh}
 .app.landing-mode main{position:relative;min-width:0}
 .app.landing-mode .side{position:fixed;z-index:80;inset:0 0 auto;height:68px;width:100%;padding:0 clamp(16px,4vw,64px);display:flex;flex-direction:row;align-items:center;gap:clamp(18px,4vw,70px);background:rgba(36,30,26,.66);border:0;color:#f7f2e9;backdrop-filter:blur(14px);transition:background .75s,color .75s}
+@media(min-width:701px){.app.landing-mode .side{overflow:visible}}
 .app.landing-mode .logo{flex:0 0 auto;padding:0}
 .app.landing-mode .logo b{font:600 17px 'DM Mono';letter-spacing:.2em;color:#fff9f0}
 .app.landing-mode .logo small{display:block;margin-top:4px;color:rgba(247,242,233,.62);font-size:8px;letter-spacing:.15em}

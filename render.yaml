@@ -42,3 +42,5 @@ services:
         sync: false
       - key: DATA_DIR
         value: /tmp/archmind-data
+      - key: ALLOW_UNVERIFIED_SIGNUP
+        value: true

@@ -881,10 +881,10 @@ h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:500;letter-spacing:0}
 .app.landing-mode .side .tools-menu{margin:0;padding:0;border:0;flex:0 0 auto}
 .app.landing-mode .side .tools-trigger{min-height:34px;padding:8px 12px;color:#39342e!important;background:rgba(255,255,255,.5);font:inherit;font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid #c8c0b3;border-radius:999px;white-space:nowrap}
 .app.landing-mode.scene-light .side .tools-trigger{color:#39342e!important;background:rgba(255,255,255,.6);border-color:#c8c0b3}
-.app.landing-mode .tools-subnav{position:fixed;top:68px;right:clamp(18px,3vw,50px);z-index:100;min-width:230px;padding:8px;background:var(--arch-walnut);border:1px solid var(--arch-cork);border-radius:12px;box-shadow:0 16px 34px rgba(0,0,0,.2)}
+.app.landing-mode .tools-subnav{position:absolute;top:calc(100% + 6px);right:0;z-index:100;min-width:230px;padding:8px;background:var(--arch-walnut);border:1px solid var(--arch-cork);border-radius:12px;box-shadow:0 16px 34px rgba(0,0,0,.2)}
 .app.landing-mode .tools-subnav button{font-size:11px!important;letter-spacing:0!important;text-transform:none!important;text-align:left!important;padding:10px 12px!important;color:#d2c3b0!important}
 .app.landing-mode .tools-subnav button:hover,.app.landing-mode .tools-subnav button.active{background:var(--arch-bark)!important;color:var(--arch-cream)!important}
-[dir=rtl].app.landing-mode .tools-subnav{right:auto;left:clamp(18px,3vw,50px)}
+[dir=rtl].app.landing-mode .tools-subnav{right:auto;left:0}
 @media(max-width:700px){.side .tools-menu{margin:0;padding:0;border:0;flex:0 0 auto}.side .tools-trigger{width:auto;padding:8px 10px;border:1px solid rgba(219,205,181,.24);border-radius:24px;white-space:nowrap}.side .tools-subnav{position:absolute;top:calc(100% + 6px);left:0;z-index:100;min-width:220px;padding:8px;background:var(--arch-walnut);border:1px solid var(--arch-cork);border-radius:12px;box-shadow:0 16px 34px rgba(0,0,0,.2)}[dir=rtl] .side .tools-subnav{left:auto;right:0}}
 @media(max-width:700px){.side:has(#toolsMenu.is-open){flex-wrap:wrap;overflow:visible}.side #toolsMenu.is-open{flex:0 0 100%;width:100%}.side #toolsMenu.is-open .tools-subnav{position:static;min-width:0;width:100%;box-sizing:border-box;box-shadow:none;margin-top:6px}}
 .top{background:rgba(16,9,4,.94);border-color:var(--arch-cork);color:var(--arch-cream)}

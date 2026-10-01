@@ -1524,6 +1524,7 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 @media(max-width:1050px){.film-case-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.film-heading>div:first-child{flex-basis:100%}.film-project-label{flex-basis:100%}}
 .journey-overview{max-width:1320px;margin:34px auto 48px;padding:clamp(24px,4vw,54px);background:#102326;color:#f6f2e9;position:relative;overflow:hidden}
 .journey-overview:after{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,#d4b58d,rgba(212,181,141,0))}
+.journey-overview .studio-eyebrow{color:#d4b58d}
 .journey-overview-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:28px}
 .journey-overview-head h1{max-width:760px;margin:8px 0 10px;font:400 clamp(36px,5.4vw,68px)/.98 var(--arch-serif);letter-spacing:-.04em;color:#fffaf0}
 .journey-overview-head p{max-width:560px;margin:0;color:rgba(246,242,233,.72);font-size:14px;line-height:1.7}
@@ -1784,7 +1785,7 @@ Codes and technical outputs require verification.
 
 <section id="workflowFilm" class="view">
   <section class="journey-overview" aria-labelledby="journeyOverviewTitle">
-    <div class="journey-overview-head"><div><span class="studio-eyebrow" id="journeyOverviewKicker">YOUR PROJECT / A TO Z</span><h1 id="journeyOverviewTitle">From the first brief to the final presentation.</h1><p id="journeyOverviewCopy">This is the route your project follows inside ARCHMIND. Each step builds on the decisions made before it, so the same project moves forward from the site and brief to a coordinated presentation.</p><div class="journey-overview-actions"><button class="btn primary" type="button" onclick="document.getElementById('archdailyExample')?.scrollIntoView({behavior:'smooth'})" id="journeyExampleButton">See a real project example ↓</button></div></div></div>
+    <div class="journey-overview-head"><div><span class="studio-eyebrow" id="journeyOverviewKicker">YOUR PROJECT / A TO Z</span><h1 id="journeyOverviewTitle">From the first brief to the final presentation.</h1><p id="journeyOverviewCopy">This is the route your project follows inside ARCHMIND. Each step builds on the decisions made before it, so the same project moves forward from the site and brief to a coordinated presentation.</p><div class="journey-overview-actions"><button class="btn primary" type="button" data-journey-action="example" id="journeyExampleButton">See a real project example ↓</button></div></div></div>
     <nav class="journey-roadmap" id="journeyRoadmap" aria-label="The 15 project stages"></nav>
     <div class="journey-transition" id="journeyTransition">ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION</div>
   </section>
@@ -1814,11 +1815,11 @@ Codes and technical outputs require verification.
       <div class="film-art" id="filmArt" aria-hidden="true"></div><div class="film-screen-wash"></div>
       <div class="film-screen-top"><span id="filmScreenLabel">ARCHMIND · 15-STAGE WALKTHROUGH</span><span id="filmCounter">01 / 15</span></div>
       <div class="film-screen-copy" aria-live="polite"><span id="filmStageLabel">01 — BRIEF</span><h2 id="filmStageTitle">A family brief becomes a design brief.</h2><p id="filmStageCaption">Six people. A shaded courtyard. Privacy, daylight and a clear budget.</p></div>
-      <button class="film-cover-play" id="filmCoverPlay" type="button" onclick="filmToggle()" aria-label="Play the 15-stage walkthrough"><span>▶</span><b data-i18n="film.play">PLAY THE STAGE WALKTHROUGH</b><small data-i18n="film.duration">ABOUT 80 SECONDS · 15 STAGES</small></button>
+      <button class="film-cover-play" id="filmCoverPlay" type="button" data-journey-action="play" aria-label="Play the 15-stage walkthrough"><span>▶</span><b data-i18n="film.play">PLAY THE STAGE WALKTHROUGH</b><small data-i18n="film.duration">ABOUT 80 SECONDS · 15 STAGES</small></button>
     </div>
     <div class="film-controls">
-      <div class="film-control-row"><button class="btn small" type="button" onclick="filmStep(-1)" aria-label="Previous stage">←</button><button class="btn primary" id="filmPlayButton" type="button" onclick="filmToggle()"><span id="filmPlayGlyph">▶</span> <span id="filmPlayText">Play walkthrough</span></button><button class="btn small" type="button" onclick="filmStep(1)" aria-label="Next stage">→</button><button class="btn small" type="button" onclick="filmFullscreen()" data-i18n="film.fullscreen">Full screen</button><span class="film-elapsed" id="filmElapsed">00:00 / 01:23</span></div>
-      <input id="filmSeek" class="film-seek" type="range" min="0" max="14" value="0" step="1" aria-label="15-stage project walkthrough" oninput="filmGoTo(Number(this.value))">
+      <div class="film-control-row"><button class="btn small" type="button" data-journey-action="previous" aria-label="Previous stage">←</button><button class="btn primary" id="filmPlayButton" type="button" data-journey-action="play"><span id="filmPlayGlyph">▶</span> <span id="filmPlayText">Play walkthrough</span></button><button class="btn small" type="button" data-journey-action="next" aria-label="Next stage">→</button><button class="btn small" type="button" data-journey-action="fullscreen" data-i18n="film.fullscreen">Full screen</button><span class="film-elapsed" id="filmElapsed">00:00 / 01:23</span></div>
+      <input id="filmSeek" class="film-seek" type="range" min="0" max="14" value="0" step="1" aria-label="15-stage project walkthrough">
       <nav class="film-timeline" id="filmTimeline" aria-label="Fifteen project stages"></nav>
     </div>
     <div class="film-stage-record" aria-live="polite">
@@ -2968,7 +2969,7 @@ function azBorounBoard(n){
  ];
  const frame=`<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"><defs><style>text{font:15px 'DM Mono',monospace;letter-spacing:.5px;fill:#344144}.tiny{font-size:10px;fill:#626b68}.board-title{font:32px Georgia,serif;fill:#142729}.villa-room{fill:#fbfaf6;stroke:#43585a;stroke-width:2}.villa-wet{fill:#dfd9cf;stroke:#43585a;stroke-width:2}.villa-court{fill:#c7d9cb;stroke:#436257;stroke-width:2}.villa-accent{fill:none;stroke:#c99b64;stroke-width:4}.villa-dim{fill:none;stroke:#9b7953;stroke-width:1.4}.villa-thin{fill:none;stroke:#697c7c;stroke-width:1.5}</style></defs><rect width="900" height="560" fill="#f7f5ef"/><text x="38" y="42" class="tiny">AZ-BOROUN VILLA / ${String(n+1).padStart(2,'0')} · ARCHMIND ANALYTICAL STUDY</text>${scenes[n]}<path d="M38 518H862" stroke="#bbb8af"/><text x="38" y="542" class="tiny">SCHEMATIC READING · NOT TO SCALE · NOT THE ARCHITECTS’ ORIGINAL DRAWINGS</text></svg>`;
  return frame;
-}function renderVillaDrawing(index){villaDrawingIndex=Math.max(0,Math.min(14,index));const ar=currentLang==='ar',d=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[villaDrawingIndex]],copy=FILM_COPY[villaDrawingIndex],detail=FILM_STAGE_DETAILS[villaDrawingIndex];const tabs=document.getElementById('villaTabs');if(!tabs)return;tabs.innerHTML=stages[currentLang].map((x,i)=>`<button type="button" aria-selected="${i===villaDrawingIndex?'true':'false'}" onclick="filmGoTo(${i})">${String(i+1).padStart(2,'0')} ${esc(x)}</button>`).join('');document.getElementById('villaDrawing').innerHTML=d.svg;document.getElementById('villaDrawingIndex').textContent=`${String(villaDrawingIndex+1).padStart(2,'0')} / 15 · ${stages[currentLang][villaDrawingIndex].toUpperCase()}`;document.getElementById('villaDrawingTitle').textContent=ar?copy[2]:copy[0];document.getElementById('villaDrawingDescription').textContent=ar?copy[3]:copy[1];document.getElementById('villaDrawingNotes').innerHTML=(ar?[detail[2],detail[3]]:[detail[0],detail[1]]).map(x=>`<li>${esc(x)}</li>`).join('');}
+}function renderVillaDrawing(index){villaDrawingIndex=Math.max(0,Math.min(14,index));const ar=currentLang==='ar',d=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[villaDrawingIndex]],copy=FILM_COPY[villaDrawingIndex],detail=FILM_STAGE_DETAILS[villaDrawingIndex];const tabs=document.getElementById('villaTabs');if(!tabs)return;tabs.innerHTML=stages[currentLang].map((x,i)=>`<button type="button" aria-selected="${i===villaDrawingIndex?'true':'false'}" data-journey-action="stage" data-journey-stage="${i}">${String(i+1).padStart(2,'0')} ${esc(x)}</button>`).join('');document.getElementById('villaDrawing').innerHTML=d.svg;document.getElementById('villaDrawingIndex').textContent=`${String(villaDrawingIndex+1).padStart(2,'0')} / 15 · ${stages[currentLang][villaDrawingIndex].toUpperCase()}`;document.getElementById('villaDrawingTitle').textContent=ar?copy[2]:copy[0];document.getElementById('villaDrawingDescription').textContent=ar?copy[3]:copy[1];document.getElementById('villaDrawingNotes').innerHTML=(ar?[detail[2],detail[3]]:[detail[0],detail[1]]).map(x=>`<li>${esc(x)}</li>`).join('');}
 function filmDiagram(n){
  const raw=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[Math.max(0,Math.min(14,n))]].svg;
  return raw.replace('<svg viewBox="0 0 900 560"','<svg class="film-svg" viewBox="0 0 900 560"');
@@ -2982,7 +2983,7 @@ function filmDiagram(n){
  document.getElementById('journeyOverviewCopy').textContent=ar?'دي خريطة الطريق اللي مشروعك هيمشي عليها داخل ARCHMIND. كل خطوة بتبني على قرارات اللي قبلها، لحد ما نفس المشروع يتحول من فهم الموقع والاحتياجات إلى رسومات وعرض متكامل.':'This is the route your project follows inside ARCHMIND. Each step builds on earlier decisions, moving the same project from the brief and site through drawings and a complete presentation.';
  document.getElementById('journeyExampleButton').textContent=ar?'بعد المراحل: شوف مثالًا حقيقيًا ↓':'AFTER THE STAGES: SEE A REAL PROJECT ↓';
  document.getElementById('journeyTransition').textContent=ar?'مشروع واحد · ١٥ خطوة مترابطة · عرض نهائي واحد':'ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION';
- const roadmap=document.getElementById('journeyRoadmap');if(roadmap){roadmap.setAttribute('aria-label',ar?'مراحل المشروع الخمس عشرة':'The 15 project stages');roadmap.innerHTML=stages[currentLang].map((label,i)=>`<button type="button" class="journey-step" aria-current="${i===filmIndex?'step':'false'}" aria-label="${String(i+1).padStart(2,'0')} / 15 · ${esc(label)} · ${esc(JOURNEY_OUTCOMES[currentLang][i])}" onclick="filmRoadmapGoTo(${i})"><span>${String(i+1).padStart(2,'0')} / 15</span><strong>${esc(label)}</strong><small>${esc(JOURNEY_OUTCOMES[currentLang][i])}</small></button>`).join('');}
+ const roadmap=document.getElementById('journeyRoadmap');if(roadmap){roadmap.setAttribute('aria-label',ar?'مراحل المشروع الخمس عشرة':'The 15 project stages');roadmap.innerHTML=stages[currentLang].map((label,i)=>`<button type="button" class="journey-step" aria-current="${i===filmIndex?'step':'false'}" aria-label="${String(i+1).padStart(2,'0')} / 15 · ${esc(label)} · ${esc(JOURNEY_OUTCOMES[currentLang][i])}" data-journey-action="stage" data-journey-stage="${i}"><span>${String(i+1).padStart(2,'0')} / 15</span><strong>${esc(label)}</strong><small>${esc(JOURNEY_OUTCOMES[currentLang][i])}</small></button>`).join('');}
  document.getElementById('filmKicker').textContent=ar?'مثال مشروع منفذ / ArchDaily':'BUILT PROJECT / ARCHDAILY';
  document.getElementById('filmHeadingTitle').textContent=ar?'وده شكل المراحل على مشروع فيلا منفذ.':'See the stages applied to a built villa.';
  document.getElementById('filmHeadingIntro').textContent=ar?'فيلا Az-Boroun لـ CROSSARCHITECTURE منشورة على ArchDaily. تابع حقائق المشروع المنشورة، ثم شوف إزاي كل معلومة بتوجّه التحليل التصميمي.':'Az-Boroun Villa by CROSSARCHITECTURE is documented on ArchDaily. Follow its published facts, then see how each one informs the design analysis.';
@@ -3018,7 +3019,7 @@ function filmDiagram(n){
  renderVillaDrawing(filmIndex);
  const art=document.getElementById('filmArt');art.innerHTML=filmDiagram(filmIndex);player.classList.remove('is-changing');void player.offsetWidth;player.classList.add('is-changing');
  const seek=document.getElementById('filmSeek');if(seek)seek.value=String(filmIndex);
- const timeline=document.getElementById('filmTimeline');if(timeline){timeline.innerHTML=stages[currentLang].map((label,i)=>`<button type="button" aria-current="${i===filmIndex?'step':'false'}" title="${String(i+1).padStart(2,'0')} ${esc(label)}" onclick="filmGoTo(${i})">${String(i+1).padStart(2,'0')} ${esc(label)}</button>`).join('');}
+ const timeline=document.getElementById('filmTimeline');if(timeline){timeline.innerHTML=stages[currentLang].map((label,i)=>`<button type="button" aria-current="${i===filmIndex?'step':'false'}" title="${String(i+1).padStart(2,'0')} ${esc(label)}" data-journey-action="stage" data-journey-stage="${i}">${String(i+1).padStart(2,'0')} ${esc(label)}</button>`).join('');}
  const elapsedSeconds=Math.round(filmIndex*FILM_DURATION/1000),elapsedMinutes=String(Math.floor(elapsedSeconds/60)).padStart(2,'0'),elapsedRemainder=String(elapsedSeconds%60).padStart(2,'0');
  document.getElementById('filmElapsed').textContent=`${elapsedMinutes}:${elapsedRemainder} / 01:23`;
  document.getElementById('filmPlayGlyph').textContent=filmPlaying?'Ⅱ':'▶';
@@ -3033,7 +3034,6 @@ function filmToggle(){
 }
 function filmGoTo(index){filmIndex=Math.max(0,Math.min(14,Number(index)||0));renderWorkflowFilm();if(filmPlaying){clearInterval(filmTimer);filmTimer=setInterval(()=>{if(filmIndex>=14){filmStop();renderWorkflowFilm();return;}filmIndex++;renderWorkflowFilm();},FILM_DURATION);}}
 function filmStep(delta){filmGoTo(filmIndex+delta);}
-function filmRoadmapGoTo(index){filmGoTo(index);document.getElementById('filmPlayer')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});}
 function filmFullscreen(){const player=document.getElementById('filmPlayer');if(!player)return;const action=player.requestFullscreen||player.webkitRequestFullscreen;if(action){const result=action.call(player);result?.catch?.(()=>{});}}
 
 function startStudioPrompt(){
@@ -3053,7 +3053,15 @@ atlas.scrollIntoView({behavior:'smooth',block:'start'});
 document.addEventListener('click',e=>{
 let b=e.target.closest('[data-view]');
 if(b)go(b.dataset.view);
+const action=e.target.closest('[data-journey-action]');if(!action)return;
+if(action.dataset.journeyAction==='example'){document.getElementById('archdailyExample')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}
+if(action.dataset.journeyAction==='stage'){filmGoTo(Number(action.dataset.journeyStage));document.getElementById('filmPlayer')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});return;}
+if(action.dataset.journeyAction==='play'){filmToggle();return;}
+if(action.dataset.journeyAction==='previous'){filmStep(-1);return;}
+if(action.dataset.journeyAction==='next'){filmStep(1);return;}
+if(action.dataset.journeyAction==='fullscreen')filmFullscreen();
 });
+document.addEventListener('input',e=>{if(e.target?.id==='filmSeek')filmGoTo(Number(e.target.value));});
 
 function renderCategoryOptions(){
  const select=document.getElementById('cat');if(!select)return;

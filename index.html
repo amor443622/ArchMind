@@ -870,23 +870,22 @@ h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:500;letter-spacing:0}
 .side .nav button{color:#d2c3b0;border-radius:22.5px}
 .side .nav button:hover,.side .nav button.active{background:var(--arch-bark);color:var(--arch-cream);box-shadow:none}
 .tools-menu{position:relative;margin-top:10px;border-top:1px solid rgba(219,205,181,.16);padding-top:10px}
-.tools-menu>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px;border-radius:24px;color:#d2c3b0;cursor:pointer;list-style:none;user-select:none}
-.tools-menu>summary::-webkit-details-marker{display:none}
-.tools-menu>summary:hover,.tools-menu[open]>summary{background:rgba(255,255,255,.07);color:var(--arch-cream)}
-.tools-chevron{font:14px 'DM Mono';transition:transform .2s}.tools-menu[open] .tools-chevron{transform:rotate(180deg)}
+.tools-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;border:0;background:transparent;padding:11px 12px;border-radius:24px;color:#d2c3b0;text-align:left;cursor:pointer;user-select:none}
+.tools-trigger:hover,.tools-menu.is-open .tools-trigger{background:rgba(255,255,255,.07);color:var(--arch-cream)}
+.tools-chevron{font:14px 'DM Mono';transition:transform .2s}.tools-menu.is-open .tools-chevron{transform:rotate(180deg)}
 .tools-subnav{display:grid;gap:3px;padding:5px 0 0 8px}
 .tools-subnav button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;color:#d2c3b0;text-align:left;padding:10px 12px;border-radius:20px;cursor:pointer}
 .tools-subnav button:hover,.tools-subnav button.active{background:var(--arch-bark);color:var(--arch-cream)}
 [dir=rtl] .tools-subnav{padding:5px 8px 0 0}
 .app.landing-mode .side .tools-menu{margin:0;padding:0;border:0;flex:0 0 auto}
-.app.landing-mode .side .tools-menu>summary{min-height:34px;padding:8px 12px;color:rgba(247,242,233,.76);font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(247,242,233,.22);border-radius:999px}
-.app.landing-mode.scene-light .side .tools-menu>summary{color:#56514a;border-color:rgba(40,35,30,.2)}
+.app.landing-mode .side .tools-trigger{min-height:34px;padding:8px 12px;color:rgba(247,242,233,.76);font:inherit;font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(247,242,233,.22);border-radius:999px;white-space:nowrap}
+.app.landing-mode.scene-light .side .tools-trigger{color:#56514a;border-color:rgba(40,35,30,.2)}
 .app.landing-mode .tools-subnav{position:absolute;top:calc(100% + 8px);right:0;z-index:100;min-width:230px;padding:8px;background:var(--arch-walnut);border:1px solid var(--arch-cork);border-radius:12px;box-shadow:0 16px 34px rgba(0,0,0,.2)}
 .app.landing-mode .tools-subnav button{font-size:11px!important;letter-spacing:0!important;text-transform:none!important;text-align:left!important;padding:10px 12px!important;color:#d2c3b0!important}
 .app.landing-mode .tools-subnav button:hover,.app.landing-mode .tools-subnav button.active{background:var(--arch-bark)!important;color:var(--arch-cream)!important}
 [dir=rtl].app.landing-mode .tools-subnav{right:auto;left:0}
-@media(max-width:700px){.side .tools-menu{margin:0;padding:0;border:0;flex:0 0 auto}.side .tools-menu>summary{padding:8px 10px;border:1px solid rgba(219,205,181,.24);border-radius:24px;white-space:nowrap}.side .tools-subnav{position:absolute;top:calc(100% + 6px);left:0;z-index:100;min-width:220px;padding:8px;background:var(--arch-walnut);border:1px solid var(--arch-cork);border-radius:12px;box-shadow:0 16px 34px rgba(0,0,0,.2)}[dir=rtl] .side .tools-subnav{left:auto;right:0}}
-@media(max-width:700px){.side:has(#toolsMenu[open]){flex-wrap:wrap;overflow:visible}.side #toolsMenu[open]{flex:0 0 100%;width:100%}.side #toolsMenu[open] .tools-subnav{position:static;min-width:0;width:100%;box-sizing:border-box;box-shadow:none;margin-top:6px}}
+@media(max-width:700px){.side .tools-menu{margin:0;padding:0;border:0;flex:0 0 auto}.side .tools-trigger{width:auto;padding:8px 10px;border:1px solid rgba(219,205,181,.24);border-radius:24px;white-space:nowrap}.side .tools-subnav{position:absolute;top:calc(100% + 6px);left:0;z-index:100;min-width:220px;padding:8px;background:var(--arch-walnut);border:1px solid var(--arch-cork);border-radius:12px;box-shadow:0 16px 34px rgba(0,0,0,.2)}[dir=rtl] .side .tools-subnav{left:auto;right:0}}
+@media(max-width:700px){.side:has(#toolsMenu.is-open){flex-wrap:wrap;overflow:visible}.side #toolsMenu.is-open{flex:0 0 100%;width:100%}.side #toolsMenu.is-open .tools-subnav{position:static;min-width:0;width:100%;box-sizing:border-box;box-shadow:none;margin-top:6px}}
 .top{background:rgba(16,9,4,.94);border-color:var(--arch-cork);color:var(--arch-cream)}
 .content{color:var(--arch-cream)}
 .card,.prompt,.loginbox,.provider,.shot,.prompt .io div{color:var(--arch-cream);background:var(--surface);border:1px solid var(--arch-cork);box-shadow:none}
@@ -1547,10 +1546,10 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 <div class="group" data-i18n="nav.workspace">WORKSPACE</div>
 <nav class="nav" id="nav"></nav>
 
-<details class="tools-menu" id="toolsMenu">
-<summary><span data-i18n="nav.moreTools">More tools</span><span class="tools-chevron" aria-hidden="true">⌄</span></summary>
-<div class="tools-subnav" id="toolsNav"></div>
-</details>
+<div class="tools-menu" id="toolsMenu">
+<button class="tools-trigger" id="toolsToggle" type="button" aria-expanded="false"><span data-i18n="nav.moreTools">More tools</span><span class="tools-chevron" aria-hidden="true">⌄</span></button>
+<div class="tools-subnav" id="toolsNav" hidden></div>
+</div>
 
 <div class="sidefoot" data-i18n="sidefoot">
 Professional architectural AI workspace<br>
@@ -2690,6 +2689,8 @@ document.querySelector('.app')?.classList.toggle('landing-mode',currentView==='d
 const navEl=document.getElementById('nav');
 const wf=document.getElementById('workflow');
 
+function closeToolsMenu(){const menu=document.getElementById('toolsMenu'),toggle=document.getElementById('toolsToggle'),panel=document.getElementById('toolsNav');if(menu)menu.classList.remove('is-open');if(toggle)toggle.setAttribute('aria-expanded','false');if(panel)panel.hidden=true;}
+document.getElementById('toolsToggle')?.addEventListener('click',()=>{const menu=document.getElementById('toolsMenu'),toggle=document.getElementById('toolsToggle'),panel=document.getElementById('toolsNav'),open=toggle?.getAttribute('aria-expanded')!=='true';menu?.classList.toggle('is-open',open);toggle?.setAttribute('aria-expanded',String(open));if(panel)panel.hidden=!open;});
 function renderNav(){
 navEl.innerHTML=nav[currentLang].map(x=>`<button data-view="${x[0]}">${x[1]}</button>`).join('');
 navEl.querySelectorAll('[data-view]').forEach(b=>{
@@ -2697,7 +2698,7 @@ if(b.dataset.view===currentView)b.classList.add('active');
 });
 const tools=document.getElementById('toolsNav');
 if(tools){tools.innerHTML=toolNav[currentLang].map(([view,icon,label])=>`<button data-view="${view}"><span aria-hidden="true">${icon}</span><span>${label}</span></button>`).join('');tools.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===currentView));}
-const moreLabel=document.querySelector('#toolsMenu summary [data-i18n="nav.moreTools"]');if(moreLabel)moreLabel.textContent=currentLang==='ar'?'أدوات إضافية':'More tools';
+const moreLabel=document.querySelector('#toolsToggle [data-i18n="nav.moreTools"]');if(moreLabel)moreLabel.textContent=currentLang==='ar'?'أدوات إضافية':'More tools';
 }
 
 function updateHeroScene(){
@@ -2818,7 +2819,7 @@ renderProjectBrain();
 updateDashboardSummary();
 
 function go(v){
-const toolsMenu=document.getElementById('toolsMenu');if(toolsMenu)toolsMenu.open=false;
+closeToolsMenu();
 if(!['dashboard','workflowFilm'].includes(v)&&!isAuthenticated){
  pendingProtectedView=v;
  openAuth('login');

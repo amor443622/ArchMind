@@ -1,4 +1,4 @@
-const CACHE = "archmind-shell-v13";
+const CACHE = "archmind-shell-v14";
 const SHELL = ["/", "/index.html", "/manifest.webmanifest", "/construction.css", "/construction.js", "/archmind-mark.svg"];
 self.addEventListener("install", event => event.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL))));
 self.addEventListener("activate", event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))));

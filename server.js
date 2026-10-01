@@ -1290,6 +1290,23 @@ async function route(req, res) {
    * AUTH
    */
 
+  if (p === '/api/auth/guest' && req.method === 'POST') {
+    const forwarded = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+    const clientAddress = forwarded || req.socket.remoteAddress || 'unknown';
+    const guestKey = crypto.createHash('sha256').update(`${clientAddress}|${req.headers['user-agent'] || ''}`).digest('hex').slice(0, 24);
+    const guestEmail = `guest-${guestKey}@guest.archmind.local`;
+    const guestUsers = readUsers();
+    if (!guestUsers.some(user => user.email === guestEmail)) {
+      guestUsers.push({ email: guestEmail, guest: true, createdAt: new Date().toISOString(), credits: dailyCreditAllowance(), creditDay: creditDay() });
+      writeUsers(guestUsers);
+    }
+    return loginResponse(res, guestEmail, true);
+  }
+
+  if (p === '/api/auth/verify' || (['/api/auth/register', '/api/auth/login', '/api/auth/resend-verification', '/api/auth/request-password-reset', '/api/auth/reset-password'].includes(p) && req.method === 'POST')) {
+    return json(res, 410, { error: 'Email and password access is disabled. Continue as a guest.' });
+  }
+
   if (p.startsWith('/api/auth/')) {
     const b =
       await body(req);
@@ -1481,6 +1498,7 @@ async function route(req, res) {
     ) {
       const email =
         currentUser(req);
+      const session = sessions.get(cookies(req)[cookieName]);
 
       return json(res, 200, {
         authenticated:
@@ -1488,7 +1506,7 @@ async function route(req, res) {
 
         user:
           email
-            ? { email }
+            ? { email, guest: !!session?.guest }
             : null
       });
     }
@@ -1660,12 +1678,14 @@ async function route(req, res) {
 
 function loginResponse(
   res,
-  email
+  email,
+  guest = false
 ) {
   const t = token();
 
   sessions.set(t, {
     email,
+    guest,
 
     expires:
       Date.now() +

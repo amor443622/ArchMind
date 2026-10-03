@@ -46,6 +46,8 @@ Object.assign(CS_TX.ar,{attach:'إرفاق ملفات',send:'إرسال',chatPla
 CS_TX.en.taskAr='Activity name · Arabic';CS_TX.en.taskEn='Activity name · English';CS_TX.ar.taskAr='اسم النشاط · العربية';CS_TX.ar.taskEn='اسم النشاط · الإنجليزية';
 Object.assign(CS_TX.en,{kicker:'ARCHMIND / SITE EXECUTION',fieldWorkflow:'ARCHMIND / FIELD WORKFLOW',privateChat:'ARCHMIND / PRIVATE TO THIS PROJECT',inspectionPromptLabel:'IR checklist',dailyPromptLabel:'Daily report review',providerHelp:'Cloud AI needs a provider key configured on the server.'});
 Object.assign(CS_TX.ar,{kicker:'ARCHMIND / تنفيذ الموقع',fieldWorkflow:'ARCHMIND / مسار التنفيذ الميداني',privateChat:'ARCHMIND / محادثة خاصة بهذا المشروع',inspectionPromptLabel:'قائمة فحص IR',dailyPromptLabel:'مراجعة التقرير اليومي',providerHelp:'يتطلب الذكاء الاصطناعي السحابي مفتاح المزوّد في إعدادات الخادم.'});
+Object.assign(CS_TX.en,{siteInspectionPdfTitle:'Your source PDF · 50 receiving and inspection items',siteInspectionPdfCopy:'The provided PDF is embedded here in full. Use it as the source checklist; verify each acceptance requirement against the approved project documents.',siteInspectionPdfOpen:'Open the original 50-item PDF ↗',siteInspectionPdfDownload:'Download the source PDF'});
+Object.assign(CS_TX.ar,{siteInspectionPdfTitle:'ملفك الأصلي · ٥٠ بند استلام وفحص',siteInspectionPdfCopy:'ملف الـPDF الذي أرسلته مرفق هنا كاملًا. استخدمه كقائمة مرجعية، وراجع معيار قبول كل بند مقابل مستندات المشروع المعتمدة.',siteInspectionPdfOpen:'افتح ملف الـPDF الأصلي ↗',siteInspectionPdfDownload:'حمّل ملف المصدر'});
 function CS_t(key){return CS_TX[currentLang]?.[key]||CS_TX.en[key]||key;}
 function CS_lang(){return currentLang==='ar'?'ar':'en';}
 function CS_now(){return new Date().toISOString().slice(0,10);}

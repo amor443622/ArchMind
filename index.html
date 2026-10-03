@@ -1859,7 +1859,7 @@ Codes and technical outputs require verification.
       </nav>
       <div class="world-overlay"></div>
       <div class="world-topline"><span id="worldProjectName">UNTITLED PROJECT</span><span id="worldStep">01 / 15</span></div>
-      <div class="world-copy" aria-live="polite"><span class="studio-eyebrow" id="worldKicker">01 / 15 · BRIEF</span><h1 id="worldTitle">Brief</h1><p id="worldCopy">Capture client needs, users, budget and ambitions as structured facts.</p><button class="btn primary world-cta" id="worldAction" data-view="brief"><span data-i18n="world.begin">Start with the Brief</span><span aria-hidden="true"> ↗</span></button><button class="btn world-case-link" id="worldCaseStudy" type="button" onclick="go('workflowFilm')">Explore the Alma 24 House case study ↗</button></div>
+      <div class="world-copy" aria-live="polite"><span class="studio-eyebrow" id="worldKicker">01 / 15 · BRIEF</span><h1 id="worldTitle">Brief</h1><p id="worldCopy">Capture client needs, users, budget and ambitions as structured facts.</p><button class="btn primary world-cta" id="worldAction" data-view="brief"><span data-i18n="world.begin">Start with the Brief</span><span aria-hidden="true"> ↗</span></button><button class="btn world-case-link" id="worldCaseStudy" type="button" onclick="openProvidedCaseStage(currentStageIndex)">Open this stage in the full case study ↗</button></div>
       <div class="world-status" id="worldStatus" aria-live="polite"></div>
       <div class="world-progress" aria-hidden="true"><i></i></div>
       <div class="world-scroll-hint"><span data-i18n="world.scroll">SELECT A STAGE · ENTER THE NEXT SPACE</span><b>↗</b></div>
@@ -2023,12 +2023,12 @@ Codes and technical outputs require verification.
     <div><span class="studio-eyebrow" id="filmKicker">REAL PROJECT / ARCHDAILY</span><h1 id="filmHeadingTitle">A built house, traced from its brief to its presentation.</h1><p class="sub" id="filmHeadingIntro">A source-led reading of Alma 24 House, with published plans, section, site illustration and project photographs.</p></div>
     <div class="film-project-label"><span id="filmSampleLabel">BUILT PROJECT / SOURCE-LED ANALYSIS</span><strong id="filmProjectName">Alma 24 House · Québec City, Canada</strong></div>
   </header>
-  <section class="card" style="margin:18px 0;padding:0;overflow:hidden" aria-labelledby="completeCaseTitle">
+  <section class="card" id="completeCaseSection" style="margin:18px 0;padding:0;overflow:hidden" aria-labelledby="completeCaseTitle">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 20px">
       <div><span class="studio-eyebrow" data-i18n="caseStudy.kicker">COMPLETE CASE / 15 STAGES</span><h2 id="completeCaseTitle" style="margin:6px 0" data-i18n="caseStudy.title">Ten apartments in Doha · Brief to final presentation</h2><p class="muted" style="margin:0;max-width:760px" data-i18n="caseStudy.copy">A complete, linked example: site, brief, rules, program, concept, zoning, plans, sections, facade, coordination, documents and quantities.</p></div>
-      <a class="btn small" href="/resources/15-stage-residential-case-study.html" target="_blank" rel="noopener" data-i18n="caseStudy.open">Open the full case in a new tab ↗</a>
+      <a class="btn small" id="completeCaseOpen" href="/resources/15-stage-residential-case-study.html" target="_blank" rel="noopener" data-i18n="caseStudy.open">Open the full case in a new tab ↗</a>
     </div>
-    <iframe title="ARCHMIND complete 15-stage residential case study" loading="lazy" src="/resources/15-stage-residential-case-study.html" style="display:block;width:100%;height:min(82vh,920px);min-height:640px;border:0;border-top:1px solid var(--line);background:#f4f3ee"></iframe>
+    <iframe id="completeCaseFrame" title="ARCHMIND complete 15-stage residential case study" loading="lazy" src="/resources/15-stage-residential-case-study.html" style="display:block;width:100%;height:min(82vh,920px);min-height:640px;border:0;border-top:1px solid var(--line);background:#f4f3ee"></iframe>
   </section>
   <section class="film-case-hero" id="archdailyExample" aria-labelledby="filmCaseTitle">
     <a class="film-case-visual" href="https://www.archdaily.com/1018099/alma-24-house-maria-jose-benech-plus-stephane-asselin" target="_blank" rel="noopener noreferrer" aria-label="Open Alma 24 House project on ArchDaily">
@@ -2882,6 +2882,22 @@ ar:[
 ]
 };
 
+function providedCaseUrl(index){
+ const id=`s${String(Math.max(0,Math.min(14,index))+1).padStart(2,'0')}`;
+ const path=location.protocol==='file:'?new URL('public/resources/15-stage-residential-case-study.html',location.href).href:'/resources/15-stage-residential-case-study.html';
+ return `${path}?stage=${id}#${id}`;
+}
+function openProvidedCaseStage(index){
+ const stage=Math.max(0,Math.min(14,Number(index)||0)),id=`s${String(stage+1).padStart(2,'0')}`;
+ filmIndex=stage;setStage(stage,false);go('workflowFilm');
+ const frame=document.getElementById('completeCaseFrame'),open=document.getElementById('completeCaseOpen');
+ if(frame){
+  const url=providedCaseUrl(stage);frame.onload=()=>setTimeout(()=>{try{frame.contentDocument?.getElementById(id)?.scrollIntoView({block:'start',behavior:'smooth'});}catch{}},40);frame.src=url;
+ }
+ if(open)open.href=providedCaseUrl(stage);
+ setTimeout(()=>document.getElementById('completeCaseSection')?.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}),80);
+}
+
 function updateWorldJourney(){
   const track=document.getElementById('worldJourney');
   if(!track||!STAGE_DESC?.[currentLang])return;
@@ -2940,7 +2956,7 @@ function updateWorldJourney(){
     action.dataset.view=index===0?'brief':'architect';
     action.onclick=index===0?null:()=>setStage(index,false);
   }
-  const caseStudy=document.getElementById('worldCaseStudy');if(caseStudy)caseStudy.textContent=currentLang==='ar'?'شاهد دراسة منزل Alma 24 المنشور ↗':'Explore the Alma 24 House case study ↗';
+  const caseStudy=document.getElementById('worldCaseStudy');if(caseStudy)caseStudy.textContent=currentLang==='ar'?'افتح هذه المرحلة في دراسة الدوحة الكاملة ↗':'Open this stage in the complete Doha case study ↗';
 }
 
 const ARCHDAILY_MEDIA=[
@@ -3016,11 +3032,11 @@ function renderWorldRail(active){
     setStage(i,false);updateWorldJourney();
     requestAnimationFrame(()=>setTimeout(()=>transition.classList.add('is-leaving'),280));
     transition.addEventListener('animationend',()=>transition.remove(),{once:true});
-    setTimeout(()=>{transition.remove();window.__archmindStageTraveling=false;},1100);
-   }else{setStage(i,false);updateWorldJourney();window.__archmindStageTraveling=false;}
+    setTimeout(()=>{transition.remove();window.__archmindStageTraveling=false;openProvidedCaseStage(i);},1100);
+   }else{setStage(i,false);updateWorldJourney();window.__archmindStageTraveling=false;openProvidedCaseStage(i);}
   };
   rail.querySelectorAll('[data-world-stage]').forEach(button=>button.addEventListener('click',()=>goToStage(Number(button.dataset.worldStage))));
-  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=currentStageIndex;if(active>=STAGE_KEYS.length-1){go('workflowFilm');return;}goToStage(active+1);});
+  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=currentStageIndex;if(active>=STAGE_KEYS.length-1){openProvidedCaseStage(active);return;}goToStage(active+1);});
   const portalVisual=document.querySelector('.world-portal-visual');if(portalVisual){portalVisual.addEventListener('pointermove',event=>{const box=portalVisual.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;portalVisual.style.setProperty('--portal-rx',`${-y*9}deg`);portalVisual.style.setProperty('--portal-ry',`${x*11}deg`);});portalVisual.addEventListener('pointerleave',()=>{portalVisual.style.setProperty('--portal-rx','0deg');portalVisual.style.setProperty('--portal-ry','0deg');});}
   rail.dataset.ready='1';
  }
@@ -3252,7 +3268,7 @@ const CASE_DRAWINGS={site:'https://www.archdaily.com/1018099/alma-24-house-maria
 function stageMedia(index){return (STAGE_IMAGE_SETS[index]||STAGE_IMAGE_SETS[0]).map(n=>ARCHDAILY_MEDIA[n]);}
 function caseTiles(index){return stageMedia(index).map((item,n)=>'<a class="case-stage-image" href="'+(item.kind==='drawing'?(item.url===ARCHDAILY_MEDIA[35].url?CASE_DRAWINGS.site:CASE_DRAWINGS.section):CASE_URL)+'" target="_blank" rel="noopener noreferrer"><img src="'+item.url+'" alt="'+(item.kind==='drawing'?'Published drawing':'Photograph')+' · Alma 24 House · ArchDaily" loading="lazy"><span>'+String(n+1).padStart(2,'0')+' · '+(item.kind==='drawing'?'SOURCE DRAWING':'BUILT PROJECT PHOTO')+'</span></a>').join('');}
 function filmDiagram(index){const media=stageMedia(index);return '<div class="film-board-images"><img class="film-board-main '+(media[0].kind==='drawing'?'is-drawing':'')+'" src="'+media[0].url+'" alt="Alma 24 House · '+esc(stages.en[index])+'" loading="eager"><div>'+media.slice(1).map(item=>'<img class="'+(item.kind==='drawing'?'is-drawing':'')+'" src="'+item.url+'" alt="Alma 24 House source image" loading="lazy">').join('')+'</div></div>';}
-function renderVillaDrawing(index){villaDrawingIndex=Math.max(0,Math.min(14,index));const ar=currentLang==='ar',copy=ALMA_COPY[villaDrawingIndex],detail=ALMA_DETAILS[villaDrawingIndex],tabs=document.getElementById('villaTabs');if(!tabs)return;tabs.innerHTML=stages[currentLang].map((x,i)=>'<button type="button" aria-selected="'+(i===villaDrawingIndex?'true':'false')+'" data-journey-action="stage" data-journey-stage="'+i+'">'+String(i+1).padStart(2,'0')+' '+esc(x)+'</button>').join('');document.getElementById('villaDrawing').innerHTML='<div class="case-stage-gallery">'+caseTiles(villaDrawingIndex)+'</div>';document.getElementById('villaDrawingIndex').textContent=String(villaDrawingIndex+1).padStart(2,'0')+' / 15 · '+stages[currentLang][villaDrawingIndex].toUpperCase();document.getElementById('villaDrawingTitle').textContent=ar?copy[2]:copy[0];document.getElementById('villaDrawingDescription').textContent=ar?copy[3]:copy[1];document.getElementById('villaDrawingNotes').innerHTML=(ar?[detail[2],detail[3]]:[detail[0],detail[1]]).map(x=>'<li>'+esc(x)+'</li>').join('');}
+function renderVillaDrawing(index){villaDrawingIndex=Math.max(0,Math.min(14,index));const ar=currentLang==='ar',copy=ALMA_COPY[villaDrawingIndex],detail=ALMA_DETAILS[villaDrawingIndex],tabs=document.getElementById('villaTabs');if(!tabs)return;tabs.innerHTML=stages[currentLang].map((x,i)=>'<button type="button" aria-selected="'+(i===villaDrawingIndex?'true':'false')+'" data-journey-action="case-stage" data-journey-stage="'+i+'">'+String(i+1).padStart(2,'0')+' '+esc(x)+'</button>').join('');document.getElementById('villaDrawing').innerHTML='<div class="case-stage-gallery">'+caseTiles(villaDrawingIndex)+'</div>';document.getElementById('villaDrawingIndex').textContent=String(villaDrawingIndex+1).padStart(2,'0')+' / 15 · '+stages[currentLang][villaDrawingIndex].toUpperCase();document.getElementById('villaDrawingTitle').textContent=ar?copy[2]:copy[0];document.getElementById('villaDrawingDescription').textContent=ar?copy[3]:copy[1];document.getElementById('villaDrawingNotes').innerHTML=(ar?[detail[2],detail[3]]:[detail[0],detail[1]]).map(x=>'<li>'+esc(x)+'</li>').join('');}
 function renderWorkflowFilm(){
  const player=document.getElementById('filmPlayer');if(!player)return;
  const ar=currentLang==='ar',copy=ALMA_COPY[filmIndex],details=ALMA_DETAILS[filmIndex];
@@ -3334,8 +3350,9 @@ document.addEventListener('click',e=>{
 let b=e.target.closest('[data-view]');
 if(b)go(b.dataset.view);
 const action=e.target.closest('[data-journey-action]');if(!action)return;
-if(action.dataset.journeyAction==='stage'){filmGoTo(Number(action.dataset.journeyStage));document.getElementById('filmPlayer')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});return;}
-if(action.dataset.journeyAction==='example'){const target=document.getElementById('archdailyExample');if(target)target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});return;}
+if(action.dataset.journeyAction==='case-stage'){openProvidedCaseStage(Number(action.dataset.journeyStage));return;}
+if(action.dataset.journeyAction==='stage'){if(action.closest('#journeyRoadmap')){openProvidedCaseStage(Number(action.dataset.journeyStage));return;}filmGoTo(Number(action.dataset.journeyStage));document.getElementById('filmPlayer')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});return;}
+if(action.dataset.journeyAction==='example'){openProvidedCaseStage(currentStageIndex);return;}
 if(action.dataset.journeyAction==='play'){filmToggle();return;}
 if(action.dataset.journeyAction==='previous'){filmStep(-1);return;}
 if(action.dataset.journeyAction==='next'){filmStep(1);return;}

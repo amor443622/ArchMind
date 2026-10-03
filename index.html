@@ -1575,6 +1575,39 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 @media(max-width:700px){.film-source-drawings-grid{grid-template-columns:1fr}.film-source-drawing,.film-source-drawing img{min-height:210px}}
 @media(max-width:900px){.journey-overview-head{display:block}.journey-chapter-steps{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:10px}.journey-chapter-steps:before{display:none}.journey-step:before{margin-top:0}.film-case-hero{grid-template-columns:1fr}.film-case-visual{min-height:clamp(250px,48vw,440px)}}
 @media(max-width:700px){.journey-overview{margin:20px auto 32px;padding:23px 17px}.journey-overview-head h1{font-size:46px}.journey-chapter-head{flex-wrap:wrap}.journey-chapter-head strong{font-size:19px}.journey-chapter-head small{width:100%;margin-inline-start:0}.journey-chapter-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.journey-step{padding-inline-end:8px}.journey-step:before{margin:0 0 8px}.journey-step strong{font-size:17px}.journey-step small{font-size:8px}.journey-transition{font-size:8px}.journey-overview:after{right:-10%;top:0}}
+/* Stage progression reimagined as an architectural portal. */
+.world-frames{display:none!important}
+.world-drawing{display:grid!important}
+.world-portal{position:absolute;z-index:4;right:clamp(60px,9vw,145px);top:50%;width:min(39vw,560px);transform:translateY(-50%);display:grid;gap:10px}
+.world-portal-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;color:rgba(255,248,239,.82);font:9px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.world-portal-heading strong{color:#f0cfaa;font:500 12px 'DM Mono',monospace;letter-spacing:.04em;text-align:end}
+.world-portal-visual{position:relative;width:100%;aspect-ratio:1.28;overflow:hidden;border:1px solid rgba(246,239,226,.45);border-radius:28px;background:rgba(10,23,24,.38);backdrop-filter:blur(8px);box-shadow:0 22px 70px rgba(0,0,0,.22);transform:perspective(1000px) rotateX(var(--portal-rx,0deg)) rotateY(var(--portal-ry,0deg));transition:transform .32s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s}
+.world-portal-visual:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,21,22,.22),transparent 30%,transparent 66%,rgba(8,21,22,.76))}
+.world-portal-visual:hover{border-color:rgba(240,207,170,.82);box-shadow:0 28px 90px rgba(0,0,0,.34),0 0 0 1px rgba(240,207,170,.16)}
+.world-portal .world-drawing{position:absolute;inset:0;right:auto;top:auto;width:100%;height:100%;transform:none;display:grid!important;place-items:center;opacity:1!important;pointer-events:none}
+.world-portal .world-drawing svg{width:100%;height:100%;padding:12px;filter:none;overflow:hidden}
+.world-portal .world-drawing .draw-line{fill:none!important;stroke:rgba(246,246,239,.92)!important}
+.world-portal .world-drawing .draw-muted{fill:none!important;stroke:rgba(246,246,239,.52)!important}
+.world-portal .world-drawing .draw-fill{fill:rgba(224,219,204,.14)!important;stroke:rgba(246,239,226,.9)!important}
+.world-portal .world-drawing .draw-accent{fill:rgba(212,181,141,.25)!important;stroke:#e9cba6!important}
+.world-portal-action{position:absolute;z-index:2;inset:0;display:flex;align-items:end;justify-content:space-between;padding:0 20px 17px;border:0;background:transparent;color:#fff9ef;text-align:start;cursor:pointer}
+.world-portal-action span{font:9px 'DM Mono',monospace;letter-spacing:.14em}
+.world-portal-action b{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:17px;font-weight:400;transition:transform .28s,background .28s,color .28s}
+.world-portal-action:hover b{transform:translate(3px,-2px);background:#f0cfaa;color:#15292a}
+.world-transition-stamp{position:absolute;z-index:6;left:50%;top:48%;display:grid;gap:9px;justify-items:center;transform:translate(-50%,-50%);opacity:0;filter:blur(8px);pointer-events:none;text-align:center;color:#fff8ef}
+.world-stage.is-transitioning .world-transition-stamp{animation:portalStampReveal .9s cubic-bezier(.22,1,.36,1) .12s both}
+.world-transition-stamp span{font:9px 'DM Mono',monospace;letter-spacing:.2em;color:#ead0ae;white-space:nowrap}
+.world-transition-stamp strong{font:400 clamp(36px,6vw,76px)/.95 var(--arch-serif);white-space:nowrap}
+.world-transition-video{position:absolute;z-index:3;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;clip-path:inset(43% 44% round 32px);transform:scale(.88);filter:brightness(.76) saturate(.78);background:linear-gradient(135deg,#0b252a,#41676a 55%,#d4b58d)}
+.world-stage:after{display:none!important}
+.world-transition-video.is-active{animation:architecturalPortalTravel 1.65s cubic-bezier(.22,1,.36,1) both}
+@keyframes architecturalPortalTravel{0%{clip-path:inset(43% 44% round 32px);opacity:0;transform:scale(.88)}12%{opacity:1;transform:scale(1)}62%{clip-path:inset(0 round 0);opacity:1}100%{clip-path:inset(0 round 0);opacity:0}}
+@keyframes portalStampReveal{0%{opacity:0;filter:blur(8px);transform:translate(-50%,-43%) scale(.88)}28%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) scale(1)}68%{opacity:1}100%{opacity:0;filter:blur(5px);transform:translate(-50%,-58%) scale(1.04)}}
+[dir=rtl] .world-portal{right:auto;left:clamp(60px,9vw,145px)}
+@media(max-width:900px){.world-portal{right:5vw;width:45vw}.world-copy{width:42vw}[dir=rtl] .world-portal{left:5vw;right:auto}}
+@media(max-width:700px){.world-portal{top:34%;right:12vw;width:76vw;gap:6px;transform:translateY(-50%)}[dir=rtl] .world-portal{left:12vw;right:auto}.world-portal-heading{font-size:7px}.world-portal-heading strong{font-size:9px}.world-portal-visual{aspect-ratio:1.55;border-radius:18px}.world-portal .world-drawing svg{padding:4px}.world-portal-action{padding:0 12px 10px}.world-portal-action span{font-size:7px}.world-portal-action b{width:27px;height:27px}.world-transition-stamp{top:42%}.world-transition-stamp strong{font-size:42px}}
+@media(max-width:700px){.world-transition-video{clip-path:inset(43% 35% round 22px)}}
+@media(prefers-reduced-motion:reduce){.world-portal-visual,.world-portal-action b,.world-transition-video,.world-transition-stamp{transition:none!important;animation:none!important}.world-transition-video{display:none!important}}
 </style></head>
 
 <body>
@@ -1628,13 +1661,21 @@ Codes and technical outputs require verification.
   <section class="world-journey" id="worldJourney" aria-label="Architectural scroll journey">
     <div class="world-stage">
       <video class="ambient-video journey-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./public/archmind-opening-luma.mp4" type="video/mp4"></video>
+      <video class="world-transition-video" id="worldTransitionVideo" muted playsinline preload="metadata" aria-hidden="true"><source src="./public/archmind-login-urban-masterplan.mp4" type="video/mp4"></video>
       <div class="world-frames" aria-hidden="true">
         <img class="world-frame is-current" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=2200&q=85" alt="" fetchpriority="high">
         <img class="world-frame" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=85" alt="" loading="lazy">
         <img class="world-frame" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2200&q=85" alt="" loading="lazy">
         <img class="world-frame" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85" alt="" loading="lazy">
       </div>
-      <div class="world-drawing" id="worldDrawing" aria-hidden="true"></div>
+      <section class="world-portal" aria-label="Next design stage">
+        <div class="world-portal-heading"><span id="worldPortalLabel">NEXT DESIGN STAGE</span><strong id="worldPortalNext">02 · Context</strong></div>
+        <div class="world-portal-visual">
+          <div class="world-drawing" id="worldDrawing" aria-hidden="true"></div>
+          <button class="world-portal-action" id="worldPortalAction" type="button" aria-label="Enter the next design stage"><span id="worldPortalActionText">ENTER NEXT STAGE</span><b aria-hidden="true">↗</b></button>
+        </div>
+      </section>
+      <div class="world-transition-stamp" aria-hidden="true"><span id="worldTransitionNumber">02 / 15 · NEXT CHAPTER</span><strong id="worldTransitionTitle">Context</strong></div>
       <nav class="world-stage-rail" id="worldStageRail" aria-label="Project workflow"></nav>
       <div class="world-overlay"></div>
       <div class="world-topline"><span>ARCHMIND / 15-STAGE DESIGN JOURNEY</span><span id="worldStep">01 / 15</span></div>
@@ -2620,7 +2661,16 @@ function updateWorldJourney(){
   if(kicker)kicker.textContent=`${stepNumber} / ${totalNumber} · ${stages.en[index].toUpperCase()}`;
   if(step)step.textContent=`${stepNumber} / ${totalNumber}`;
   const drawing=document.getElementById('worldDrawing');
-  if(drawing){const direction=index%2===0?1:-1;const reveal=index===0?1:Math.min(1,local/.11);drawing.style.setProperty('--drawing-progress',String(local));drawing.style.opacity=String(reveal);drawing.style.transform=`translateY(-48%) translate3d(${direction*local*1.3}%,${-local*1.1}%,0) scale(${1+local*.035})`;if(window.__worldDrawingStage!==index||window.__worldDrawingLang!==currentLang){window.__worldDrawingStage=index;window.__worldDrawingLang=currentLang;drawing.classList.remove('is-changing');void drawing.offsetWidth;renderWorldDrawing(index);drawing.classList.add('is-changing');const copy=document.querySelector('.world-copy');if(copy){copy.classList.remove('is-changing');void copy.offsetWidth;copy.classList.add('is-changing');}}}
+  if(drawing){const direction=index%2===0?1:-1;const reveal=index===0?1:Math.min(1,local/.11);drawing.style.setProperty('--drawing-progress',String(local));drawing.style.opacity=String(reveal);drawing.style.transform=`translate3d(${direction*local*1.3}%,${-local*1.1}%,0) scale(${1+local*.035})`;if(window.__worldDrawingStage!==index||window.__worldDrawingLang!==currentLang){window.__worldDrawingStage=index;window.__worldDrawingLang=currentLang;drawing.classList.remove('is-changing');void drawing.offsetWidth;renderWorldDrawing(index);drawing.classList.add('is-changing');const copy=document.querySelector('.world-copy');if(copy){copy.classList.remove('is-changing');void copy.offsetWidth;copy.classList.add('is-changing');}}}
+  const nextIndex=Math.min(STAGE_KEYS.length-1,index+1),portalNext=document.getElementById('worldPortalNext'),portalAction=document.getElementById('worldPortalAction'),portalActionText=document.getElementById('worldPortalActionText'),portalLabel=document.getElementById('worldPortalLabel');
+  const nextTitle=index===STAGE_KEYS.length-1?(currentLang==='ar'?'عرض المشروع':'Project presentation'):stages[currentLang][nextIndex];
+  if(portalNext)portalNext.textContent=`${currentLang==='ar'?arabicNumeral(String(nextIndex+1).padStart(2,'0')):String(nextIndex+1).padStart(2,'0')} · ${nextTitle}`;
+  if(portalLabel)portalLabel.textContent=currentLang==='ar'?'المرحلة التصميمية التالية':'NEXT DESIGN STAGE';
+  if(portalAction){portalAction.setAttribute('aria-label',index===STAGE_KEYS.length-1?(currentLang==='ar'?'افتح عرض المشروع':'Open the project presentation'):(currentLang==='ar'?`انتقل للمرحلة التالية: ${nextTitle}`:`Enter the next design stage: ${nextTitle}`));}
+  if(portalActionText)portalActionText.textContent=index===STAGE_KEYS.length-1?(currentLang==='ar'?'افتح عرض المشروع':'OPEN PROJECT PRESENTATION'):(currentLang==='ar'?'ادخل المرحلة التالية':'ENTER NEXT STAGE');
+  const stampTitle=document.getElementById('worldTransitionTitle'),stampNumber=document.getElementById('worldTransitionNumber');
+  if(stampTitle)stampTitle.textContent=stages[currentLang][index];
+  if(stampNumber)stampNumber.textContent=currentLang==='ar'?`${arabicNumeral(numeral)} / ١٥ · المرحلة التالية`:`${numeral} / 15 · DESIGN STAGE`;
   renderWorldRail(index);
   const status=document.getElementById('worldStatus');
   if(status){
@@ -2630,8 +2680,8 @@ function updateWorldJourney(){
   if(window.__archmindScrollStage===undefined){window.__archmindScrollStage=index;}
   else if(index!==window.__archmindScrollStage){
     window.__archmindScrollStage=index;
-    const stageShell=track.querySelector('.world-stage');
-    if(stageShell){stageShell.classList.remove('is-transitioning');void stageShell.offsetWidth;stageShell.classList.add('is-transitioning');clearTimeout(window.__archmindCurtainTimer);window.__archmindCurtainTimer=setTimeout(()=>stageShell.classList.remove('is-transitioning'),1150);}
+    const stageShell=track.querySelector('.world-stage'),transitionVideo=document.getElementById('worldTransitionVideo');
+    if(stageShell){stageShell.classList.remove('is-transitioning');void stageShell.offsetWidth;stageShell.classList.add('is-transitioning');clearTimeout(window.__archmindCurtainTimer);if(transitionVideo){transitionVideo.pause();transitionVideo.classList.remove('is-active');try{transitionVideo.currentTime=0;}catch{}void transitionVideo.offsetWidth;transitionVideo.classList.add('is-active');const play=transitionVideo.play();play?.catch?.(()=>{});}window.__archmindCurtainTimer=setTimeout(()=>{stageShell.classList.remove('is-transitioning');if(transitionVideo){transitionVideo.classList.remove('is-active');transitionVideo.pause();try{transitionVideo.currentTime=0;}catch{}}},1720);}
     if(index!==currentStageIndex)setStage(index,false);
   }
   const bar=track.querySelector('.world-progress i');
@@ -2678,11 +2728,15 @@ function renderWorldRail(active){
  const rail=document.getElementById('worldStageRail');if(!rail)return;
  if(!rail.dataset.ready){
   rail.innerHTML=STAGE_KEYS.map((key,i)=>`<button type="button" data-world-stage="${i}" aria-label="${String(i+1).padStart(2,'0')} ${esc(stages[currentLang][i])}" title="${String(i+1).padStart(2,'0')} · ${esc(stages[currentLang][i])}">${String(i+1).padStart(2,'0')}</button>`).join('');
-  rail.querySelectorAll('[data-world-stage]').forEach(button=>button.addEventListener('click',()=>{
-   const i=Number(button.dataset.worldStage);setStage(i,false);
+  const goToStage=i=>{
+   setStage(i,false);
    const journey=document.getElementById('worldJourney');const span=Math.max(1,journey.offsetHeight-innerHeight);
    window.scrollTo({top:journey.offsetTop+span*(i+.5)/STAGE_KEYS.length,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
-  }));rail.dataset.ready='1';
+  };
+  rail.querySelectorAll('[data-world-stage]').forEach(button=>button.addEventListener('click',()=>goToStage(Number(button.dataset.worldStage))));
+  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=Number(window.__archmindScrollStage)||0;if(active>=STAGE_KEYS.length-1){go('workflowFilm');return;}goToStage(active+1);});
+  const portalVisual=document.querySelector('.world-portal-visual');if(portalVisual){portalVisual.addEventListener('pointermove',event=>{const box=portalVisual.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;portalVisual.style.setProperty('--portal-rx',`${-y*9}deg`);portalVisual.style.setProperty('--portal-ry',`${x*11}deg`);});portalVisual.addEventListener('pointerleave',()=>{portalVisual.style.setProperty('--portal-rx','0deg');portalVisual.style.setProperty('--portal-ry','0deg');});}
+  rail.dataset.ready='1';
  }
  rail.querySelectorAll('[data-world-stage]').forEach((button,i)=>{
   button.classList.toggle('is-current',i===active);

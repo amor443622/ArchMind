@@ -1110,7 +1110,7 @@ select option{background:var(--arch-walnut);color:var(--arch-cream)}
 .studio-home{background:#fff;color:#171717}
 .world-journey{height:1500svh;background:#080909}
 .world-stage{background:#111414;color:#fff}
-.world-overlay{z-index:1;background:linear-gradient(90deg,rgba(4,7,8,.87),rgba(4,7,8,.56) 43%,rgba(4,7,8,.12) 78%),linear-gradient(0deg,rgba(4,7,8,.65),transparent 48%,rgba(4,7,8,.24)}
+.world-overlay{z-index:1;background:linear-gradient(90deg,rgba(4,7,8,.87),rgba(4,7,8,.56) 43%,rgba(4,7,8,.12) 78%),linear-gradient(0deg,rgba(4,7,8,.65),transparent 48%,rgba(4,7,8,.24))}
 .world-drawing{position:absolute;z-index:2;right:clamp(30px,8vw,150px);top:50%;width:min(47vw,690px);height:min(64vh,590px);transform:translateY(-48%);display:grid;place-items:center;pointer-events:none;transition:opacity .35s,transform .65s cubic-bezier(.2,.7,.2,1)}
 .world-drawing svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 18px 45px rgba(0,0,0,.34))}
 .world-drawing .draw-line{fill:none;stroke:rgba(246,246,239,.88);stroke-width:1.35;vector-effect:non-scaling-stroke}
@@ -1523,7 +1523,7 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 .app.landing-mode .top .actions .btn{color:#fff!important;background:rgba(21,32,32,.43)!important;border-color:rgba(255,255,255,.34)!important;backdrop-filter:blur(9px)}.app.landing-mode .top .actions .btn.primary{color:#fff!important;background:#41676a!important;border-color:#41676a!important}
 @media(max-width:1050px){.film-case-strip{grid-template-columns:repeat(3,minmax(0,1fr))}.film-heading>div:first-child{flex-basis:100%}.film-project-label{flex-basis:100%}}
 .journey-overview{max-width:1320px;margin:30px auto 52px;padding:clamp(22px,4vw,50px);background:#f5f2eb;color:#202a28;position:relative;overflow:hidden;border-top:1px solid #d4b58d;border-bottom:1px solid #d8d2c7}
-.journey-overview:after{content:"15";position:absolute;right:4%;top:-.23em;color:rgba(212,181,141,.13);font:italic 400 clamp(190px,27vw,390px)/1 var(--arch-serif);pointer-events:none}
+.journey-overview:after{content:"14";position:absolute;right:4%;top:-.23em;color:rgba(212,181,141,.13);font:italic 400 clamp(190px,27vw,390px)/1 var(--arch-serif);pointer-events:none}
 .journey-overview .studio-eyebrow{color:#94744f!important}
 .journey-overview-head{position:relative;z-index:1;display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:34px}
 .journey-overview-head>div{max-width:790px}
@@ -1609,6 +1609,81 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 @media(max-width:700px){.world-portal{top:34%;right:12vw;width:76vw;gap:6px;transform:translateY(-50%)}[dir=rtl] .world-portal{left:12vw;right:auto}.world-portal-heading{font-size:7px}.world-portal-heading strong{font-size:9px}.world-portal-visual{aspect-ratio:1.55;border-radius:18px}.world-portal .world-drawing svg{padding:4px}.world-portal-action{padding:0 12px 10px}.world-portal-action span{font-size:7px}.world-portal-action b{width:27px;height:27px}.world-transition-stamp{top:42%}.world-transition-stamp strong{font-size:42px}}
 @media(max-width:700px){.world-transition-video{clip-path:inset(43% 35% round 22px)}}
 @media(prefers-reduced-motion:reduce){.world-portal-visual,.world-portal-action b,.world-transition-video,.world-transition-stamp{transition:none!important;animation:none!important}.world-transition-video{display:none!important}}
+/* The project stage is the home screen, not one section in a landing page. */
+.app.landing-mode{height:100svh;min-height:0;overflow:hidden;background:#111414}
+.app.landing-mode .side{height:66px;min-height:66px;justify-content:space-between;background:rgba(13,17,17,.78);border-bottom:1px solid rgba(255,255,255,.13);backdrop-filter:blur(12px)}
+.app.landing-mode .side .group,.app.landing-mode .side .sidefoot,.app.landing-mode .side .nav{display:none!important}
+.app.landing-mode .side #toolsMenu{position:fixed;z-index:30;top:124px;left:28px;display:block!important;margin:0;padding:0;border:0}
+.app.landing-mode .side .tools-trigger{min-height:31px;padding:0 10px;border:1px solid rgba(255,255,255,.28);border-radius:2px;background:rgba(15,21,21,.78);color:#fff!important;font-size:9px;letter-spacing:.03em}
+.app.landing-mode .side .tools-subnav{position:absolute;top:calc(100% + 8px);left:0;right:auto;min-width:220px;padding:7px;background:rgba(16,23,23,.96);border:1px solid rgba(255,255,255,.18);border-radius:3px;box-shadow:0 14px 45px rgba(0,0,0,.28);backdrop-filter:blur(14px)}
+.app.landing-mode .side .tools-subnav button{display:flex;gap:10px;width:100%;padding:10px;border:0;border-radius:2px;background:transparent;color:#f5efe6;text-align:start;font-size:11px}
+.app.landing-mode .side .tools-subnav button:hover{background:rgba(255,255,255,.1)}
+.app.landing-mode .logo{padding:0}.app.landing-mode .logo b{font-family:var(--arch-serif);font-size:19px;letter-spacing:.16em}.app.landing-mode .side .logo b.brand-lockup,.app.landing-mode .side .logo b.brand-lockup span{color:#fff!important}.app.landing-mode .side .logo .brand-mark{filter:brightness(0) invert(1)}
+.app.landing-mode .top{position:absolute;top:76px;right:28px;left:auto;z-index:12;width:auto;height:auto;pointer-events:auto}
+.app.landing-mode .top>div{display:none!important}.app.landing-mode .top .actions{display:flex;gap:7px;flex:0 0 auto}
+.app.landing-mode .top .actions #askArchitectButton{display:none!important}
+.app.landing-mode .content{height:100svh;overflow:hidden;padding:0!important}
+.app.landing-mode #dashboard.view.active{height:100svh;overflow:hidden}
+.app.landing-mode .studio-home{height:100svh;min-height:0;background:#111414}
+.app.landing-mode .world-journey{height:100svh!important;min-height:0;background:#111414}
+.app.landing-mode .world-stage{position:relative;top:0;height:100svh;min-height:0;overflow:hidden;background:#172122}
+.app.landing-mode .world-stage:before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(9,15,15,.84) 0%,rgba(9,15,15,.48) 42%,rgba(9,15,15,.16) 100%),linear-gradient(0deg,rgba(9,15,15,.55),transparent 38%,rgba(9,15,15,.2))}
+.app.landing-mode .journey-video{z-index:0;opacity:.58!important;filter:brightness(.73) saturate(.65)!important}
+.app.landing-mode .world-topline{top:92px;left:clamp(160px,16vw,230px);right:28px;display:flex;justify-content:space-between;color:rgba(255,255,255,.68);font:9px 'DM Mono';letter-spacing:.14em}
+.app.landing-mode .world-topline span:first-child{font-size:8px;letter-spacing:.17em}
+.app.landing-mode .world-copy{left:clamp(160px,16vw,230px);top:53%;bottom:auto;width:min(30vw,420px);max-width:none;transform:translateY(-50%);padding:0}
+.app.landing-mode .world-copy h1{margin:18px 0 10px;font-size:clamp(58px,8vw,122px);line-height:.86;letter-spacing:-.06em;color:#fff9f0}
+.app.landing-mode .world-copy p{max-width:350px;min-height:0;margin:0 0 24px;color:rgba(255,249,240,.78);font-size:15px;line-height:1.55}
+.app.landing-mode .world-copy .studio-eyebrow{color:#e3bc91;font:9px 'DM Mono';letter-spacing:.16em}
+.app.landing-mode .world-copy .world-cta{min-height:40px;padding-inline:17px;background:#f0e8dc;color:#171919;border:0}
+.app.landing-mode .world-case-link{display:block;margin-top:14px;padding:0;border:0;background:none;color:#e6d8c5;font-size:11px;text-decoration:underline;text-underline-offset:4px}
+.app.landing-mode .world-portal{right:clamp(34px,7vw,110px);top:53%;width:min(46vw,690px);gap:12px;transform:translateY(-50%)}
+[dir=rtl] .app.landing-mode .world-portal{right:auto;left:clamp(34px,7vw,110px)}
+.app.landing-mode .world-portal-heading{font-size:9px;color:rgba(255,255,255,.75)}
+.app.landing-mode .world-portal-heading strong{font-size:12px}
+.app.landing-mode .world-portal-visual{aspect-ratio:1.48;border-radius:3px;background:rgba(18,29,29,.82);backdrop-filter:none;box-shadow:0 25px 80px rgba(0,0,0,.25)}
+.app.landing-mode .world-portal .world-drawing svg{padding:23px}
+.app.landing-mode .world-portal-action{padding:0 22px 19px}
+.app.landing-mode .world-stage-rail{left:28px;right:auto;top:50%;width:clamp(88px,10vw,140px);max-height:74svh;gap:0;transform:translateY(-45%);display:grid;direction:ltr;overflow:auto;scrollbar-width:none}
+.app.landing-mode .world-stage-rail button{display:grid;grid-template-columns:24px minmax(0,1fr) 5px;align-items:center;gap:8px;width:100%;height:31px;padding:0 4px;border-bottom:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55);font:9px 'DM Mono';text-align:start}
+.app.landing-mode .world-stage-rail button strong{overflow:hidden;color:inherit;font:500 9px Inter,system-ui,sans-serif;white-space:nowrap;text-overflow:ellipsis}
+.app.landing-mode .world-stage-rail button i{width:4px;height:4px;border-radius:50%;background:transparent}
+.app.landing-mode .world-stage-rail button.is-current{color:#fff;border-color:#e3bc91}.app.landing-mode .world-stage-rail button.is-current strong{color:#fff}
+.app.landing-mode .world-stage-rail button.is-current i{background:#e3bc91}.app.landing-mode .world-stage-rail button.is-complete i{background:#b9c8b4}
+.app.landing-mode .world-utility{position:absolute;z-index:12;top:124px;right:28px;display:flex;gap:6px}
+.app.landing-mode .world-utility button{display:flex;align-items:center;gap:7px;min-height:31px;padding:0 10px;border:1px solid rgba(255,255,255,.26);border-radius:2px;background:rgba(15,21,21,.28);color:rgba(255,255,255,.9);font-size:9px;backdrop-filter:blur(7px)}
+.app.landing-mode .world-utility button span{color:#e3bc91}.app.landing-mode .world-utility button:hover{background:rgba(255,255,255,.13);border-color:#e3bc91}
+.app.landing-mode .world-status{left:clamp(160px,16vw,230px);right:auto;bottom:35px;color:rgba(255,255,255,.7);font:8px 'DM Mono';letter-spacing:.12em}
+.app.landing-mode .world-progress{left:clamp(160px,16vw,230px);right:28px;bottom:25px;height:1px;background:rgba(255,255,255,.2)}
+.app.landing-mode .world-progress i{background:#e3bc91}
+.app.landing-mode .world-scroll-hint{left:auto;right:29px;bottom:36px;transform:none;color:rgba(255,255,255,.72);font:8px 'DM Mono';letter-spacing:.1em}
+.app.landing-mode .world-scroll-hint b{color:#e3bc91;animation:none}
+.app.landing-mode .world-credit{display:none}
+.app.landing-mode .studio-heading,.app.landing-mode .studio-workbench,.app.landing-mode .studio-inspiration,.app.landing-mode .hero-sequence,.app.landing-mode .architecture-atlas,.app.landing-mode .dashboard-content{display:none!important}
+.app.landing-mode .world-transition-video{z-index:9}
+.app.landing-mode .world-transition-stamp{z-index:10}
+.app.landing-mode.tool-panel-open:after{content:"";position:fixed;z-index:85;inset:0;background:rgba(3,8,8,.44);backdrop-filter:blur(4px)}
+.app.landing-mode #architect.immersive-aside{position:fixed;z-index:90;top:0;right:0;bottom:0;width:min(560px,94vw);max-height:100svh;margin:0;padding:44px 28px 28px;overflow:auto;background:#f5f3ee;color:#22241f;border-inline-start:1px solid rgba(30,30,25,.15);box-shadow:-24px 0 80px rgba(0,0,0,.3)}
+.app.landing-mode #architect.immersive-aside .card{background:#fffefa;color:#22241f}
+.app.landing-mode #architect.immersive-aside .provider{background:#fffefa;color:#333}
+.app.landing-mode #architect.immersive-aside .provider.active{background:#1c3538;color:white}
+.app.landing-mode .architect-panel-close{display:none}
+.app.landing-mode #architect.immersive-aside .architect-panel-close{position:absolute;top:12px;right:14px;display:grid;place-items:center;width:32px;height:32px;padding:0;border-radius:50%;font-size:20px}
+.creative-cursor{width:34px;height:34px;filter:none;transition:opacity .15s,transform .06s linear}
+.creative-cursor svg{display:none}
+.creative-cursor:before{left:10px;top:10px;width:14px;height:14px;border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.04);filter:none;box-shadow:0 0 14px rgba(0,0,0,.25)}
+.creative-cursor:after{content:"";position:absolute;left:15px;top:15px;width:4px;height:4px;border-radius:50%;background:#fff;transition:all .2s}
+.creative-cursor.is-hover:before{left:0;top:0;width:34px;height:34px;border-color:#e3bc91;background:rgba(227,188,145,.12)}
+.creative-cursor.is-hover:after{left:12px;top:13px;width:0;height:0;background:transparent}
+.creative-cursor.is-hover{filter:none}
+.creative-cursor.is-hover:before{content:"ENTER";display:grid;place-items:center;color:#fff;font:7px 'DM Mono';letter-spacing:.08em}
+.creative-cursor.is-down:before{transform:scale(.86)}
+[dir=rtl] .app.landing-mode .world-topline,[dir=rtl] .app.landing-mode .world-copy,[dir=rtl] .app.landing-mode .world-status,[dir=rtl] .app.landing-mode .world-progress{left:auto;right:clamp(160px,16vw,230px)}
+[dir=rtl] .app.landing-mode .world-stage-rail{left:auto;right:28px}
+[dir=rtl] .app.landing-mode .world-utility{right:auto;left:28px}
+@media(max-width:900px){.app.landing-mode .world-stage-rail{width:100px}.app.landing-mode .world-copy{left:160px;width:32vw}.app.landing-mode .world-portal{right:24px;width:47vw}[dir=rtl] .app.landing-mode .world-copy{left:auto;right:160px}[dir=rtl] .app.landing-mode .world-portal{right:auto;left:24px}.app.landing-mode .world-utility{top:124px}.app.landing-mode .top{top:72px;right:18px}}
+@media(max-width:700px){.app.landing-mode .side{height:58px;min-height:58px;padding-inline:16px}.app.landing-mode .logo b{font-size:16px}.app.landing-mode .top{top:66px;right:12px}.app.landing-mode .top .actions{gap:4px}.app.landing-mode .top .actions .btn{font-size:8px;padding:6px 8px}.app.landing-mode .side #toolsMenu{top:110px;left:18px}[dir=rtl] .app.landing-mode .side #toolsMenu{left:auto;right:18px}.app.landing-mode .world-stage{min-height:100svh}.app.landing-mode .world-topline{top:114px;left:18px;right:18px;font-size:7px}[dir=rtl] .app.landing-mode .world-topline{left:18px;right:18px}.app.landing-mode .world-utility{top:148px;left:18px;right:18px;justify-content:flex-start;overflow:auto}.app.landing-mode .world-utility button{flex:0 0 auto;padding-inline:8px;font-size:8px}.app.landing-mode .world-stage-rail{left:14px;right:14px;top:auto;bottom:75px;width:auto;max-height:none;display:flex;gap:4px;transform:none;overflow-x:auto;direction:ltr}.app.landing-mode .world-stage-rail button{flex:0 0 38px;width:auto;height:34px;grid-template-columns:1fr;justify-items:center;gap:0;border:1px solid rgba(255,255,255,.18);text-align:center}.app.landing-mode .world-stage-rail button strong,.app.landing-mode .world-stage-rail button i{display:none}[dir=rtl] .app.landing-mode .world-stage-rail{left:14px;right:14px}.app.landing-mode .world-portal{top:40%;left:50%;right:auto;width:calc(100vw - 38px);transform:translate(-50%,-50%)}[dir=rtl] .app.landing-mode .world-portal{left:50%;right:auto}.app.landing-mode .world-portal-visual{aspect-ratio:1.42}.app.landing-mode .world-portal .world-drawing svg{padding:8px}.app.landing-mode .world-copy{left:20px;right:20px;top:auto;bottom:142px;width:auto;transform:none}[dir=rtl] .app.landing-mode .world-copy{left:20px;right:20px}.app.landing-mode .world-copy h1{margin:8px 0;font-size:clamp(44px,12vw,68px)}.app.landing-mode .world-copy p{max-width:300px;margin-bottom:12px;font-size:12px}.app.landing-mode .world-copy .world-cta{min-height:34px;font-size:10px}.app.landing-mode .world-case-link{display:none}.app.landing-mode .world-status{left:18px;right:auto;bottom:119px;font-size:7px}[dir=rtl] .app.landing-mode .world-status{left:18px;right:auto}.app.landing-mode .world-progress{left:18px;right:18px;bottom:53px}.app.landing-mode .world-scroll-hint{right:18px;bottom:18px;font-size:6px}.app.landing-mode .world-transition-stamp{top:48%}}
+@media(prefers-reduced-motion:reduce){.app.landing-mode .journey-video{animation:none!important;transition:none!important}.app.landing-mode .world-portal-visual{transform:none!important;transition:none!important}.creative-cursor{display:none!important}}
 </style></head>
 
 <body>
@@ -1659,7 +1734,7 @@ Codes and technical outputs require verification.
 <section id="dashboard" class="view active">
 
 <section class="studio-home" aria-label="ARCHMIND Studio">
-  <section class="world-journey" id="worldJourney" aria-label="Architectural scroll journey">
+  <section class="world-journey" id="worldJourney" aria-label="Architectural project workspace">
     <div class="world-stage">
       <video class="ambient-video journey-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="./public/archmind-opening-luma.mp4" type="video/mp4"></video>
       <video class="world-transition-video" id="worldTransitionVideo" muted playsinline preload="metadata" aria-hidden="true"><source src="./public/archmind-login-urban-masterplan.mp4" type="video/mp4"></video>
@@ -1676,14 +1751,20 @@ Codes and technical outputs require verification.
           <button class="world-portal-action" id="worldPortalAction" type="button" aria-label="Enter the next design stage"><span id="worldPortalActionText">ENTER NEXT STAGE</span><b aria-hidden="true">↗</b></button>
         </div>
       </section>
-      <div class="world-transition-stamp" aria-hidden="true"><span id="worldTransitionNumber">02 / 15 · NEXT CHAPTER</span><strong id="worldTransitionTitle">Context</strong></div>
+      <div class="world-transition-stamp" aria-hidden="true"><span id="worldTransitionNumber">02 / 14 · NEXT CHAPTER</span><strong id="worldTransitionTitle">Context</strong></div>
       <nav class="world-stage-rail" id="worldStageRail" aria-label="Project workflow"></nav>
+      <nav class="world-utility" aria-label="Project tools">
+        <button type="button" data-view="architect"><span>◈</span><b data-i18n="world.ask">Ask ARCHMIND</b></button>
+        <button type="button" data-view="memory"><span>◌</span><b data-i18n="world.brain">Project Brain</b></button>
+        <button type="button" data-view="creation"><span>✦</span><b data-i18n="world.studio">AI Studio</b></button>
+        <button type="button" data-view="technical"><span>▤</span><b data-i18n="world.technical">Technical</b></button>
+      </nav>
       <div class="world-overlay"></div>
-      <div class="world-topline"><span>ARCHMIND / 15-STAGE DESIGN JOURNEY</span><span id="worldStep">01 / 15</span></div>
-      <div class="world-copy" aria-live="polite"><span class="studio-eyebrow" id="worldKicker">01 / 15 · BRIEF</span><h1 id="worldTitle">Brief</h1><p id="worldCopy">Capture client needs, users, budget and ambitions as structured facts.</p><button class="btn primary world-cta" id="worldAction" data-view="brief"><span data-i18n="world.begin">Start with the Brief</span><span aria-hidden="true"> ↗</span></button><button class="btn world-case-link" id="worldCaseStudy" type="button" onclick="go('workflowFilm')">View the built Az-Boroun Villa case study ↗</button></div>
+      <div class="world-topline"><span id="worldProjectName">UNTITLED PROJECT</span><span id="worldStep">01 / 14</span></div>
+      <div class="world-copy" aria-live="polite"><span class="studio-eyebrow" id="worldKicker">01 / 14 · BRIEF</span><h1 id="worldTitle">Brief</h1><p id="worldCopy">Capture client needs, users, budget and ambitions as structured facts.</p><button class="btn primary world-cta" id="worldAction" data-view="brief"><span data-i18n="world.begin">Start with the Brief</span><span aria-hidden="true"> ↗</span></button><button class="btn world-case-link" id="worldCaseStudy" type="button" onclick="go('workflowFilm')">View the built Az-Boroun Villa case study ↗</button></div>
       <div class="world-status" id="worldStatus" aria-live="polite"></div>
       <div class="world-progress" aria-hidden="true"><i></i></div>
-      <div class="world-scroll-hint"><span data-i18n="world.scroll">SCROLL TO MOVE THROUGH THE 15 STAGES</span><b>↓</b></div>
+      <div class="world-scroll-hint"><span data-i18n="world.scroll">SELECT A STAGE · ENTER THE NEXT SPACE</span><b>↗</b></div>
       <a class="world-credit" href="https://unsplash.com/license" target="_blank" rel="noreferrer">ARCHITECTURE PHOTOGRAPHY · UNSPLASH ↗</a>
     </div>
   </section>
@@ -1837,11 +1918,11 @@ Codes and technical outputs require verification.
 <section id="workflowFilm" class="view">
   <section class="journey-overview" aria-labelledby="journeyOverviewTitle">
     <div class="journey-overview-head"><div><span class="studio-eyebrow" id="journeyOverviewKicker">YOUR PROJECT / A TO Z</span><h1 id="journeyOverviewTitle">From the first brief to the final presentation.</h1><p id="journeyOverviewCopy">This is the route your project follows inside ARCHMIND. Each step builds on the decisions made before it, so the same project moves forward from the site and brief to a coordinated presentation.</p><div class="journey-overview-actions"><button class="btn primary" type="button" data-journey-action="example" id="journeyExampleButton">See a real project example ↓</button></div></div></div>
-    <nav class="journey-roadmap" id="journeyRoadmap" aria-label="The 15 project stages"></nav>
-    <div class="journey-transition" id="journeyTransition">ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION</div>
+    <nav class="journey-roadmap" id="journeyRoadmap" aria-label="The 14 project stages"></nav>
+    <div class="journey-transition" id="journeyTransition">ONE PROJECT · 14 CONNECTED STAGES · ONE PRESENTATION</div>
   </section>
   <header class="film-heading">
-    <div><span class="studio-eyebrow" id="filmKicker">REAL PROJECT / ARCHDAILY</span><h1 id="filmHeadingTitle">See the 15 steps applied to a built villa.</h1><p class="sub" id="filmHeadingIntro">Az-Boroun Villa by CROSSARCHITECTURE is a built project documented on ArchDaily. Follow its published facts, then see how each one informs the design analysis below.</p></div>
+    <div><span class="studio-eyebrow" id="filmKicker">REAL PROJECT / ARCHDAILY</span><h1 id="filmHeadingTitle">See the 14 stages applied to a built villa.</h1><p class="sub" id="filmHeadingIntro">Az-Boroun Villa by CROSSARCHITECTURE is a built project documented on ArchDaily. Follow its published facts, then see how each one informs the design analysis below.</p></div>
     <div class="film-project-label"><span id="filmSampleLabel">BUILT PROJECT / SOURCE-LED ANALYSIS</span><strong id="filmProjectName">Az-Boroun Villa · Karaj, Iran</strong></div>
   </header>
   <section class="film-case-hero" id="archdailyExample" aria-labelledby="filmCaseTitle">
@@ -1864,13 +1945,13 @@ Codes and technical outputs require verification.
   <div class="film-player" id="filmPlayer" data-film-stage="0">
     <div class="film-screen">
       <div class="film-art" id="filmArt" aria-hidden="true"></div><div class="film-screen-wash"></div>
-      <div class="film-screen-top"><span id="filmScreenLabel">ARCHMIND · 15-STAGE WALKTHROUGH</span><span id="filmCounter">01 / 15</span></div>
+      <div class="film-screen-top"><span id="filmScreenLabel">ARCHMIND · 14-STAGE WALKTHROUGH</span><span id="filmCounter">01 / 14</span></div>
       <div class="film-screen-copy" aria-live="polite"><span id="filmStageLabel">01 — BRIEF</span><h2 id="filmStageTitle">A family brief becomes a design brief.</h2><p id="filmStageCaption">Six people. A shaded courtyard. Privacy, daylight and a clear budget.</p></div>
-      <button class="film-cover-play" id="filmCoverPlay" type="button" data-journey-action="play" aria-label="Play the 15-stage walkthrough"><span>▶</span><b data-i18n="film.play">PLAY THE STAGE WALKTHROUGH</b><small data-i18n="film.duration">ABOUT 80 SECONDS · 15 STAGES</small></button>
+      <button class="film-cover-play" id="filmCoverPlay" type="button" data-journey-action="play" aria-label="Play the 14-stage walkthrough"><span>▶</span><b data-i18n="film.play">PLAY THE STAGE WALKTHROUGH</b><small data-i18n="film.duration">ABOUT 77 SECONDS · 14 STAGES</small></button>
     </div>
     <div class="film-controls">
       <div class="film-control-row"><button class="btn small" type="button" data-journey-action="previous" aria-label="Previous stage">←</button><button class="btn primary" id="filmPlayButton" type="button" data-journey-action="play"><span id="filmPlayGlyph">▶</span> <span id="filmPlayText">Play walkthrough</span></button><button class="btn small" type="button" data-journey-action="next" aria-label="Next stage">→</button><button class="btn small" type="button" data-journey-action="fullscreen" data-i18n="film.fullscreen">Full screen</button><span class="film-elapsed" id="filmElapsed">00:00 / 01:23</span></div>
-      <input id="filmSeek" class="film-seek" type="range" min="0" max="14" value="0" step="1" aria-label="15-stage project walkthrough">
+      <input id="filmSeek" class="film-seek" type="range" min="0" max="13" value="0" step="1" aria-label="14-stage project walkthrough">
       <nav class="film-timeline" id="filmTimeline" aria-label="Fifteen project stages"></nav>
     </div>
     <div class="film-stage-record" aria-live="polite">
@@ -1944,6 +2025,8 @@ Develop with Architect
 </section>
 
 <section id="architect" class="view">
+
+<button class="btn small architect-panel-close" type="button" aria-label="Close ARCHMIND assistant" onclick="closeArchitectPanel()">×</button>
 
 <div class="kicker" data-i18n="arch.kicker">ARCHMIND ARCHITECT</div>
 
@@ -2158,7 +2241,7 @@ Each prompt includes a design-intent focus, negative-prompt guardrails and a bef
 <div class="card" style="margin-bottom:14px">
   <div class="kicker">PROJECT BRAIN</div>
   <h2 style="margin:7px 0">Persistent project intelligence</h2>
-  <p class="muted" style="font-size:12px">The same project facts, decisions and open questions are sent to ARCHMIND across all 15 stages.</p>
+  <p class="muted" style="font-size:12px">The same project facts, decisions and open questions are sent to ARCHMIND across all 14 stages.</p>
   <div class="grid g2">
     <div>
       <div class="row"><b>Decisions</b><span id="brainDecisionCount">00</span></div>
@@ -2173,7 +2256,7 @@ Each prompt includes a design-intent focus, negative-prompt guardrails and a bef
   </div>
 </div>
 <div class="card" style="margin-bottom:14px">
-  <div class="kicker">15-STAGE STATUS</div>
+  <div class="kicker">14-STAGE STATUS</div>
   <div id="brainStageStatus"></div>
 </div>
 
@@ -2309,17 +2392,17 @@ let currentLang=['ar','en'].includes(requestedLang)?requestedLang:(localStorage.
 if(currentLang!=='ar'&&currentLang!=='en')currentLang='en';
 
 const stages={
-en:['Brief','Context','Site','Regulations','Program','Concept','Zoning','Massing','Plan','Section','Facade','Coordination','Documentation','Quantities','Presentation'],
-ar:['البرنامج التعريفي','السياق','الموقع','الأنظمة','البرنامج','المفهوم','التقسيم','الكتلة','المسقط','القطاع','الواجهة','التنسيق','التوثيق','الكميات','العرض التقديمي']
+  en:['Brief','Context','Site','Regulations','Program','Concept','Zoning','Massing','Plan','Section','Facade','Coordination','Documentation','Quantities'],
+  ar:['البرنامج التعريفي','السياق','الموقع','الأنظمة','البرنامج','المفهوم','التقسيم','الكتلة','المسقط','القطاع','الواجهة','التنسيق','التوثيق','الكميات']
 };
 const JOURNEY_OUTCOMES={en:['Client goals','Place & climate','Survey & access','Buildable envelope','Room schedule','Design idea','Public to private','Volumes & voids','Floor layouts','Light & levels','Materials & shade','Engineering links','Drawing set','Cost scope','Final story'],ar:['أهداف العميل','المكان والمناخ','الرفع والمداخل','حدود البناء','جدول الفراغات','فكرة التصميم','عام إلى خاص','الكتل والفراغات','مساقط الطوابق','الضوء والمناسيب','الخامات والظل','تنسيق الهندسة','حزمة الرسومات','نطاق التكلفة','العرض النهائي']};
 
 
 /* =========================================================
    PROJECT BRAIN
-   Persistent local project state shared by all 15 stages.
+   Persistent local project state shared by all 14 stages.
    ========================================================= */
-const STAGE_KEYS=['brief','context','site','regulations','program','concept','zoning','massing','plan','section','facade','coordination','documentation','quantities','presentation'];
+const STAGE_KEYS=['brief','context','site','regulations','program','concept','zoning','massing','plan','section','facade','coordination','documentation','quantities'];
 
 const STAGE_DELIVERABLES={
 en:[
@@ -2453,7 +2536,7 @@ function applyProject(p){
   projectBrain.openQuestions=Array.isArray(p.openQuestions)?p.openQuestions:(projectBrain.openQuestions||[]);
   projectBrain.stageNotes=p.stageNotes||projectBrain.stageNotes||{}; projectBrain.stageStatus=p.stageStatus||projectBrain.stageStatus||{};
   projectBrain.technicalOffice=projectBrain.technicalOffice||{};
-  projectChatHistory=p.chatHistory||[]; currentStageIndex=Number.isInteger(p.stage)?p.stage:currentStageIndex;
+  projectChatHistory=p.chatHistory||[]; currentStageIndex=Number.isInteger(p.stage)?Math.max(0,Math.min(STAGE_KEYS.length-1,p.stage)):currentStageIndex;
   localStorage.setItem('archmindProjectBrain',JSON.stringify(projectBrain));
   localStorage.setItem('archmindStage',currentStageIndex);
   const sel=document.getElementById('projectSelect'); if(sel)sel.value=p.id;
@@ -2461,7 +2544,7 @@ function applyProject(p){
   if(briefInputs.length){briefInputs[0].value=projectBrain.type||'';briefInputs[1].value=projectBrain.clientRequirements||projectBrain.facts?.[0]||'';briefInputs[2].value=projectBrain.location||projectBrain.facts?.[1]||'';briefInputs[3].value=projectBrain.buildingDescription||projectBrain.facts?.[2]||'';}
   const briefArea=document.querySelector('#brief textarea'); if(briefArea)briefArea.value=projectBrain.brief||'';
   const box=document.getElementById('messages'); if(box)box.innerHTML=projectChatHistory.length?projectChatHistory.map(m=>`<div class="msg ${m.role==='user'?'user':'ai'}">${esc(m.content).replace(/\n/g,'<br>')}</div>`).join(''):`<div class="msg ai"><b>ARCHMIND ARCHITECT</b><br>${esc(I18N[currentLang]?.['arch.greeting']||'Ask an architecture question to begin.')}</div>`;
-  renderWorkflow(); updateStagePanel(); renderProjectBrain(); renderTechnicalOffice(); updateDashboardSummary();if(typeof CS_render==='function')CS_render();
+  renderWorkflow(); updateStagePanel(); renderProjectBrain(); renderTechnicalOffice(); updateDashboardSummary();updateWorldJourney();if(typeof CS_render==='function')CS_render();
 }
 async function createProject(){
   if(!isAuthenticated){pendingProtectedView='dashboard';openAuth('login');return;}
@@ -2589,7 +2672,7 @@ ar:[['architect','◈','المعماري الذكي'],['prompts','⌘','مكتب
  * desc = one-line purpose of the stage (shown under Suggested).
  * prompts = 3 ready-to-send questions specific to that stage.
  * Prompts always go to the backend in English (stages.en / STAGE_DESC.en)
- * so the system prompt's 15-stage methodology matches regardless of
+ * so the system prompt's 14-stage methodology matches regardless of
  * which UI language is displayed — the model still replies in whatever
  * language the user actually writes in.
  */
@@ -2633,11 +2716,9 @@ ar:[
 function updateWorldJourney(){
   const track=document.getElementById('worldJourney');
   if(!track||!STAGE_DESC?.[currentLang])return;
-  const total=Math.max(1,track.offsetHeight-window.innerHeight);
-  const progress=Math.max(0,Math.min(1,-track.getBoundingClientRect().top/total));
-  const phase=progress*STAGE_KEYS.length;
-  const index=Math.min(STAGE_KEYS.length-1,Math.floor(phase));
-  const local=index===STAGE_KEYS.length-1?Math.min(1,phase-index):phase-index;
+  const index=Math.max(0,Math.min(STAGE_KEYS.length-1,currentStageIndex));
+  const progress=index/Math.max(1,STAGE_KEYS.length-1);
+  const local=1;
   track.classList.toggle('is-light',index>=11);
   // Keep the video running beneath the stage-to-stage architectural studies.
   const frameIndex=Math.min(3,Math.floor(index/4));
@@ -2652,7 +2733,8 @@ function updateWorldJourney(){
   const numeral=String(index+1).padStart(2,'0');
   const arabicNumeral=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[Number(d)]);
   const stepNumber=currentLang==='ar'?arabicNumeral(numeral):numeral;
-  const totalNumber=currentLang==='ar'?'١٥':'15';
+  const totalNumber=currentLang==='ar'?'١٤':'14';
+  const projectName=document.getElementById('worldProjectName');if(projectName)projectName.textContent=(projectBrain.name&&!/^untitled project$/i.test(projectBrain.name)?projectBrain.name:(currentLang==='ar'?'مشروع جديد':'NEW PROJECT')).toUpperCase();
   const title=document.getElementById('worldTitle');
   const copy=document.getElementById('worldCopy');
   const kicker=document.getElementById('worldKicker');
@@ -2664,19 +2746,19 @@ function updateWorldJourney(){
   const drawing=document.getElementById('worldDrawing');
   if(drawing){const direction=index%2===0?1:-1;const reveal=index===0?1:Math.min(1,local/.11);drawing.style.setProperty('--drawing-progress',String(local));drawing.style.opacity=String(reveal);drawing.style.transform=`translate3d(${direction*local*1.3}%,${-local*1.1}%,0) scale(${1+local*.035})`;if(window.__worldDrawingStage!==index||window.__worldDrawingLang!==currentLang){window.__worldDrawingStage=index;window.__worldDrawingLang=currentLang;drawing.classList.remove('is-changing');void drawing.offsetWidth;renderWorldDrawing(index);drawing.classList.add('is-changing');const copy=document.querySelector('.world-copy');if(copy){copy.classList.remove('is-changing');void copy.offsetWidth;copy.classList.add('is-changing');}}}
   const nextIndex=Math.min(STAGE_KEYS.length-1,index+1),portalNext=document.getElementById('worldPortalNext'),portalAction=document.getElementById('worldPortalAction'),portalActionText=document.getElementById('worldPortalActionText'),portalLabel=document.getElementById('worldPortalLabel');
-  const nextTitle=index===STAGE_KEYS.length-1?(currentLang==='ar'?'عرض المشروع':'Project presentation'):stages[currentLang][nextIndex];
+  const nextTitle=index===STAGE_KEYS.length-1?(currentLang==='ar'?'حزمة التسليم':'Issue project package'):stages[currentLang][nextIndex];
   if(portalNext)portalNext.textContent=`${currentLang==='ar'?arabicNumeral(String(nextIndex+1).padStart(2,'0')):String(nextIndex+1).padStart(2,'0')} · ${nextTitle}`;
   if(portalLabel)portalLabel.textContent=currentLang==='ar'?'المرحلة التصميمية التالية':'NEXT DESIGN STAGE';
   if(portalAction){portalAction.setAttribute('aria-label',index===STAGE_KEYS.length-1?(currentLang==='ar'?'افتح عرض المشروع':'Open the project presentation'):(currentLang==='ar'?`انتقل للمرحلة التالية: ${nextTitle}`:`Enter the next design stage: ${nextTitle}`));}
   if(portalActionText)portalActionText.textContent=index===STAGE_KEYS.length-1?(currentLang==='ar'?'افتح عرض المشروع':'OPEN PROJECT PRESENTATION'):(currentLang==='ar'?'ادخل المرحلة التالية':'ENTER NEXT STAGE');
   const stampTitle=document.getElementById('worldTransitionTitle'),stampNumber=document.getElementById('worldTransitionNumber');
   if(stampTitle)stampTitle.textContent=stages[currentLang][index];
-  if(stampNumber)stampNumber.textContent=currentLang==='ar'?`${arabicNumeral(numeral)} / ١٥ · المرحلة التالية`:`${numeral} / 15 · DESIGN STAGE`;
+  if(stampNumber)stampNumber.textContent=currentLang==='ar'?`${arabicNumeral(numeral)} / ١٤ · المرحلة التالية`:`${numeral} / 14 · DESIGN STAGE`;
   renderWorldRail(index);
   const status=document.getElementById('worldStatus');
   if(status){
     const done=STAGE_KEYS.filter(k=>projectBrain.stageStatus?.[k]==='Complete').length;
-    status.textContent=currentLang==='ar'?`حالة المشروع · ${done} من ١٥ مراحل مكتملة`:`PROJECT STATE · ${done} OF 15 STAGES COMPLETE`;
+    status.textContent=currentLang==='ar'?`حالة المشروع · ${done} من ١٤ مرحلة مكتملة`:`PROJECT STATE · ${done} OF 14 STAGES COMPLETE`;
   }
   if(window.__archmindScrollStage===undefined){window.__archmindScrollStage=index;}
   else if(index!==window.__archmindScrollStage){
@@ -2700,7 +2782,7 @@ function updateWorldJourney(){
 function renderWorldDrawing(index){
   const root=document.getElementById('worldDrawing');if(!root)return;
   const label=(currentLang==='ar'?stages.ar:stages.en)[index]||stages.en[index];
-  const frame=(content)=>`<svg viewBox="0 0 620 500" role="img" aria-label="${esc(label)} architectural study"><text x="32" y="34" fill="rgba(255,255,255,.72)" font-family="DM Mono,monospace" font-size="10" letter-spacing="2">${String(index+1).padStart(2,'0')} / 15 · ${label.toUpperCase()}</text>${content}<path class="draw-muted" d="M26 458H594M54 444V466M566 444V466"/><text x="32" y="484" fill="rgba(255,255,255,.6)" font-family="DM Mono,monospace" font-size="9">ARCHMIND / PROJECT STUDY</text><text x="548" y="484" fill="rgba(255,255,255,.6)" font-family="DM Mono,monospace" font-size="9">1:${index<4?'500':index<8?'200':'100'}</text></svg>`;
+  const frame=(content)=>`<svg viewBox="0 0 620 500" role="img" aria-label="${esc(label)} architectural study"><text x="32" y="34" fill="rgba(255,255,255,.72)" font-family="DM Mono,monospace" font-size="10" letter-spacing="2">${String(index+1).padStart(2,'0')} / 14 · ${label.toUpperCase()}</text>${content}<path class="draw-muted" d="M26 458H594M54 444V466M566 444V466"/><text x="32" y="484" fill="rgba(255,255,255,.6)" font-family="DM Mono,monospace" font-size="9">ARCHMIND / PROJECT STUDY</text><text x="548" y="484" fill="rgba(255,255,255,.6)" font-family="DM Mono,monospace" font-size="9">1:${index<4?'500':index<8?'200':'100'}</text></svg>`;
   const line=(d,cls='draw-line')=>`<path class="${cls}" d="${d}"/>`;
   const rect=(x,y,w,h,cls='draw-fill',rx=0)=>`<rect class="${cls}" x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}"/>`;
   const circle=(cx,cy,r,cls='draw-muted')=>`<circle class="${cls}" cx="${cx}" cy="${cy}" r="${r}"/>`;
@@ -2728,14 +2810,12 @@ function renderWorldDrawing(index){
 function renderWorldRail(active){
  const rail=document.getElementById('worldStageRail');if(!rail)return;
  if(!rail.dataset.ready){
-  rail.innerHTML=STAGE_KEYS.map((key,i)=>`<button type="button" data-world-stage="${i}" aria-label="${String(i+1).padStart(2,'0')} ${esc(stages[currentLang][i])}" title="${String(i+1).padStart(2,'0')} · ${esc(stages[currentLang][i])}">${String(i+1).padStart(2,'0')}</button>`).join('');
+  rail.innerHTML=STAGE_KEYS.map((key,i)=>`<button type="button" data-world-stage="${i}" aria-label="${String(i+1).padStart(2,'0')} ${esc(stages[currentLang][i])}" title="${String(i+1).padStart(2,'0')} · ${esc(stages[currentLang][i])}"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(stages[currentLang][i])}</strong><i aria-hidden="true"></i></button>`).join('');
   const goToStage=i=>{
-   setStage(i,false);
-   const journey=document.getElementById('worldJourney');const span=Math.max(1,journey.offsetHeight-innerHeight);
-   window.scrollTo({top:journey.offsetTop+span*(i+.5)/STAGE_KEYS.length,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+   setStage(i,false);updateWorldJourney();
   };
   rail.querySelectorAll('[data-world-stage]').forEach(button=>button.addEventListener('click',()=>goToStage(Number(button.dataset.worldStage))));
-  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=Number(window.__archmindScrollStage)||0;if(active>=STAGE_KEYS.length-1){go('workflowFilm');return;}goToStage(active+1);});
+  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=currentStageIndex;if(active>=STAGE_KEYS.length-1){go('workflowFilm');return;}goToStage(active+1);});
   const portalVisual=document.querySelector('.world-portal-visual');if(portalVisual){portalVisual.addEventListener('pointermove',event=>{const box=portalVisual.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;portalVisual.style.setProperty('--portal-rx',`${-y*9}deg`);portalVisual.style.setProperty('--portal-ry',`${x*11}deg`);});portalVisual.addEventListener('pointerleave',()=>{portalVisual.style.setProperty('--portal-rx','0deg');portalVisual.style.setProperty('--portal-ry','0deg');});}
   rail.dataset.ready='1';
  }
@@ -2745,6 +2825,7 @@ function renderWorldRail(active){
   button.setAttribute('aria-current',i===active?'step':'false');
   button.setAttribute('aria-label',`${String(i+1).padStart(2,'0')} ${stages[currentLang][i]} · ${projectBrain.stageStatus?.[STAGE_KEYS[i]]|| (i<currentStageIndex?(currentLang==='ar'?'سابق':'Earlier'):(currentLang==='ar'?'لم يبدأ':'Not started'))}`);
   button.title=`${String(i+1).padStart(2,'0')} · ${stages[currentLang][i]}`;
+  const label=button.querySelector('strong');if(label)label.textContent=stages[currentLang][i];
  });
 }
 window.addEventListener('scroll',updateWorldJourney,{passive:true});
@@ -2789,7 +2870,7 @@ ar:[
 };
 
 let currentStageIndex=Number(localStorage.getItem('archmindStage'));
-if(!(currentStageIndex>=0&&currentStageIndex<15))currentStageIndex=5;
+if(!(currentStageIndex>=0&&currentStageIndex<STAGE_KEYS.length))currentStageIndex=0;
 
 let currentView=localStorage.getItem('archmindView')||'dashboard';
 let isAuthenticated=false;
@@ -2932,6 +3013,8 @@ updateDashboardSummary();
 
 function go(v){
 closeToolsMenu();
+if(v==='architect'&&currentView==='dashboard'&&document.querySelector('.app')?.classList.contains('landing-mode')){openArchitectPanel();return;}
+closeArchitectPanel();
 if(!['dashboard','workflowFilm'].includes(v)&&!isAuthenticated){
  pendingProtectedView=v;
  openAuth('login');
@@ -2951,6 +3034,19 @@ window.scrollTo(0,0);
 requestAnimationFrame(updateHeroScene);
 if(v==='prompts')renderPrompts();
 if(v==='workflowFilm')renderWorkflowFilm();
+}
+
+function openArchitectPanel(){
+ if(!isAuthenticated){pendingProtectedView='architect';openAuth('login');return;}
+ const panel=document.getElementById('architect');if(!panel)return;
+ panel.classList.add('active','immersive-aside');
+ document.querySelector('.app')?.classList.add('tool-panel-open');
+ document.getElementById('chat')?.focus({preventScroll:true});
+}
+function closeArchitectPanel(){
+ const panel=document.getElementById('architect');panel?.classList.remove('immersive-aside');
+ if(currentView==='dashboard')panel?.classList.remove('active');
+ document.querySelector('.app')?.classList.remove('tool-panel-open');
 }
 
 function setGuestChrome(guest){
@@ -3011,7 +3107,7 @@ const FILM_STAGE_DETAILS=[
  ['Presentation: brief → Karaj garden context → two voids → three-level organization → deep-frame massing → plan/section → material and climate reading.','Credits stay attached to the published project; ARCHMIND vector boards are original schematic analysis, not source drawings.','العرض: الموجز ← حدائق كرج ← الفراغان ← تنظيم الطوابق ← الكتل والإطار ← المسقط والقطاع ← الخامات والمناخ.','تبقى حقوق الصور والرسومات للمصدر؛ لوحات ARCHMIND تحليل تخطيطي أصلي وليست رسومات المصدر.']
 ];let filmIndex=0,filmTimer=null,filmPlaying=false;
 let villaDrawingIndex=0;
-const VILLA_STAGE_DRAWINGS=Array.from({length:15},(_,i)=>i);
+const VILLA_STAGE_DRAWINGS=Array.from({length:14},(_,i)=>i);
 const VILLA_DRAWINGS=Array.from({length:15},(_,i)=>({svg:azBorounBoard(i)}));
 function azBorounBoard(n){
  const scenes=[
@@ -3033,9 +3129,9 @@ function azBorounBoard(n){
  ];
  const frame=`<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"><defs><style>text{font:15px 'DM Mono',monospace;letter-spacing:.5px;fill:#344144}.tiny{font-size:10px;fill:#626b68}.board-title{font:32px Georgia,serif;fill:#142729}.villa-room{fill:#fbfaf6;stroke:#43585a;stroke-width:2}.villa-wet{fill:#dfd9cf;stroke:#43585a;stroke-width:2}.villa-court{fill:#c7d9cb;stroke:#436257;stroke-width:2}.villa-accent{fill:none;stroke:#c99b64;stroke-width:4}.villa-dim{fill:none;stroke:#9b7953;stroke-width:1.4}.villa-thin{fill:none;stroke:#697c7c;stroke-width:1.5}</style></defs><rect width="900" height="560" fill="#f7f5ef"/><text x="38" y="42" class="tiny">AZ-BOROUN VILLA / ${String(n+1).padStart(2,'0')} · ARCHMIND ANALYTICAL STUDY</text>${scenes[n]}<path d="M38 518H862" stroke="#bbb8af"/><text x="38" y="542" class="tiny">SCHEMATIC READING · NOT TO SCALE · NOT THE ARCHITECTS’ ORIGINAL DRAWINGS</text></svg>`;
  return frame;
-}function renderVillaDrawing(index){villaDrawingIndex=Math.max(0,Math.min(14,index));const ar=currentLang==='ar',d=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[villaDrawingIndex]],copy=FILM_COPY[villaDrawingIndex],detail=FILM_STAGE_DETAILS[villaDrawingIndex];const tabs=document.getElementById('villaTabs');if(!tabs)return;tabs.innerHTML=stages[currentLang].map((x,i)=>`<button type="button" aria-selected="${i===villaDrawingIndex?'true':'false'}" data-journey-action="stage" data-journey-stage="${i}">${String(i+1).padStart(2,'0')} ${esc(x)}</button>`).join('');document.getElementById('villaDrawing').innerHTML=d.svg;document.getElementById('villaDrawingIndex').textContent=`${String(villaDrawingIndex+1).padStart(2,'0')} / 15 · ${stages[currentLang][villaDrawingIndex].toUpperCase()}`;document.getElementById('villaDrawingTitle').textContent=ar?copy[2]:copy[0];document.getElementById('villaDrawingDescription').textContent=ar?copy[3]:copy[1];document.getElementById('villaDrawingNotes').innerHTML=(ar?[detail[2],detail[3]]:[detail[0],detail[1]]).map(x=>`<li>${esc(x)}</li>`).join('');}
+}function renderVillaDrawing(index){villaDrawingIndex=Math.max(0,Math.min(13,index));const ar=currentLang==='ar',d=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[villaDrawingIndex]],copy=FILM_COPY[villaDrawingIndex],detail=FILM_STAGE_DETAILS[villaDrawingIndex];const tabs=document.getElementById('villaTabs');if(!tabs)return;tabs.innerHTML=stages[currentLang].map((x,i)=>`<button type="button" aria-selected="${i===villaDrawingIndex?'true':'false'}" data-journey-action="stage" data-journey-stage="${i}">${String(i+1).padStart(2,'0')} ${esc(x)}</button>`).join('');document.getElementById('villaDrawing').innerHTML=d.svg;document.getElementById('villaDrawingIndex').textContent=`${String(villaDrawingIndex+1).padStart(2,'0')} / 14 · ${stages[currentLang][villaDrawingIndex].toUpperCase()}`;document.getElementById('villaDrawingTitle').textContent=ar?copy[2]:copy[0];document.getElementById('villaDrawingDescription').textContent=ar?copy[3]:copy[1];document.getElementById('villaDrawingNotes').innerHTML=(ar?[detail[2],detail[3]]:[detail[0],detail[1]]).map(x=>`<li>${esc(x)}</li>`).join('');}
 function filmDiagram(n){
- const raw=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[Math.max(0,Math.min(14,n))]].svg;
+ const raw=VILLA_DRAWINGS[VILLA_STAGE_DRAWINGS[Math.max(0,Math.min(13,n))]].svg;
  return raw.replace('<svg viewBox="0 0 900 560"','<svg class="film-svg" viewBox="0 0 900 560"');
 }function renderWorkflowFilm(){
  const player=document.getElementById('filmPlayer');if(!player)return;
@@ -3046,8 +3142,8 @@ function filmDiagram(n){
  document.getElementById('journeyOverviewTitle').textContent=ar?'من أول بريف لحد العرض النهائي.':'From the first brief to the final presentation.';
  document.getElementById('journeyOverviewCopy').textContent=ar?'دي خريطة الطريق اللي مشروعك هيمشي عليها داخل ARCHMIND. كل خطوة بتبني على قرارات اللي قبلها، لحد ما نفس المشروع يتحول من فهم الموقع والاحتياجات إلى رسومات وعرض متكامل.':'This is the route your project follows inside ARCHMIND. Each step builds on earlier decisions, moving the same project from the brief and site through drawings and a complete presentation.';
  document.getElementById('journeyExampleButton').textContent=ar?'بعد المراحل: شوف مثالًا حقيقيًا ↓':'AFTER THE STAGES: SEE A REAL PROJECT ↓';
- document.getElementById('journeyTransition').textContent=ar?'مشروع واحد · ١٥ خطوة مترابطة · عرض نهائي واحد':'ONE PROJECT · FIFTEEN CONNECTED STEPS · ONE PRESENTATION';
- const roadmap=document.getElementById('journeyRoadmap');if(roadmap){roadmap.setAttribute('aria-label',ar?'مراحل المشروع الخمس عشرة':'The 15 project stages');const chapters=ar?[['١','اكتشاف المشروع','المراحل ٠١ — ٠٥'],['٢','تشكيل الفكرة','المراحل ٠٦ — ١٠'],['٣','تطوير وتسليم','المراحل ١١ — ١٥']]:[['01','Understand the brief & place','STAGES 01 — 05'],['02','Shape the architectural idea','STAGES 06 — 10'],['03','Develop & present the project','STAGES 11 — 15']];roadmap.innerHTML=chapters.map((chapter,c)=>`<section class="journey-chapter"><div class="journey-chapter-head"><span>${chapter[0]}</span><strong>${chapter[1]}</strong><small>${chapter[2]}</small></div><div class="journey-chapter-steps">${stages[currentLang].slice(c*5,c*5+5).map((label,j)=>{const i=c*5+j;return `<button type="button" class="journey-step" aria-current="${i===filmIndex?'step':'false'}" aria-label="${String(i+1).padStart(2,'0')} / 15 · ${esc(label)} · ${esc(JOURNEY_OUTCOMES[currentLang][i])}" data-journey-action="stage" data-journey-stage="${i}"><span>${String(i+1).padStart(2,'0')} / 15</span><strong>${esc(label)}</strong><small>${esc(JOURNEY_OUTCOMES[currentLang][i])}</small></button>`;}).join('')}</div></section>`).join('');}
+ document.getElementById('journeyTransition').textContent=ar?'مشروع واحد · ١٤ مرحلة مترابطة · عرض نهائي واحد':'ONE PROJECT · 14 CONNECTED STAGES · ONE PRESENTATION';
+ const roadmap=document.getElementById('journeyRoadmap');if(roadmap){const ar=currentLang==='ar';roadmap.setAttribute('aria-label',ar?'مراحل المشروع الأربع عشرة':'The 14 project stages');const chapters=ar?[[0,5,'١','اكتشاف المشروع','المراحل ٠١ — ٠٥'],[5,5,'٢','تشكيل الفكرة','المراحل ٠٦ — ١٠'],[10,4,'٣','التطوير التقني','المراحل ١١ — ١٤']]:[[0,5,'01','Understand the brief & place','STAGES 01 — 05'],[5,5,'02','Shape the architectural idea','STAGES 06 — 10'],[10,4,'03','Develop the technical project','STAGES 11 — 14']];roadmap.innerHTML=chapters.map(([start,count,number,title,range])=>`<section class="journey-chapter"><div class="journey-chapter-head"><span>${number}</span><strong>${title}</strong><small>${range}</small></div><div class="journey-chapter-steps">${stages[currentLang].slice(start,start+count).map((label,j)=>{const i=start+j;return `<button type="button" class="journey-step" aria-current="${i===filmIndex?'step':'false'}" aria-label="${String(i+1).padStart(2,'0')} / 14 · ${esc(label)} · ${esc(JOURNEY_OUTCOMES[currentLang][i])}" data-journey-action="stage" data-journey-stage="${i}"><span>${String(i+1).padStart(2,'0')} / 14</span><strong>${esc(label)}</strong><small>${esc(JOURNEY_OUTCOMES[currentLang][i])}</small></button>`;}).join('')}</div></section>`).join('');}
  document.getElementById('filmKicker').textContent=ar?'مثال مشروع منفذ / ArchDaily':'BUILT PROJECT / ARCHDAILY';
  document.getElementById('filmHeadingTitle').textContent=ar?'وده شكل المراحل على مشروع فيلا منفذ.':'See the stages applied to a built villa.';
  document.getElementById('filmHeadingIntro').textContent=ar?'فيلا Az-Boroun لـ CROSSARCHITECTURE منشورة على ArchDaily. تابع حقائق المشروع المنشورة، ثم شوف إزاي كل معلومة بتوجّه التحليل التصميمي.':'Az-Boroun Villa by CROSSARCHITECTURE is documented on ArchDaily. Follow its published facts, then see how each one informs the design analysis.';
@@ -3066,14 +3162,14 @@ function filmDiagram(n){
  document.getElementById('filmSiteValue').textContent=ar?'زعفرانية · كرج، إيران':'Zafaranieh · Karaj, Iran';
  document.getElementById('filmAreaValue').textContent=ar?'٧١٦ م²':'716 m²';
  document.getElementById('filmYearValue').textContent=ar?'٢٠٢٤':'2024';
- document.getElementById('villaSetKicker').textContent=ar?'تحليل المشروع / ١٥ لوحة':'PROJECT ANALYSIS / 15 BOARDS';
+ document.getElementById('villaSetKicker').textContent=ar?'تحليل المشروع / ١٤ لوحة':'PROJECT ANALYSIS / 14 BOARDS';
  document.getElementById('villaSetTitle').textContent=ar?'فيلا منفذة، نقرأها مرحلة بمرحلة':'A built villa, read stage by stage';
  document.getElementById('villaSetIntro').textContent=ar?'اختر لوحة لتتبع الحقائق المنشورة وقراءة ARCHMIND التخطيطية. الرسوم التحليلية ليست الرسومات الأصلية أو التنفيذية.':'Select a board to follow published facts and ARCHMIND’s schematic reading. Analytical diagrams are not the original or construction drawings.';
  document.getElementById('villaSetCaveat').textContent=ar?'تنشر ArchDaily مسقط الطابق الأول وقطاعًا. باقي اللوحات رسوم تحليلية أصلية من ARCHMIND مستندة إلى وصف المقال، وموسومة بأنها تخطيطية وغير مقيّسة.':'ArchDaily publishes the first-floor plan and a section. Other boards are original ARCHMIND diagrams based on the article narrative, labeled schematic and not to scale.';
  document.getElementById('filmNote').textContent=ar?'نفصل حقائق المصدر عن تحليل ARCHMIND. المساحة المدرجة ٧١٦ م² ليست مساحة الأرض؛ لا نخترع أبعادًا أو جدول غرف أو كميات غير منشورة.':'Source facts and ARCHMIND analysis are separated. The listed 716 m² is not a plot area; no unpublished dimensions, room schedule or quantities are invented.';
- document.getElementById('filmCounter').textContent=`${String(filmIndex+1).padStart(2,'0')} / 15`;
- document.getElementById('filmScreenLabel').textContent=ar?'آركمايند · جولة عبر ١٥ مرحلة':'ARCHMIND · 15-STAGE WALKTHROUGH';
- document.getElementById('filmCoverPlay').setAttribute('aria-label',ar?'تشغيل جولة المراحل الخمس عشرة':'Play the 15-stage walkthrough');
+ document.getElementById('filmCounter').textContent=`${String(filmIndex+1).padStart(2,'0')} / 14`;
+ document.getElementById('filmScreenLabel').textContent=ar?'آركمايند · جولة عبر ١٤ مرحلة':'ARCHMIND · 14-STAGE WALKTHROUGH';
+ document.getElementById('filmCoverPlay').setAttribute('aria-label',ar?'تشغيل جولة المراحل الأربع عشرة':'Play the 14-stage walkthrough');
  document.getElementById('filmStageLabel').textContent=`${String(filmIndex+1).padStart(2,'0')} — ${stages[currentLang][filmIndex].toUpperCase()}`;
  document.getElementById('filmStageTitle').textContent=ar?copy[2]:copy[0];
  document.getElementById('filmStageCaption').textContent=ar?copy[3]:copy[1];
@@ -3085,7 +3181,7 @@ function filmDiagram(n){
  const seek=document.getElementById('filmSeek');if(seek)seek.value=String(filmIndex);
  const timeline=document.getElementById('filmTimeline');if(timeline){timeline.innerHTML=stages[currentLang].map((label,i)=>`<button type="button" aria-current="${i===filmIndex?'step':'false'}" title="${String(i+1).padStart(2,'0')} ${esc(label)}" data-journey-action="stage" data-journey-stage="${i}">${String(i+1).padStart(2,'0')} ${esc(label)}</button>`).join('');}
  const elapsedSeconds=Math.round(filmIndex*FILM_DURATION/1000),elapsedMinutes=String(Math.floor(elapsedSeconds/60)).padStart(2,'0'),elapsedRemainder=String(elapsedSeconds%60).padStart(2,'0');
- document.getElementById('filmElapsed').textContent=`${elapsedMinutes}:${elapsedRemainder} / 01:23`;
+ document.getElementById('filmElapsed').textContent=`${elapsedMinutes}:${elapsedRemainder} / 01:17`;
  document.getElementById('filmPlayGlyph').textContent=filmPlaying?'Ⅱ':'▶';
  document.getElementById('filmPlayText').textContent=ar?(filmPlaying?'إيقاف مؤقت':'تشغيل جولة المراحل'):(filmPlaying?'Pause walkthrough':'Play walkthrough');
  player.classList.toggle('is-playing',filmPlaying);
@@ -3093,10 +3189,10 @@ function filmDiagram(n){
 function filmStop(){if(filmTimer){clearInterval(filmTimer);filmTimer=null;}filmPlaying=false;const player=document.getElementById('filmPlayer');if(player)player.classList.remove('is-playing');}
 function filmToggle(){
  if(filmPlaying){filmStop();renderWorkflowFilm();return;}
- if(filmIndex>=14)filmIndex=0;
- filmPlaying=true;renderWorkflowFilm();filmTimer=setInterval(()=>{if(filmIndex>=14){filmStop();renderWorkflowFilm();return;}filmIndex++;renderWorkflowFilm();},FILM_DURATION);
+ if(filmIndex>=13)filmIndex=0;
+ filmPlaying=true;renderWorkflowFilm();filmTimer=setInterval(()=>{if(filmIndex>=13){filmStop();renderWorkflowFilm();return;}filmIndex++;renderWorkflowFilm();},FILM_DURATION);
 }
-function filmGoTo(index){filmIndex=Math.max(0,Math.min(14,Number(index)||0));renderWorkflowFilm();if(filmPlaying){clearInterval(filmTimer);filmTimer=setInterval(()=>{if(filmIndex>=14){filmStop();renderWorkflowFilm();return;}filmIndex++;renderWorkflowFilm();},FILM_DURATION);}}
+function filmGoTo(index){filmIndex=Math.max(0,Math.min(13,Number(index)||0));renderWorkflowFilm();if(filmPlaying){clearInterval(filmTimer);filmTimer=setInterval(()=>{if(filmIndex>=13){filmStop();renderWorkflowFilm();return;}filmIndex++;renderWorkflowFilm();},FILM_DURATION);}}
 function filmStep(delta){filmGoTo(filmIndex+delta);}
 function filmFullscreen(){const player=document.getElementById('filmPlayer');if(!player)return;const action=player.requestFullscreen||player.webkitRequestFullscreen;if(action){const result=action.call(player);result?.catch?.(()=>{});}}
 
@@ -3700,7 +3796,8 @@ en:{
 'studio.inspiration':'A QUICK LOOK AROUND THE WORLD',
 'studio.study':'Study the work. Find your direction.',
 'studio.allProjects':'Explore selected works',
-'world.scroll':'SCROLL TO MOVE THROUGH THE 15 STAGES',
+'world.scroll':'SELECT A STAGE · ENTER THE NEXT SPACE',
+'world.ask':'Ask ARCHMIND','world.brain':'Project Brain','world.studio':'AI Studio','world.technical':'Technical',
 'world.begin':'Start with the Brief',
 'world.continue':'Work on this stage',
 'worldBegin':'Start with the Brief',
@@ -3863,7 +3960,8 @@ ar:{
 'studio.inspiration':'جولة سريعة في عمارة العالم',
 'studio.study':'ادرس المشاريع واستلهم اتجاهك.',
 'studio.allProjects':'استكشف المشاريع المختارة',
-'world.scroll':'مرّر لاستكشاف المراحل الـ15',
+'world.scroll':'اختر مرحلة · ادخل المساحة التالية',
+'world.ask':'اسأل ARCHMIND','world.brain':'ذاكرة المشروع','world.studio':'استوديو الصور','world.technical':'المكتب الفني',
 'world.begin':'ابدأ بالـBrief',
 'world.continue':'اشتغل على المرحلة دي',
 'worldBegin':'ابدأ بالـBrief',
@@ -3997,14 +4095,14 @@ ar:{
 
 Object.assign(I18N.en,{
  'nav.creation':'AI Image Studio','nav.technical':'Technical Office','btn.openStudio':'Open the integrated image studio',
- 'villaSet.kicker':'VILLA DESIGN / 15 STAGE OUTPUTS','villaSet.title':'The villa, developed step by step','villaSet.intro':'Select a stage to see its design output. The same villa carries through from brief to presentation.','villaSet.caveat':'This is ARCHMIND’s schematic proposal inspired by the public project journey. Room sizes and layouts are study assumptions; confirm survey, rules and engineering before use.','film.kicker':'ARCHMIND / 15-STAGE WALKTHROUGH','film.title':'Your project, from brief to presentation.','film.intro':'See all 15 stages first, then follow a built villa case study with original ArchDaily drawings.','film.sample':'GUIDED VILLA CASE STUDY','film.play':'PLAY THE STAGE WALKTHROUGH','film.duration':'ABOUT 80 SECONDS · 15 STAGES','film.fullscreen':'Full screen','film.note':'A reconstructed 15-stage analysis of a built Iranian villa. Published facts are separated from ARCHMIND diagrams; this is not a permit or construction set.','film.caseTypeLabel':'PROJECT TYPE','film.caseType':'Built weekend villa','film.caseSiteLabel':'SITE','film.caseSite':'Zafaranieh · Karaj, Iran','film.caseAreaLabel':'AREA LISTED','film.caseArea':'716 m²','film.caseUsersLabel':'HOUSEHOLD*','film.caseUsers':'Family + guests','film.caseFormLabel':'DESIGN THREAD','film.caseForm':'Shaded inner courtyard','film.outputLabel':'STAGE OUTPUT','film.threadLabel':'DECISION CARRIED FORWARD','film.assumption':'The listed 716 m² is the published project area, not a plot area. Room schedule, plot dimensions and quantities are not published; analytical drawings are schematic. Verify all details before real use.',
+ 'villaSet.kicker':'VILLA DESIGN / 14 STAGE OUTPUTS','villaSet.title':'The villa, developed step by step','villaSet.intro':'Select one of the 14 stages to see its design output. The same villa carries through from brief to a resolved technical package.','villaSet.caveat':'This is ARCHMIND’s schematic proposal inspired by the public project journey. Room sizes and layouts are study assumptions; confirm survey, rules and engineering before use.','film.kicker':'ARCHMIND / 14-STAGE WALKTHROUGH','film.title':'Your project, from brief to resolved technical quantities.','film.intro':'See the 14 design stages, then follow a built villa case study with original ArchDaily drawings.','film.sample':'GUIDED VILLA CASE STUDY','film.play':'PLAY THE STAGE WALKTHROUGH','film.duration':'ABOUT 77 SECONDS · 14 STAGES','film.fullscreen':'Full screen','film.note':'A reconstructed 14-stage analysis of a built Iranian villa. Published facts are separated from ARCHMIND diagrams; this is not a permit or construction set.','film.caseTypeLabel':'PROJECT TYPE','film.caseType':'Built weekend villa','film.caseSiteLabel':'SITE','film.caseSite':'Zafaranieh · Karaj, Iran','film.caseAreaLabel':'AREA LISTED','film.caseArea':'716 m²','film.caseUsersLabel':'HOUSEHOLD*','film.caseUsers':'Family + guests','film.caseFormLabel':'DESIGN THREAD','film.caseForm':'Shaded inner courtyard','film.outputLabel':'STAGE OUTPUT','film.threadLabel':'DECISION CARRIED FORWARD','film.assumption':'The listed 716 m² is the published project area, not a plot area. Room schedule, plot dimensions and quantities are not published; analytical drawings are schematic. Verify all details before real use.',
  'creation.kicker':'ARCHMIND / IMAGE LAB','creation.title':'Turn a design direction into an image.','creation.sub':'Generate architectural concepts with configured Gemini or Krea models; prepare project-aware prompts for video and 3D tools.','creation.promptLabel':'DESIGN DIRECTION','creation.model':'MODEL','creation.ratio':'ASPECT RATIO','creation.creativity':'CREATIVITY','creation.literal':'Low · follow the brief','creation.balanced':'Medium · balanced','creation.expressive':'High · explore','creation.raw':'Raw · minimal interpretation','creation.reference':'STYLE REFERENCE (OPTIONAL)','creation.modeImage':'Image','creation.modeVideo':'Video','creation.mode3d':'3D','creation.modeHint':'Choose a mode. Image generation uses configured AI providers.','creation.openLovart':'Open Lovart with project prompt','creation.openKrea':'Open Krea with project prompt','creation.videoExample':'Watch Luma AI architectural video example ↗','creation.externalNote':'External tools open only when you choose; ARCHMIND copies the stage-aware prompt and does not upload your files.','creation.costNote':'Only models configured on the server are selectable. Daily ARCHMIND credits apply; failed jobs return the credits.','creation.generate':'Generate architectural image','creation.result':'RESULT / 01','creation.empty':'Your generated image will appear here.','creation.download':'Open / download image','creation.working':'Creating your architectural image…','creation.ready':'Image created.','creation.missingKey':'Image generation is unavailable until GEMINI_API_KEY or KREA_API_KEY is configured on the server.','creation.uploadHint':'Reference image loaded. It is sent only to the model you choose when you generate.','creation.badFile':'Choose a PNG, JPEG or WebP image under 6 MB.','creation.askPrompt':'Describe the architecture, material palette, light and camera view first.','creation.failed':'Image generation failed. Any ARCHMIND credits used were returned.',
  'technical.kicker':'ARCHMIND / TECHNICAL OFFICE','technical.title':'From design intent to a coordinated package.','technical.sub':'Track drawing production, consultant coordination, quantities and issue readiness in one project register.','technical.progress':'Technical package progress','technical.export':'Export register','technical.askAI':'Review with AI coordinator','technical.notes':'OFFICE NOTES / OPEN ITEMS','technical.save':'Save office notes','technical.disclaimer':'Use as a coordination aid. A qualified team must verify codes, calculations, quantities and construction documents before issue.','technical.notesPlaceholder':'Record consultant responses, drawing references, assumptions and actions…',
  'card.multilingual':'AI CHAT: MULTILINGUAL · UI: AR / EN'
 });
 Object.assign(I18N.ar,{
  'nav.creation':'استوديو الصور بالذكاء الاصطناعي','nav.technical':'المكتب الفني','btn.openStudio':'افتح استوديو الصور المدمج',
- 'villaSet.kicker':'تطوير الفيلا / مخرجات ١٥ مرحلة','villaSet.title':'الفيلا تتطور مرحلةً بعد مرحلة','villaSet.intro':'اختر مرحلة لمشاهدة مخرجها التصميمي. نفس الفيلا تستمر من الموجز حتى العرض النهائي.','villaSet.caveat':'هذا مقترح تخطيطي من ARCHMIND مستلهم من رحلة المشروع المنشورة. المقاسات والتوزيعات افتراضات دراسية؛ راجع الرفع والاشتراطات والهندسة قبل الاستخدام.','film.kicker':'آركمايند / جولة عبر ١٥ مرحلة','film.title':'مشروعك من البريف إلى العرض النهائي.','film.intro':'شاهد المراحل الخمس عشرة أولًا، ثم تابع مثال فيلا منفذة برسوماتها الأصلية المنشورة على ArchDaily.','film.sample':'دراسة حالة إرشادية لفيلا','film.play':'شغّل جولة المراحل','film.duration':'نحو ٨٠ ثانية · ١٥ مرحلة','film.fullscreen':'ملء الشاشة','film.note':'تحليل معاد البناء من ١٥ مرحلة لفيلا منفذة في إيران. نفصل الحقائق المنشورة عن رسوم ARCHMIND؛ هذه ليست رسومات ترخيص أو تنفيذ.','film.caseTypeLabel':'نوع المشروع','film.caseType':'فيلا عطلات منفذة','film.caseSiteLabel':'الموقع','film.caseSite':'زعفرانية · كرج، إيران','film.caseAreaLabel':'المساحة المنشورة','film.caseArea':'٧١٦ م²','film.caseUsersLabel':'البرنامج الافتراضي*','film.caseUsers':'أسرة وضيوف','film.caseFormLabel':'الفكرة المستمرة','film.caseForm':'فناء داخلي مظلل','film.outputLabel':'مخرج المرحلة','film.threadLabel':'قرار ينتقل للمرحلة التالية','film.assumption':'المساحة المدرجة ٧١٦ م² هي مساحة المشروع المنشورة وليست مساحة الأرض. أبعاد الأرض وجدول الغرف والكميات غير منشورة؛ والرسوم التحليلية تخطيطية. يجب التحقق من كل التفاصيل قبل الاستخدام.',
+ 'villaSet.kicker':'تطوير الفيلا / مخرجات ١٤ مرحلة','villaSet.title':'الفيلا تتطور مرحلةً بعد مرحلة','villaSet.intro':'اختر مرحلة من المراحل الأربع عشرة لمشاهدة مخرجها التصميمي. تتطور الفيلا نفسها من الموجز حتى حزمة فنية مكتملة.','villaSet.caveat':'هذا مقترح تخطيطي من ARCHMIND مستلهم من رحلة المشروع المنشورة. المقاسات والتوزيعات افتراضات دراسية؛ راجع الرفع والاشتراطات والهندسة قبل الاستخدام.','film.kicker':'آركمايند / جولة عبر ١٤ مرحلة','film.title':'مشروعك من البريف إلى حصر الكميات الفني.','film.intro':'شاهد مراحل التصميم الأربع عشرة، ثم تابع مثال فيلا منفذة برسوماتها الأصلية المنشورة على ArchDaily.','film.sample':'دراسة حالة إرشادية لفيلا','film.play':'شغّل جولة المراحل','film.duration':'نحو ٧٧ ثانية · ١٤ مرحلة','film.fullscreen':'ملء الشاشة','film.note':'تحليل معاد البناء من ١٤ مرحلة لمشروع فيلا منفذ في إيران. نفصل الحقائق المنشورة عن رسوم ARCHMIND؛ هذه ليست رسومات ترخيص أو تنفيذ.','film.caseTypeLabel':'نوع المشروع','film.caseType':'فيلا عطلات منفذة','film.caseSiteLabel':'الموقع','film.caseSite':'زعفرانية · كرج، إيران','film.caseAreaLabel':'المساحة المنشورة','film.caseArea':'٧١٦ م²','film.caseUsersLabel':'البرنامج الافتراضي*','film.caseUsers':'أسرة وضيوف','film.caseFormLabel':'الفكرة المستمرة','film.caseForm':'فناء داخلي مظلل','film.outputLabel':'مخرج المرحلة','film.threadLabel':'قرار ينتقل للمرحلة التالية','film.assumption':'المساحة المدرجة ٧١٦ م² هي مساحة المشروع المنشورة وليست مساحة الأرض. أبعاد الأرض وجدول الغرف والكميات غير منشورة؛ والرسوم التحليلية تخطيطية. يجب التحقق من كل التفاصيل قبل الاستخدام.',
  'creation.kicker':'آركمايند / معمل الصور','creation.title':'حوّل الفكرة التصميمية إلى صورة.','creation.sub':'أنشئ تصورات معمارية بنماذج Gemini أو Krea المهيأة، وجهّز برومبتات مرتبطة بالمشروع لأدوات الفيديو و3D.','creation.promptLabel':'اتجاه التصميم','creation.model':'النموذج','creation.ratio':'نسبة الأبعاد','creation.creativity':'مستوى الإبداع','creation.literal':'منخفض · التزم بالموجز','creation.balanced':'متوسط · متوازن','creation.expressive':'مرتفع · استكشف','creation.raw':'مباشر · أقل تفسير','creation.reference':'صورة مرجعية للأسلوب (اختياري)','creation.modeImage':'صورة','creation.modeVideo':'فيديو','creation.mode3d':'ثلاثي الأبعاد','creation.modeHint':'اختر الوضع. توليد الصور يستخدم مزودًا مهيأ على الخادم.','creation.openLovart':'افتح Lovart مع برومبت المشروع','creation.openKrea':'افتح Krea مع برومبت المشروع','creation.videoExample':'شاهد مثال Luma AI للفيديو المعماري ↗','creation.externalNote':'تُفتح الأدوات الخارجية باختيارك فقط؛ ينسخ ARCHMIND برومبت المرحلة ولا يرفع ملفاتك.','creation.costNote':'تظهر فقط النماذج المهيأة على الخادم. تُستخدم أرصدة ARCHMIND اليومية وتُعاد عند الفشل.','creation.generate':'أنشئ صورة معمارية','creation.result':'النتيجة / ٠١','creation.empty':'ستظهر الصورة المُنشأة هنا.','creation.download':'افتح / نزّل الصورة','creation.working':'جارٍ إنشاء الصورة المعمارية…','creation.ready':'تم إنشاء الصورة.','creation.missingKey':'توليد الصور غير متاح حتى تهيئة GEMINI_API_KEY أو KREA_API_KEY على الخادم.','creation.uploadHint':'تم تحميل الصورة المرجعية. لن تُرسل إلا إلى النموذج الذي تختاره عند التوليد.','creation.badFile':'اختر صورة PNG أو JPEG أو WebP بحجم أقل من ٦ ميجابايت.','creation.askPrompt':'صف العمارة والخامات والإضاءة وزاوية الكاميرا أولاً.','creation.failed':'تعذر إنشاء الصورة. أُعيد أي رصيد من آركمايند استُخدم.',
  'technical.kicker':'آركمايند / المكتب الفني','technical.title':'من الفكرة التصميمية إلى حزمة منسقة.','technical.sub':'تابع إنتاج الرسومات وتنسيق الاستشاريين والكميات وجاهزية الإصدار في سجل واحد للمشروع.','technical.progress':'تقدم الحزمة الفنية','technical.export':'تصدير السجل','technical.askAI':'مراجعة مع منسق الذكاء الاصطناعي','technical.notes':'ملاحظات المكتب / البنود المفتوحة','technical.save':'حفظ ملاحظات المكتب','technical.disclaimer':'هذه أداة مساعدة للتنسيق. يجب على فريق مختص التحقق من الأكواد والحسابات والكميات ومستندات التنفيذ قبل الإصدار.','technical.notesPlaceholder':'سجل ردود الاستشاريين ومراجع الرسومات والافتراضات والإجراءات…',
  'card.multilingual':'محادثة الذكاء: لغات متعددة · الواجهة: عربي / إنجليزي'
@@ -4112,12 +4210,12 @@ document.getElementById('projectSelect')?.addEventListener('change',async e=>{
 (()=>{
  const cursor=document.getElementById('creativeCursor');
  if(!cursor||matchMedia('(max-width:700px)').matches)return;
- const move=event=>{
+  const move=event=>{
   cursor.style.setProperty('--cursor-x',`${event.clientX}px`);
   cursor.style.setProperty('--cursor-y',`${event.clientY}px`);
   cursor.classList.add('is-visible');
   document.documentElement.classList.add('has-creative-cursor');
-  cursor.classList.toggle('is-hover',!!event.target.closest('button,a,[role="button"],input,textarea,select,summary'));
+  cursor.classList.toggle('is-hover',!!event.target.closest('.world-portal-action'));
  };
  window.addEventListener('pointermove',move,{passive:true});
  window.addEventListener('mousemove',move,{passive:true});

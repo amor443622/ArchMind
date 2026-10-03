@@ -108,6 +108,41 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
   dl.spec{grid-template-columns:minmax(0,1fr)}
   dl.spec dt{border-bottom:0;padding-bottom:0}
 }
+/* Compact, single-stage presentation when this case study is embedded in the home portal. */
+html.embed-stage{scroll-behavior:smooth}
+html.embed-stage body{padding:0;background:#ECEEEF;font-size:12px;line-height:1.42}
+html.embed-stage .top,html.embed-stage .wrap>nav,html.embed-stage footer{display:none!important}
+html.embed-stage .wrap{display:block;max-width:none;margin:0;padding:0}
+html.embed-stage main{display:block;padding:0;gap:0}
+html.embed-stage .stage{display:none;min-height:100%;padding:clamp(12px,2vw,24px);scroll-margin:0}
+html.embed-stage .stage.is-preview{display:block}
+html.embed-stage .stage>header{grid-template-columns:auto minmax(0,1fr);gap:3px 10px;padding-bottom:9px;margin-bottom:12px;border-bottom-width:1px}
+html.embed-stage .stage .no{font-size:10px}
+html.embed-stage .stage h2{font-size:clamp(20px,3vw,30px);line-height:1.04}
+html.embed-stage .flow{font-size:11px;line-height:1.35}
+html.embed-stage .flow b{font-size:9px}
+html.embed-stage .cols{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:11px}
+html.embed-stage .stack{gap:10px}
+html.embed-stage .sheet{padding:6px}
+html.embed-stage .sheet .cap,html.embed-stage .cap{font-size:9px;margin-top:5px}
+html.embed-stage .notes{gap:7px}
+html.embed-stage .notes h3{font-size:10px}
+html.embed-stage .notes ul{gap:5px}
+html.embed-stage .notes li{font-size:11px;line-height:1.35}
+html.embed-stage dl.spec dt,html.embed-stage dl.spec dd{padding-block:5px;font-size:10px}
+html.embed-stage dl.spec dt{font-size:9px}
+html.embed-stage table{font-size:10px}
+html.embed-stage th{font-size:9px}
+html.embed-stage th,html.embed-stage td{padding:4px 6px}
+html.embed-stage .legend{font-size:9px;gap:4px 9px;margin-top:6px}
+html.embed-stage .hand-note{font-size:16px;padding:9px 11px}
+html.embed-stage .grid8{gap:7px}
+html.embed-stage .sheets{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:8px}
+html.embed-stage .bigimg{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+html.embed-stage .dna{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:0 12px}
+html.embed-stage .dna div{gap:6px;padding:5px 0;font-size:10px}
+html.embed-stage .dna span{font-size:8px}
+@media(max-width:520px){html.embed-stage .cols,html.embed-stage .bigimg{grid-template-columns:1fr}}
 </style>
 
 <div class="top">
@@ -1077,6 +1112,15 @@ const S15=sec(14,['all fourteen stages','the completed building'],`
 </div>`);
 
 document.getElementById('main').innerHTML=[S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15].join('');
+const embedParams=new URLSearchParams(location.search);
+if(embedParams.get('embed')==='stage'){
+  document.documentElement.classList.add('embed-stage');
+  const requested=embedParams.get('stage')||location.hash.slice(1);
+  const target=/^s(?:0[1-9]|1[0-5])$/.test(requested)?requested:'s01';
+  document.querySelectorAll('.stage').forEach(section=>section.classList.toggle('is-preview',section.id===target));
+  history.scrollRestoration='manual';
+  requestAnimationFrame(()=>window.scrollTo(0,0));
+}
 document.getElementById('nav').innerHTML=STAGES.map((n,i)=>`<a href="#s${String(i+1).padStart(2,'0')}"><i>${String(i+1).padStart(2,'0')}</i>${n}</a>`).join('');
 document.getElementById('facts').innerHTML=[['Plot',nf(PLOT)+' m²'],['Height','G+5'],['Apartments',UNITS],['Built-up',nf(BUILT)+' m²'],['Parking',BAYS+' bays']].map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join('');
 document.getElementById('heroimg').src=IMG;

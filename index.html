@@ -1741,6 +1741,20 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 .app.landing-mode #worldStageRail button{min-width:0!important;width:100%!important;overflow:hidden!important}
 @media(min-width:701px){.app.landing-mode .world-copy{left:clamp(22px,2.5vw,38px)!important;right:auto!important;width:min(28vw,440px)!important}.app.landing-mode .world-portal{left:auto!important;right:clamp(22px,2.5vw,38px)!important;width:min(37vw,570px)!important}[dir=rtl] .app.landing-mode .world-copy{left:auto!important;right:clamp(22px,2.5vw,38px)!important}[dir=rtl] .app.landing-mode .world-portal{left:clamp(22px,2.5vw,38px)!important;right:auto!important}}
 @media(max-width:700px){.app.landing-mode #worldStageRail{left:14px!important;right:14px!important;top:188px!important;bottom:auto!important;width:auto!important;display:flex!important;grid-template-columns:none!important;overflow-x:auto!important}.app.landing-mode .world-copy{left:20px!important;right:20px!important;width:auto!important}.app.landing-mode .world-portal{left:50%!important;right:auto!important;width:calc(100% - 32px)!important;transform:translate(-50%,-50%)!important}}
+/* The selected chapter from the complete Doha case lives in the portal on this screen. */
+.app.landing-mode .world-portal{top:56%!important;width:min(53vw,760px)!important;gap:10px!important}
+[dir=rtl] .app.landing-mode .world-portal{left:clamp(22px,2.5vw,38px)!important;right:auto!important}
+.app.landing-mode .world-stage:before{background:radial-gradient(ellipse at 76% 48%,rgba(178,119,74,.13),transparent 44%),linear-gradient(90deg,rgba(9,15,15,.84) 0%,rgba(9,15,15,.48) 42%,rgba(9,15,15,.16) 100%),linear-gradient(0deg,rgba(9,15,15,.56),transparent 38%,rgba(9,15,15,.2))!important}
+.app.landing-mode .world-portal-heading{color:rgba(255,249,240,.82)!important}
+.app.landing-mode .world-portal-visual{aspect-ratio:1.48!important;border:1px solid rgba(240,207,170,.58)!important;border-radius:18px!important;background:#eeeae1!important;box-shadow:0 28px 90px rgba(0,0,0,.38),0 0 0 1px rgba(240,207,170,.08)!important;transform:none!important}
+.world-case-stage-preview{position:absolute;z-index:0;inset:0;width:100%;height:100%;border:0;background:#ECEEEF;opacity:1;transition:opacity .18s ease}
+.world-portal-visual:before{z-index:1;background:linear-gradient(180deg,rgba(8,21,22,.10),transparent 18%,transparent 78%,rgba(8,21,22,.82))!important}
+.world-portal .world-drawing{display:none!important}
+.app.landing-mode .world-portal-action{inset:auto 0 0!important;height:48px!important;padding:0 16px 10px!important;align-items:end!important;background:linear-gradient(0deg,rgba(8,17,17,.88),transparent)!important}
+.app.landing-mode .world-portal-action span{font-size:8px!important}
+@media(min-width:701px){.app.landing-mode .world-copy{width:min(30vw,430px)!important}.app.landing-mode .world-portal{right:clamp(22px,2.5vw,38px)!important}[dir=rtl] .app.landing-mode .world-copy{right:clamp(22px,2.5vw,38px)!important;left:auto!important}[dir=rtl] .app.landing-mode .world-portal{left:clamp(22px,2.5vw,38px)!important;right:auto!important}}
+@media(max-width:900px) and (min-width:701px){.app.landing-mode .world-copy{width:27vw!important}.app.landing-mode .world-portal{width:59vw!important;top:57%!important}}
+@media(max-width:700px){.app.landing-mode .world-portal{top:47%!important;width:calc(100% - 24px)!important}.app.landing-mode .world-portal-visual{aspect-ratio:1.36!important;border-radius:14px!important}.app.landing-mode .world-copy{z-index:5;bottom:88px!important}.app.landing-mode .world-portal-action{height:40px!important;padding:0 10px 7px!important}.app.landing-mode .world-portal-action span{font-size:7px!important}}
 /* Keep prompt text legible against the light prompt cards. */
 #prompts{color:#252923}
 #prompts>h1{color:#1f2924}
@@ -1845,6 +1859,7 @@ Codes and technical outputs require verification.
       <section class="world-portal" aria-label="Project stage reference images">
         <div class="world-portal-heading"><span id="worldPortalLabel">ARCHDAILY / BUILT PROJECT</span><strong id="worldPortalNext">01 · Brief</strong></div>
         <div class="world-portal-visual">
+          <iframe id="worldCaseStagePreview" class="world-case-stage-preview" title="Selected stage from the complete Doha case study" loading="eager" src="about:blank"></iframe>
           <div class="world-drawing" id="worldDrawing" aria-label="Alma 24 House source images related to the selected project stage"></div>
           <button class="world-portal-action" id="worldPortalAction" type="button" aria-label="Enter the next design stage"><span id="worldPortalActionText">ENTER NEXT STAGE</span><b aria-hidden="true">↗</b></button>
         </div>
@@ -2887,6 +2902,20 @@ function providedCaseUrl(index){
  const path=location.protocol==='file:'?new URL('public/resources/15-stage-residential-case-study.html',location.href).href:'/resources/15-stage-residential-case-study.html';
  return `${path}?stage=${id}#${id}`;
 }
+function providedCasePreviewUrl(index){
+ const id=`s${String(Math.max(0,Math.min(14,index))+1).padStart(2,'0')}`;
+ const path=location.protocol==='file:'?new URL('public/resources/15-stage-residential-case-study.html',location.href).href:'/resources/15-stage-residential-case-study.html';
+ return `${path}?embed=stage&stage=${id}`;
+}
+function updateProvidedCasePreview(index){
+ const frame=document.getElementById('worldCaseStagePreview');if(!frame)return;
+ const stage=Math.max(0,Math.min(14,index)),id=`s${String(stage+1).padStart(2,'0')}`;
+ if(frame.dataset.stage===id)return;
+ frame.dataset.stage=id;
+ frame.style.opacity='.25';
+ frame.onload=()=>{frame.style.opacity='1';};
+ frame.src=providedCasePreviewUrl(stage);
+}
 function openProvidedCaseStage(index){
  const stage=Math.max(0,Math.min(14,Number(index)||0)),id=`s${String(stage+1).padStart(2,'0')}`;
  filmIndex=stage;setStage(stage,false);go('workflowFilm');
@@ -2902,6 +2931,7 @@ function updateWorldJourney(){
   const track=document.getElementById('worldJourney');
   if(!track||!STAGE_DESC?.[currentLang])return;
   const index=Math.max(0,Math.min(STAGE_KEYS.length-1,currentStageIndex));
+  updateProvidedCasePreview(index);
   const progress=index/Math.max(1,STAGE_KEYS.length-1);
   const local=1;
   track.classList.toggle('is-light',index>=11);
@@ -2933,7 +2963,7 @@ function updateWorldJourney(){
   const nextIndex=Math.min(STAGE_KEYS.length-1,index+1),portalNext=document.getElementById('worldPortalNext'),portalAction=document.getElementById('worldPortalAction'),portalActionText=document.getElementById('worldPortalActionText'),portalLabel=document.getElementById('worldPortalLabel');
   const nextTitle=index===STAGE_KEYS.length-1?(currentLang==='ar'?'حزمة التسليم':'Issue project package'):stages[currentLang][nextIndex];
   if(portalNext)portalNext.textContent=`${currentLang==='ar'?arabicNumeral(String(nextIndex+1).padStart(2,'0')):String(nextIndex+1).padStart(2,'0')} · ${nextTitle}`;
-  if(portalLabel)portalLabel.textContent=currentLang==='ar'?'مشروع منفذ / آرك ديلي':'BUILT PROJECT / ARCHDAILY';
+  if(portalLabel)portalLabel.textContent=currentLang==='ar'?'المثال الكامل / الدوحة':'COMPLETE CASE / DOHA';
   if(portalNext)portalNext.textContent=`${stepNumber} · ${stages[currentLang][index]}`;
   if(portalAction){portalAction.setAttribute('aria-label',index===STAGE_KEYS.length-1?(currentLang==='ar'?'افتح عرض المشروع':'Open the project presentation'):(currentLang==='ar'?`انتقل للمرحلة التالية: ${nextTitle}`:`Enter the next design stage: ${nextTitle}`));}
   if(portalActionText)portalActionText.textContent=index===STAGE_KEYS.length-1?(currentLang==='ar'?'افتح عرض المشروع':'OPEN PROJECT PRESENTATION'):(currentLang==='ar'?'ادخل المرحلة التالية':'ENTER NEXT STAGE');
@@ -3032,11 +3062,11 @@ function renderWorldRail(active){
     setStage(i,false);updateWorldJourney();
     requestAnimationFrame(()=>setTimeout(()=>transition.classList.add('is-leaving'),280));
     transition.addEventListener('animationend',()=>transition.remove(),{once:true});
-    setTimeout(()=>{transition.remove();window.__archmindStageTraveling=false;openProvidedCaseStage(i);},1100);
-   }else{setStage(i,false);updateWorldJourney();window.__archmindStageTraveling=false;openProvidedCaseStage(i);}
+    setTimeout(()=>{transition.remove();window.__archmindStageTraveling=false;},1100);
+   }else{setStage(i,false);updateWorldJourney();window.__archmindStageTraveling=false;}
   };
   rail.querySelectorAll('[data-world-stage]').forEach(button=>button.addEventListener('click',()=>goToStage(Number(button.dataset.worldStage))));
-  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=currentStageIndex;if(active>=STAGE_KEYS.length-1){openProvidedCaseStage(active);return;}goToStage(active+1);});
+  const portal=document.getElementById('worldPortalAction');if(portal)portal.addEventListener('click',()=>{const active=currentStageIndex;if(active>=STAGE_KEYS.length-1){document.getElementById('worldCaseStagePreview')?.focus();return;}goToStage(active+1);});
   const portalVisual=document.querySelector('.world-portal-visual');if(portalVisual){portalVisual.addEventListener('pointermove',event=>{const box=portalVisual.getBoundingClientRect(),x=(event.clientX-box.left)/box.width-.5,y=(event.clientY-box.top)/box.height-.5;portalVisual.style.setProperty('--portal-rx',`${-y*9}deg`);portalVisual.style.setProperty('--portal-ry',`${x*11}deg`);});portalVisual.addEventListener('pointerleave',()=>{portalVisual.style.setProperty('--portal-rx','0deg');portalVisual.style.setProperty('--portal-ry','0deg');});}
   rail.dataset.ready='1';
  }

@@ -1752,6 +1752,12 @@ button,.btn,.input,select,textarea{font-family:var(--arch-serif)}
 .world-portal .world-drawing{display:none!important}
 .app.landing-mode .world-portal-action{inset:auto 0 0!important;height:48px!important;padding:0 16px 10px!important;align-items:end!important;background:linear-gradient(0deg,rgba(8,17,17,.88),transparent)!important}
 .app.landing-mode .world-portal-action span{font-size:8px!important}
+.app.landing-mode .world-utility #worldPromptLibraryButton{border-color:rgba(227,188,145,.65)!important;background:rgba(116,75,47,.42)!important;color:#fff4e7!important}
+.prompt-book-shortcut{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:14px 0;padding:14px 18px;border:1px solid #33271d;border-radius:14px;background:linear-gradient(110deg,#15110d,#302216);color:#f5ebda}
+.prompt-book-shortcut>div{display:grid;gap:4px}.prompt-book-shortcut strong{font:600 15px var(--arch-serif,Georgia,serif)}.prompt-book-shortcut span{font:9px 'DM Mono',monospace;letter-spacing:.08em;color:#c9b797}
+.prompt-book-shortcut button{flex:0 0 auto;border:1px solid rgba(245,235,218,.35);border-radius:999px;padding:9px 13px;background:transparent;color:#f5ebda;font:inherit;font-size:11px;cursor:pointer}.prompt-book-shortcut button:hover{background:#f5ebda;color:#21170f}
+.book-library{scroll-margin-top:18px}.book-library>summary{padding-block:4px}
+@media(max-width:700px){.prompt-book-shortcut{align-items:flex-start;flex-direction:column}}
 @media(min-width:701px){.app.landing-mode .world-copy{width:min(30vw,430px)!important}.app.landing-mode .world-portal{right:clamp(22px,2.5vw,38px)!important}[dir=rtl] .app.landing-mode .world-copy{right:clamp(22px,2.5vw,38px)!important;left:auto!important}[dir=rtl] .app.landing-mode .world-portal{left:clamp(22px,2.5vw,38px)!important;right:auto!important}}
 @media(max-width:900px) and (min-width:701px){.app.landing-mode .world-copy{width:27vw!important}.app.landing-mode .world-portal{width:59vw!important;top:57%!important}}
 @media(max-width:700px){.app.landing-mode .world-portal{top:47%!important;width:calc(100% - 24px)!important}.app.landing-mode .world-portal-visual{aspect-ratio:1.36!important;border-radius:14px!important}.app.landing-mode .world-copy{z-index:5;bottom:88px!important}.app.landing-mode .world-portal-action{height:40px!important;padding:0 10px 7px!important}.app.landing-mode .world-portal-action span{font-size:7px!important}}
@@ -1868,6 +1874,7 @@ Codes and technical outputs require verification.
       <nav class="world-stage-rail" id="worldStageRail" aria-label="Project workflow"></nav>
       <nav class="world-utility" aria-label="Project tools">
         <button type="button" data-view="architect"><span>◈</span><b data-i18n="world.ask">Ask ARCHMIND</b></button>
+        <button type="button" id="worldPromptLibraryButton" data-view="prompts"><span>⌘</span><b id="worldPromptsLabel">200 Prompts</b></button>
         <button type="button" data-view="memory"><span>◌</span><b data-i18n="world.brain">Project Brain</b></button>
         <button type="button" data-view="creation"><span>✦</span><b data-i18n="world.studio">AI Studio</b></button>
         <button type="button" data-view="technical"><span>▤</span><b data-i18n="world.technical">Technical</b></button>
@@ -2365,6 +2372,8 @@ Choose the AI model per conversation. The backend keeps provider keys private an
 Each prompt includes a design-intent focus, negative-prompt guardrails and a before/after slot — ready to send to the Architect chat, or hand off straight to Lovart.AI or KREA.AI.
 </p>
 
+<div class="prompt-book-shortcut"><div><strong data-i18n="book.title">Open the complete 44-page Nano Banana playbook</strong><span data-i18n="book.note">Source: Ibrahim A.I. Abdelhady · 44 illustrated pages</span></div><button type="button" onclick="openPromptBook()" data-i18n="book.open">Browse all 44 pages ↗</button></div>
+
 <details class="book-library card">
   <summary><span data-i18n="book.title">Open the complete 44-page Nano Banana playbook</span><span class="tag">44 pages</span></summary>
   <p class="muted book-credit" data-i18n="book.note">Source: Ibrahim A.I. Abdelhady, October 2025. Shared for non-commercial use.</p>
@@ -2534,6 +2543,9 @@ No fake quality score. ARCHMIND reports status, conflicts, missing information a
   </div>
 </div>
 <div id="creativeCursor" class="creative-cursor" aria-hidden="true"><svg viewBox="0 0 36 40"><path class="cursor-aura" d="M4 2 7 34 15 25 22 38 28 35 21 22 33 21Z"/><path class="cursor-arrow" d="M4 2 7 34 15 25 22 38 28 35 21 22 33 21Z"/></svg></div>
+
+<script src="./data/prompt-library.js"></script>
+<script src="./data/playbook-pages.js"></script>
 
 <script>
 
@@ -2961,6 +2973,8 @@ function updateWorldJourney(){
   const drawing=document.getElementById('worldDrawing');
   if(drawing){drawing.style.setProperty('--drawing-progress','1');drawing.style.opacity='1';drawing.style.transform='';if(window.__worldDrawingStage!==index||window.__worldDrawingLang!==currentLang){window.__worldDrawingStage=index;window.__worldDrawingLang=currentLang;renderWorldDrawing(index);}}
   const nextIndex=Math.min(STAGE_KEYS.length-1,index+1),portalNext=document.getElementById('worldPortalNext'),portalAction=document.getElementById('worldPortalAction'),portalActionText=document.getElementById('worldPortalActionText'),portalLabel=document.getElementById('worldPortalLabel');
+  const promptCount=Array.isArray(window.ARCHMIND_PROMPTS)?window.ARCHMIND_PROMPTS.length:200;
+  const promptsLabel=document.getElementById('worldPromptsLabel');if(promptsLabel)promptsLabel.textContent=currentLang==='ar'?`مكتبة البرومبتات · ${arabicNumeral(String(promptCount))}`:`Prompts · ${promptCount}`;
   const nextTitle=index===STAGE_KEYS.length-1?(currentLang==='ar'?'حزمة التسليم':'Issue project package'):stages[currentLang][nextIndex];
   if(portalNext)portalNext.textContent=`${currentLang==='ar'?arabicNumeral(String(nextIndex+1).padStart(2,'0')):String(nextIndex+1).padStart(2,'0')} · ${nextTitle}`;
   if(portalLabel)portalLabel.textContent=currentLang==='ar'?'المثال الكامل / الدوحة':'COMPLETE CASE / DOHA';
@@ -3211,11 +3225,16 @@ sel.value=String(currentStageIndex);
 sel.onchange=()=>setStage(Number(sel.value),false);
 }
 
-let prompts=[];
-let cats=[];
-let bookPages=[];
+let prompts=Array.isArray(window.ARCHMIND_PROMPTS)?[...window.ARCHMIND_PROMPTS]:[];
+let cats=[...new Set(prompts.map(item=>item.category).filter(Boolean))];
+let bookPages=Array.isArray(window.ARCHMIND_BOOK_PAGES)?[...window.ARCHMIND_BOOK_PAGES]:[];
 let bookPageIndex=0;
 let chatAttachments=[];
+
+function libraryAssetUrl(source){
+ if(typeof source!=='string'||!source.startsWith('/')||location.protocol!=='file:')return source;
+ return new URL(`public/${source.replace(/^\//, '')}`,location.href).href;
+}
 
 renderNav();
 renderWorkflow();
@@ -3232,7 +3251,7 @@ function go(v){
 closeToolsMenu();
 if(v==='architect'&&currentView==='dashboard'&&document.querySelector('.app')?.classList.contains('landing-mode')){openArchitectPanel();return;}
 closeArchitectPanel();
-if(!['dashboard','workflowFilm'].includes(v)&&!isAuthenticated){
+ if(!['dashboard','workflowFilm','prompts'].includes(v)&&!isAuthenticated){
  pendingProtectedView=v;
  openAuth('login');
  return;
@@ -3403,18 +3422,17 @@ function renderCategoryOptions(){
 let currentPromptDiscipline='all';
 const PROMPT_DISCIPLINES=[
  {id:'all',en:'All prompts',ar:'كل البرومبتات'},
- {id:'exterior',en:'Exterior Architecture',ar:'التصميم الخارجي'},
+ {id:'exterior',en:'Architecture / Exterior',ar:'عمارة / تصميم خارجي'},
  {id:'interior',en:'Interior Design',ar:'التصميم الداخلي'},
  {id:'urban',en:'Urban Design / Landscape',ar:'التصميم العمراني / اللاندسكيب'},
- {id:'technical',en:'Technical Drawings',ar:'الرسومات الفنية'},
- {id:'visual',en:'Visualization / Presentation',ar:'التصور / العرض'}
+ {id:'other',en:'Other · Technical / Visual',ar:'أخرى · فني وتصوري'}
 ];
 function promptDiscipline(prompt){
  const category=String(prompt.category||'').trim();
  const page=Number(prompt.pdfReferencePage)||0;
  // Classify by the actual task first; source-book page ranges are only a fallback.
- if(['BIM & Documentation','CAD & Technical Drawings','Structure & Coordination','Plans & 3D','Sections','Sections & Elevations'].includes(category))return 'technical';
- if(['Visualization & Rendering','Architectural Visualization','3D Modeling','Concept to Render','Diagrams & Presentation'].includes(category))return 'visual';
+ if(['BIM & Documentation','CAD & Technical Drawings','Structure & Coordination','Plans & 3D','Sections','Sections & Elevations'].includes(category))return 'other';
+ if(['Visualization & Rendering','Architectural Visualization','3D Modeling','Concept to Render','Diagrams & Presentation'].includes(category))return 'other';
  if(['Interior Design','Plans & Interiors','Interior Transformation','Kitchen Design'].includes(category))return 'interior';
  if(['Urban Design','Landscape','Interior & Urban Design'].includes(category))return 'urban';
  if(['Commercial','Hospitality'].includes(category))return page>=28&&page<=35?'interior':'exterior';
@@ -3424,7 +3442,7 @@ function promptDiscipline(prompt){
  if(page>=28&&page<=35)return 'interior';
  if(page>=36&&page<=43)return 'urban';
  if(page>=9&&page<=27)return 'exterior';
- return 'visual';
+ return 'other';
 }
 function renderPromptDisciplineTabs(){
  const root=document.getElementById('promptDisciplines');if(!root)return;
@@ -3442,26 +3460,32 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape')closePromptP
 
 function renderBookPages(){
  const grid=document.getElementById('bookGrid');if(!grid||!bookPages.length)return;
- grid.innerHTML=bookPages.map((page,i)=>`<button class="book-page" onclick="openBookPage(${Number(page.page)})" aria-label="${esc((currentLang==='ar'&&page.titleAr)||page.title)}"><img src="${esc(page.image)}" alt="" loading="lazy"><strong>${esc((currentLang==='ar'&&page.titleAr)||page.title)}</strong><span>${currentLang==='ar'?'صفحة':'PAGE'} ${String(page.page).padStart(2,'0')}</span></button>`).join('');
+ grid.innerHTML=bookPages.map((page,i)=>`<button class="book-page" onclick="openBookPage(${Number(page.page)})" aria-label="${esc((currentLang==='ar'&&page.titleAr)||page.title)}"><img src="${esc(libraryAssetUrl(page.image))}" alt="" loading="lazy"><strong>${esc((currentLang==='ar'&&page.titleAr)||page.title)}</strong><span>${currentLang==='ar'?'صفحة':'PAGE'} ${String(page.page).padStart(2,'0')}</span></button>`).join('');
+}
+function openPromptBook(){
+ const details=document.querySelector('.book-library');if(!details)return;
+ details.open=true;details.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
 }
 async function openBookPage(page){
  bookPageIndex=Math.max(0,bookPages.findIndex(x=>x.page===Number(page)));
  const item=bookPages[bookPageIndex];if(!item)return;
  const dlg=document.getElementById('bookReader');
- document.getElementById('bookReaderImage').src=item.image;
+ document.getElementById('bookReaderImage').src=libraryAssetUrl(item.image);
  document.getElementById('bookReaderTitle').textContent=(currentLang==='ar'&&item.titleAr)||item.title;
  document.getElementById('bookReaderCounter').textContent=`${L()['book.page']||'Page'} ${item.page} / ${bookPages.length}`;
  if(!dlg.open)dlg.showModal();
 }
 function stepBookPage(step){if(bookPages.length)openBookPage(bookPages[(bookPageIndex+step+bookPages.length)%bookPages.length].page);}
-fetch('/data/pdf-examples.json').then(r=>r.json()).then(d=>{bookPages=Array.isArray(d)?d:[];renderBookPages();}).catch(()=>{});
+if(location.protocol!=='file:')fetch('/data/pdf-examples.json').then(r=>r.json()).then(d=>{bookPages=Array.isArray(d)?d:bookPages;renderBookPages();}).catch(()=>renderBookPages());
+renderBookPages();
 
 fetch('/api/prompts')
 .then(r=>r.json())
 .then(d=>{
 
-prompts=Array.isArray(d)?[...d]:[];
-if(!prompts.some(p=>p.id==='ARCH-201'))prompts.unshift({id:'ARCH-201',category:'Villa Design',categoryAr:'تصميم الفلل',title:'Villa elevation · concept sketch to final visualization',titleAr:'واجهة فيلا · من الاسكتش إلى التصور النهائي',designIntent:'Transform the supplied architectural sketch into a polished exterior visualization while preserving its original massing, floor count, window rhythm, camera angle and site footprint.',designIntentAr:'حوّل الاسكتش المعماري المرفق إلى تصور خارجي احترافي مع الحفاظ على الكتلة وعدد الأدوار وإيقاع الفتحات وزاوية الكاميرا وبصمة المبنى.',professionalPrompt:'Create a high-end architectural exterior visualization based on the supplied villa sketch. Preserve the original building outline, floor count, openings, proportions, camera angle and site footprint. Refine the façade with a restrained palette of warm limestone, timber screens and clear glazing; add believable construction joints, human scale, soft late-afternoon light and a calm planted foreground. Keep the design buildable and faithful to the input.\n\nAVOID: changing the massing, adding floors or random windows, floating slabs, impossible cantilevers, distorted perspective, plastic materials, excessive ornament, oversaturated colors, text, logos and watermarks.',professionalPromptAr:'أنشئ تصورًا معماريًا خارجيًا احترافيًا اعتمادًا على اسكتش الفيلا المرفق. حافظ على حدود المبنى وعدد الأدوار والفتحات والنسب وزاوية الكاميرا وبصمة الموقع. طوّر الواجهة بخامات هادئة من الحجر الجيري الدافئ وشاشات خشبية وزجاج واضح، وأظهر فواصل تنفيذ منطقية ومقياسًا إنسانيًا وإضاءة عصر ناعمة ومقدمة مزروعة ببساطة. اجعل التصميم قابلًا للبناء وأمينًا للمدخل.\n\nتجنب: تغيير الكتلة أو إضافة أدوار وفتحات عشوائية أو بلاطات طافية أو كوابيل غير منطقية أو منظور مشوه أو خامات بلاستيكية أو زخرفة زائدة أو ألوان مشبعة أو نصوص أو شعارات أو علامة مائية.',negativePrompt:'Changing the massing, adding floors or random windows, floating slabs, impossible cantilevers, distorted perspective, plastic materials, excessive ornament, oversaturated colors, text, logos or watermarks.',negativePromptAr:'تغيير الكتلة، إضافة أدوار أو فتحات عشوائية، بلاطات طافية، كوابيل غير منطقية، منظور مشوه، خامات بلاستيكية، زخرفة زائدة، ألوان مشبعة، نصوص أو شعارات أو علامة مائية.',beforeImage:'/prompt-examples/villa-sketch-before.jpg',afterImage:'/prompt-examples/villa-render-after.jpg',sourceCredit:currentLang==='ar'?'زوج قبل/بعد مقصوص من الصورة المرجعية التي أرسلها صاحب المشروع. البرومبت من إعداد ARCHMIND.':'Before/after pair cropped from the project owner’s supplied reference. Prompt authored by ARCHMIND.'});
+const apiPrompts=Array.isArray(d)?[...d]:[];
+if(apiPrompts.length)prompts=apiPrompts;
+if(!prompts.length&&!prompts.some(p=>p.id==='ARCH-201'))prompts.unshift({id:'ARCH-201',category:'Villa Design',categoryAr:'تصميم الفلل',title:'Villa elevation · concept sketch to final visualization',titleAr:'واجهة فيلا · من الاسكتش إلى التصور النهائي',designIntent:'Transform the supplied architectural sketch into a polished exterior visualization while preserving its original massing, floor count, window rhythm, camera angle and site footprint.',designIntentAr:'حوّل الاسكتش المعماري المرفق إلى تصور خارجي احترافي مع الحفاظ على الكتلة وعدد الأدوار وإيقاع الفتحات وزاوية الكاميرا وبصمة المبنى.',professionalPrompt:'Create a high-end architectural exterior visualization based on the supplied villa sketch. Preserve the original building outline, floor count, openings, proportions, camera angle and site footprint. Refine the façade with a restrained palette of warm limestone, timber screens and clear glazing; add believable construction joints, human scale, soft late-afternoon light and a calm planted foreground. Keep the design buildable and faithful to the input.\n\nAVOID: changing the massing, adding floors or random windows, floating slabs, impossible cantilevers, distorted perspective, plastic materials, excessive ornament, oversaturated colors, text, logos and watermarks.',professionalPromptAr:'أنشئ تصورًا معماريًا خارجيًا احترافيًا اعتمادًا على اسكتش الفيلا المرفق. حافظ على حدود المبنى وعدد الأدوار والفتحات والنسب وزاوية الكاميرا وبصمة الموقع. طوّر الواجهة بخامات هادئة من الحجر الجيري الدافئ وشاشات خشبية وزجاج واضح، وأظهر فواصل تنفيذ منطقية ومقياسًا إنسانيًا وإضاءة عصر ناعمة ومقدمة مزروعة ببساطة. اجعل التصميم قابلًا للبناء وأمينًا للمدخل.\n\nتجنب: تغيير الكتلة أو إضافة أدوار وفتحات عشوائية أو بلاطات طافية أو كوابيل غير منطقية أو منظور مشوه أو خامات بلاستيكية أو زخرفة زائدة أو ألوان مشبعة أو نصوص أو شعارات أو علامة مائية.',negativePrompt:'Changing the massing, adding floors or random windows, floating slabs, impossible cantilevers, distorted perspective, plastic materials, excessive ornament, oversaturated colors, text, logos or watermarks.',negativePromptAr:'تغيير الكتلة، إضافة أدوار أو فتحات عشوائية، بلاطات طافية، كوابيل غير منطقية، منظور مشوه، خامات بلاستيكية، زخرفة زائدة، ألوان مشبعة، نصوص أو شعارات أو علامة مائية.',beforeImage:'/prompt-examples/villa-sketch-before.jpg',afterImage:'/prompt-examples/villa-render-after.jpg',sourceCredit:currentLang==='ar'?'زوج قبل/بعد مقصوص من الصورة المرجعية التي أرسلها صاحب المشروع. البرومبت من إعداد ARCHMIND.':'Before/after pair cropped from the project owner’s supplied reference. Prompt authored by ARCHMIND.'});
 
 cats=[...new Set(prompts.map(x=>x.category))];
 
@@ -3478,7 +3502,8 @@ renderPrompts();
 })
 .catch(error=>{
 console.error('Could not load the architectural prompt library:',error);
-toast(L().toastPromptsUnavailable);
+if(prompts.length){cats=[...new Set(prompts.map(x=>x.category).filter(Boolean))];renderCategoryOptions();renderPromptDisciplineTabs();updatePromptH1();renderPrompts();}
+else toast(L().toastPromptsUnavailable);
 });
 
 function updatePromptH1(){
@@ -3547,14 +3572,14 @@ ${extraTag?`<span class="tag">${esc(extraTag)}</span>`:''}
 <div class="prompt-images">
 
 <figure data-frame="01 / ${esc(currentLang==='ar'?'قبل':'BEFORE')}">
-<img src="${beforeSrc}" alt="${esc(p.title)} — ${esc(beforeLabel)}" loading="lazy">
-<button class="prompt-image-open" type="button" aria-label="${currentLang==='ar'?'افتح الصورة بالحجم الكامل':'Open image full size'}" data-src="${esc(beforeSrc)}" data-alt="${esc(p.title)} — ${esc(beforeLabel)}"><span>↗ ${currentLang==='ar'?'عرض الصورة':'VIEW IMAGE'}</span></button>
+<img src="${esc(libraryAssetUrl(beforeSrc))}" alt="${esc(p.title)} — ${esc(beforeLabel)}" loading="lazy">
+<button class="prompt-image-open" type="button" aria-label="${currentLang==='ar'?'افتح الصورة بالحجم الكامل':'Open image full size'}" data-src="${esc(libraryAssetUrl(beforeSrc))}" data-alt="${esc(p.title)} — ${esc(beforeLabel)}"><span>↗ ${currentLang==='ar'?'عرض الصورة':'VIEW IMAGE'}</span></button>
 <figcaption>${esc(beforeLabel)}</figcaption>
 </figure>
 
 <figure data-frame="02 / ${esc(currentLang==='ar'?'بعد':'AFTER')}">
-<img src="${afterSrc}" alt="${esc(p.title)} — ${esc(afterLabel)}" loading="lazy">
-<button class="prompt-image-open" type="button" aria-label="${currentLang==='ar'?'افتح الصورة بالحجم الكامل':'Open image full size'}" data-src="${esc(afterSrc)}" data-alt="${esc(p.title)} — ${esc(afterLabel)}"><span>↗ ${currentLang==='ar'?'عرض الصورة':'VIEW IMAGE'}</span></button>
+<img src="${esc(libraryAssetUrl(afterSrc))}" alt="${esc(p.title)} — ${esc(afterLabel)}" loading="lazy">
+<button class="prompt-image-open" type="button" aria-label="${currentLang==='ar'?'افتح الصورة بالحجم الكامل':'Open image full size'}" data-src="${esc(libraryAssetUrl(afterSrc))}" data-alt="${esc(p.title)} — ${esc(afterLabel)}"><span>↗ ${currentLang==='ar'?'عرض الصورة':'VIEW IMAGE'}</span></button>
 <figcaption>${esc(afterLabel)}</figcaption>
 </figure>
 
@@ -3991,7 +4016,7 @@ en:{
 'arch.h1':'Your project-aware architect.',
 'arch.sub':'Choose the AI model per conversation. The backend keeps provider keys private and injects your architectural role + project context.',
 'arch.greeting':'I understand that you are working as an architect. Ask me to develop zoning, challenge a concept, review a plan, analyze a facade, refine a rendering prompt, or structure a professional presentation.',
-'arch.inputPlaceholder':'Ask your architectural AI…','chat.attach':'Attach files','chat.attachHint':'Images, PDF and text files · 6 MB total. Sent to the selected AI provider.','chat.analyzeFiles':'Review the attached files architecturally and list the key findings and assumptions.','chat.pdfOllama':'Ollama accepts images only with a vision model and text files; use a cloud provider for PDFs.','book.title':'Open all 44 pages from the Nano Banana playbook','book.note':'Source: Ibrahim A.I. Abdelhady, October 2025. Shared for non-commercial use.','book.previous':'Previous','book.next':'Next','book.close':'Close','book.page':'Page','book.source':'Nano Banana for Architects',
+'arch.inputPlaceholder':'Ask your architectural AI…','chat.attach':'Attach files','chat.attachHint':'Images, PDF and text files · 6 MB total. Sent to the selected AI provider.','chat.analyzeFiles':'Review the attached files architecturally and list the key findings and assumptions.','chat.pdfOllama':'Ollama accepts images only with a vision model and text files; use a cloud provider for PDFs.','book.title':'Open all 44 pages from the Nano Banana playbook','book.note':'Source: Ibrahim A.I. Abdelhady, October 2025. Shared for non-commercial use.','book.open':'Browse all 44 pages ↗','book.previous':'Previous','book.next':'Next','book.close':'Close','book.page':'Page','book.source':'Nano Banana for Architects',
 'btn.send':'Send',
 'arch.visualNote':'Ollama running slow? Send this message straight to an image tool instead:',
 'btn.openLovart':'Open in Lovart.AI',
@@ -4155,7 +4180,7 @@ ar:{
 'arch.h1':'مهندسك الذكي الواعي بمشروعك.',
 'arch.sub':'اختر نموذج الذكاء الاصطناعي لكل محادثة. الخادم يحافظ على مفاتيح المزوّدين بسرية ويضيف دورك المعماري وسياق المشروع تلقائياً.',
 'arch.greeting':'أنا أدرك أنك تعمل كمهندس معماري. اطلب مني تطوير التقسيم، تحدي فكرة تصميمية، مراجعة مخطط، تحليل واجهة، صياغة برومبت رندر، أو بناء عرض تقديمي احترافي.',
-'arch.inputPlaceholder':'اسأل مهندسك المعماري الذكي…','chat.attach':'إرفاق ملفات','chat.attachHint':'صور وPDF وملفات نصية · إجمالي 6 ميجابايت. تُرسل إلى مزود الذكاء الاصطناعي المختار.','chat.analyzeFiles':'حلّل الملفات المرفقة معماريًا، ثم لخّص النتائج والافتراضات المهمة.','chat.pdfOllama':'أولاما يدعم الصور بنموذج رؤية والملفات النصية؛ استخدم مزودًا سحابيًا لملفات PDF.','book.title':'افتح صفحات دليل Nano Banana الـ44','book.note':'المصدر: إبراهيم عبد الهادي، أكتوبر 2025. للاستخدام غير التجاري مع حفظ النسبة.','book.previous':'السابق','book.next':'التالي','book.close':'إغلاق','book.page':'صفحة','book.source':'Nano Banana للمعماريين',
+'arch.inputPlaceholder':'اسأل مهندسك المعماري الذكي…','chat.attach':'إرفاق ملفات','chat.attachHint':'صور وPDF وملفات نصية · إجمالي 6 ميجابايت. تُرسل إلى مزود الذكاء الاصطناعي المختار.','chat.analyzeFiles':'حلّل الملفات المرفقة معماريًا، ثم لخّص النتائج والافتراضات المهمة.','chat.pdfOllama':'أولاما يدعم الصور بنموذج رؤية والملفات النصية؛ استخدم مزودًا سحابيًا لملفات PDF.','book.title':'افتح صفحات دليل Nano Banana الـ44','book.note':'المصدر: إبراهيم عبد الهادي، أكتوبر 2025. للاستخدام غير التجاري مع حفظ النسبة.','book.open':'تصفح صفحات الكتاب الـ44 ↗','book.previous':'السابق','book.next':'التالي','book.close':'إغلاق','book.page':'صفحة','book.source':'Nano Banana للمعماريين',
 'btn.send':'إرسال',
 'arch.visualNote':'أولاما بطيء عندك؟ أرسل هذه الرسالة مباشرة لأداة توليد صور بدلاً منها:',
 'btn.openLovart':'فتح في Lovart.AI',
